@@ -1,3 +1,5 @@
+![Anton Chekhov with a fountain pen at his desk — Palych banner](assets/chekhov-banner.png)
+
 # Палыч / Palych
 
 Named in honor of А.П. Чехов (A.P. Chekhov).

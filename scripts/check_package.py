@@ -21,6 +21,10 @@ def check():
         if not path.is_file() or path.is_symlink():
             errors.append(f'{relative}: not a regular file')
             continue
+        if path.suffix.lower() == '.png':
+            if not path.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'):
+                errors.append(f'{relative}: invalid PNG signature')
+            continue
         try:
             text = path.read_text(encoding='utf-8')
             if path.suffix == '.json':
