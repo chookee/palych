@@ -8,7 +8,8 @@ Use this repository as the source for future changes.
 - SKILL.md: compact Russian-first/English conversational instructions.
 - references/: original examples and attribution to the adapted source.
 - adapters/: optional persistent state helper and its subprocess tests.
-- scripts/build_plugin.py: standalone Codex or Claude Code plugin builder.
+- scripts/install.py: always-on global-instructions installer; tests use temporary configs.
+- scripts/build_plugin.py: alternative Codex or Claude Code plugin builder.
 - scripts/check_package.py: offline frontmatter, JSON and local-link checks.
 - evals/: synthetic cases, masking tools, rubric and reader protocol.
 - evals/results/: historical synthetic evidence; new runs need distinct files.
@@ -27,7 +28,9 @@ python3 scripts/build_plugin.py --host claude-code --output ./dist/palych-claude
 ```
 
 Build targets must be new directories. Never publish dist/, local state or
-reader responses automatically. The builder does not install or enable a plugin.
+reader responses automatically. The builder does not install a plugin. A fresh trusted plugin defaults to on;
+existing saved defaults are preserved. The global-instructions installation is
+documented in [INSTALL.md](../INSTALL.md); use one route at a time.
 Core edits need relevant semantic checks using the existing evaluation protocol;
 byte and format checks alone cannot prove reply quality.
 

@@ -40,7 +40,7 @@ def read_state(state_dir):
     try:
         obj = json.loads(path.read_text(encoding='utf-8'))
     except FileNotFoundError:
-        return {'always_on': False, 'sessions': {}}
+        return {'always_on': True, 'sessions': {}}
     if (not isinstance(obj, dict) or type(obj.get('always_on')) is not bool
             or not isinstance(obj.get('sessions'), dict)):
         raise ValueError('invalid state: state.json')
@@ -139,8 +139,6 @@ def context(root, host, state_dir, session_id, enabled, skill_text='', mode=None
 
 
 def emit_context(root, host, state_dir, sid, name, mode):
-    if mode is None and not state_dir.exists():
-        return context(root, host, state_dir, sid, False)
     with locked_state(state_dir) as obj:
         if mode:
             change_mode(obj, sid, mode)

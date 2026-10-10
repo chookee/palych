@@ -61,6 +61,19 @@ class HookTests(unittest.TestCase):
             self.assertNotIn('saved', json.loads(context.splitlines()[1]))
             self.assertNotIn(self.core(), self.control('Enable palych.'))
 
+    def test_saved_old_default_off_is_not_overwritten_by_update(self):
+        self.state.mkdir()
+        (self.state / 'state.json').write_text(json.dumps({'always_on': False, 'sessions': {}}))
+        self.assertIn('is OFF', self.event(source='startup'))
+        self.assertIn('is OFF', self.event(source='compact'))
+        self.assertFalse(json.loads((self.state / 'state.json').read_text())['always_on'])
+
+    def test_ordinary_prompts_after_automatic_start_do_not_repeat_core(self):
+        self.assertTrue(self.event(source='startup').endswith(self.core()))
+        before = (self.state / 'state.json').read_bytes()
+        self.assertIsNone(self.control('Explain cache invalidation.'))
+        self.assertEqual(before, (self.state / 'state.json').read_bytes())
+
     def test_changed_core_is_emitted_on_repeated_activation(self):
         self.control('Enable palych.')
         path = self.plugin / 'skills/palych/SKILL.md'
@@ -138,11 +151,12 @@ class HookTests(unittest.TestCase):
         self.assertIsNone(self.control('Enable clear-replies.'))
         self.assertFalse(self.state.exists())
 
-    def test_install_is_off_and_does_not_write(self):
-        context = self.event(source='startup')
-        self.assertIn('is OFF', context)
-        self.assertNotIn('## Preserve meaning', context)
-        self.assertFalse(self.state.exists())
+    def test_fresh_install_activates_without_a_control_message(self):
+        for source in ('startup', 'compact', 'resume', 'clear', 'fork'):
+            context = self.event(source=source)
+            self.assertIn('is ON', context)
+            self.assertTrue(context.endswith(self.core()))
+        self.assertTrue(json.loads((self.state / 'state.json').read_text())['always_on'])
 
     def test_activate_then_restore_in_new_process_without_context(self):
         self.assertIn('## Preserve meaning', self.control('Включи palych для этого разговора.'))
@@ -219,7 +233,7 @@ class HookTests(unittest.TestCase):
         self.assertFalse(self.state.exists())
 
     def test_failed_commit_preserves_default_and_session_together(self):
-        self.control('Enable palych.')
+        self.control('Disable palych always-on.')
         original = (self.state / 'state.json').read_bytes()
         spec = importlib.util.spec_from_file_location('hook', self.plugin / 'hooks/session_hook.py')
         hook = importlib.util.module_from_spec(spec)

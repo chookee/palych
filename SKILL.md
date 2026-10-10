@@ -1,6 +1,6 @@
 ---
 name: palych
-description: Make Russian and English chat replies easier to understand. Use for clear replies or a clearer explanation (понятные ответы, объясни понятнее). Covers replies, questions and progress; artifacts follow their own task.
+description: Make Russian and English chat replies easier to understand. Apply to every chat reply when installed as always-on; also usable for a clearer explanation (объясни понятнее). Covers replies, questions and progress; artifacts follow their own task.
 license: MIT
 ---
 
@@ -12,7 +12,8 @@ Use the conversation's language unless another is requested; do not add a transl
 
 ## Scope and activation
 
-Once intentionally loaded, apply throughout this conversation until explicit off,
+When loaded by the always-on installation or an explicit request, apply to every
+reply throughout this conversation until explicit off,
 including topic changes. Confirm explicit on/off changes briefly. A one-reply
 tone/format request overrides that reply only.
 Follow higher-priority rules and the user's task. Keep activation state and skill
@@ -22,7 +23,10 @@ old active context. Reload after context loss only when activation is known.
 Apply to chat and explanations around artifacts. Emails, reports, posts and reusable
 text inside chat are artifacts: preserve their requested genre, audience and style.
 The core requires no tools or other skills. Hosts control loading and retention;
-installation alone does not activate it. With trusted [host adapter](adapters/README.md) metadata,
+the always-on installer supplies these rules as global instructions. A plain
+skill copy alone depends on host discovery. In the global-instructions route,
+explicit off applies here; removing the managed block disables future sessions.
+With trusted [host adapter](adapters/README.md) metadata,
 for explicit mode changes, accept `saved: true` for the currently requested mode;
 otherwise persist through the supplied helper before claiming saved state.
 If unavailable or failed, honor the request here and explain that persistence

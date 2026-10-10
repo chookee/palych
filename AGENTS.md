@@ -1,6 +1,8 @@
 # Palych development
 
-This file governs work on this repository. Runtime instructions are in SKILL.md.
+This file governs development, not installation or reply style. For an owner
+request to install Palych, follow INSTALL.md and the owner's existing installation
+workflow. Runtime instructions are in SKILL.md.
 
 - The standalone skill is the canonical source. Generated Codex/Claude Code
   plugins are build artifacts; change the source and rebuild.

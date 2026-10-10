@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0 — 2026-10-11
+
+- Make always-on the normal installation for Codex and Claude Code: generate the
+  runtime rules into global instructions, without a separate skill call.
+- Preserve other instructions, back up changed files, update without duplication,
+  and remove only the managed block. Respect existing Codex global overrides.
+- Default new hook-plugin state to on. Retain saved off states and avoid repeating
+  the full core on ordinary turns; restore it at context boundaries.
+- Rewrite both READMEs with an agent install prompt, example and main principles.
+  Introduce the namesake as А.П. Чехов.
+- Add isolated installer checks. Live-host loading and compaction remain unverified.
+
 ## 0.4.0 — 2026-10-10
 
 - Publish the independent Palych repository; Russian display name: Палыч.

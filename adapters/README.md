@@ -24,14 +24,17 @@ python3 scripts/build_plugin.py --host claude-code --output ./dist/palych-claude
 Путь вывода должен быть новым: сборщик не перезаписывает существующий каталог.
 Для Claude Code собранную папку можно передать в `claude --plugin-dir`.
 В Codex добавьте собранный плагин способом, поддерживаемым вашей версией,
-и проверьте доверие к его хукам в интерфейсе управления хуками. Установка
-плагина не означает, что хуки разрешены или что режим включён.
+и проверьте доверие к его хукам в интерфейсе управления хуками. Новая установка включает режим по умолчанию, когда хост запускает разрешённый
+хук. Старое сохранённое выключение при обновлении остаётся в силе.
 
 Choose a new output path; the builder refuses to overwrite an existing folder.
 Claude Code can load the built folder with `claude --plugin-dir`. In Codex, add
 the built plugin through the local plugin mechanism supported by your version
-and review/trust its hooks. Installing a plugin alone neither trusts hooks nor
-turns the mode on. Check your host's current documentation before installation.
+and review/trust its hooks. A fresh installation defaults to on once the host runs its trusted hook.
+Existing saved off states survive updates; installing does not grant hook trust. Check your host's current documentation before installation.
+
+В новой установке отдельная команда включения не нужна.
+A fresh installation needs no activation command.
 
 ## Управление / Controls
 
