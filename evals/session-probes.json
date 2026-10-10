@@ -1,0 +1,73 @@
+{
+  "cases": [
+    {
+      "id": "ru-persistence",
+      "language": "ru",
+      "turns": [
+        "Включи palych для этого разговора.",
+        "Что означает HTTP 404?",
+        "Смена темы: объясни, что значит комиссия выросла с 10% до 12%.",
+        "Отключи palych."
+      ]
+    },
+    {
+      "id": "en-persistence",
+      "language": "en",
+      "turns": [
+        "Enable palych for this conversation.",
+        "What does HTTP 404 mean?",
+        "New topic: a fee rose from 10% to 12%. Explain the change.",
+        "Turn off palych."
+      ]
+    },
+    {
+      "id": "ru-one-reply-override",
+      "language": "ru",
+      "turns": [
+        "Включи palych для этого разговора.",
+        "Ответь на следующий вопрос ровно одним словом: 2 + 2?",
+        "Теперь объясни, что означает HTTP 404."
+      ]
+    },
+    {
+      "id": "ru-artifact-boundary",
+      "language": "ru",
+      "turns": [
+        "Включи palych для этого разговора.",
+        "Напиши официальное уведомление: договор № 17 прекращается 12 ноября 2026 года по соглашению сторон. Текст уведомления должен оставаться в официальном стиле. Короткое пояснение отдели от уведомления.",
+        "Вернёмся к разговору: я не понял слово «идемпотентность». Это свойство, при котором повтор одного запроса даёт тот же эффект, что и первый, без повторного действия. Объясни с примером."
+      ]
+    }
+  ],
+  "adapter_integration_probes": [
+    {
+      "id": "compact-active",
+      "steps": [
+        "Install and trust the optional adapter in an authorized local test host. Record host version.",
+        "Enable for this session. Capture saved state.",
+        "Trigger real host compaction.",
+        "Capture SessionStart source=compact and restored full core, then check a reply after topic/language change."
+      ],
+      "status": "not_run_in_live_host"
+    },
+    {
+      "id": "compact-off-overrides-always",
+      "steps": [
+        "Enable the always-on default.",
+        "Disable in this session.",
+        "Trigger real compaction and verify off metadata contains no core instructions.",
+        "Start a new independent session and verify default on."
+      ],
+      "status": "not_run_in_live_host"
+    },
+    {
+      "id": "natural-disable",
+      "steps": [
+        "Enable for this session.",
+        "Make a differently worded explicit off request. Verify the agent persists off via the trusted helper, or reports that persistence was not saved.",
+        "If saved, trigger compaction and verify off."
+      ],
+      "status": "not_run_in_live_host"
+    }
+  ]
+}

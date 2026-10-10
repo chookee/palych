@@ -1,0 +1,825 @@
+{
+  "manifest": {
+    "model": null,
+    "settings": {
+      "sampling": null,
+      "seed": null,
+      "context_mode": "batched"
+    },
+    "tools": [
+      "native orchestration and local file reads"
+    ],
+    "base_instructions_sha256": null,
+    "observed_host_configuration": "Six fresh native agents inherited the same host configuration without model overrides. Each generated six cases in one batched context. Model identifier, sampling parameters, seed and complete inherited base instructions are not exposed. Generator task wrappers were near-equivalent but differed in condition-specific file and output paths and explicit skill-loading instruction.",
+    "skill_sha256": "6698b85b3f0691dfb8968db6572b67f322afe7ee0adf883f4e20f89ab637ea26",
+    "prompts_sha256": "6de8347b8e9fa3bc1f1a8729f4432113e9225d0b7187b92cb316b51c6e50e8be",
+    "verified": true,
+    "verification_note": "SKILL and prompt hashes computed from exact files. Host inheritance and absence of overrides observed at agent dispatch. Hidden model/settings/base fields remain null, not verified. All inputs and responses synthetic; no API calls."
+  },
+  "pilot": true,
+  "exploratory": true,
+  "unknown_generation_fields": [
+    "generation.model",
+    "generation.settings.sampling",
+    "generation.settings.seed",
+    "generation.base_instructions_sha256"
+  ],
+  "comparison_type": "exploratory editorial pilot",
+  "limitations": [
+    "Six cases x three batched native generation pairs; exact model, sampling, seed and inherited base hash unavailable; near-equivalent wrappers; not independent statistical samples; same-model editorial judgment; no human readers.",
+    "Repeated judgments from one model are not independent human readers; counts do not establish a comprehension gain.",
+    "No confidence interval or significance claim is computed.",
+    "Exploratory pilot: model, sampling fields or complete base instructions may be unavailable; observed configuration parity does not establish an identical underlying model or independent generations. This is not a controlled comparison."
+  ],
+  "pairs": 18,
+  "overall": {
+    "skill": 7,
+    "baseline": 2,
+    "tie": 9
+  },
+  "semantic_failures": {
+    "baseline": 0,
+    "skill": 0
+  },
+  "semantic_regressions": 0,
+  "by_case": {
+    "en-agent-retry": {
+      "replicate_outcomes": {
+        "skill": 3,
+        "baseline": 0,
+        "tie": 0
+      },
+      "semantic_regressions": 0,
+      "case_preference": "skill"
+    },
+    "en-mechanism": {
+      "replicate_outcomes": {
+        "skill": 0,
+        "baseline": 1,
+        "tie": 2
+      },
+      "semantic_regressions": 0,
+      "case_preference": "baseline"
+    },
+    "ru-agent-action": {
+      "replicate_outcomes": {
+        "skill": 0,
+        "baseline": 0,
+        "tie": 3
+      },
+      "semantic_regressions": 0,
+      "case_preference": "tie"
+    },
+    "ru-agent-blocked": {
+      "replicate_outcomes": {
+        "skill": 2,
+        "baseline": 0,
+        "tie": 1
+      },
+      "semantic_regressions": 0,
+      "case_preference": "skill"
+    },
+    "ru-agent-retry": {
+      "replicate_outcomes": {
+        "skill": 2,
+        "baseline": 0,
+        "tie": 1
+      },
+      "semantic_regressions": 0,
+      "case_preference": "skill"
+    },
+    "ru-mechanism": {
+      "replicate_outcomes": {
+        "skill": 0,
+        "baseline": 1,
+        "tie": 2
+      },
+      "semantic_regressions": 0,
+      "case_preference": "baseline"
+    }
+  },
+  "by_repetition": {
+    "1": {
+      "skill": 2,
+      "baseline": 0,
+      "tie": 4,
+      "semantic_regressions": 0
+    },
+    "2": {
+      "skill": 2,
+      "baseline": 2,
+      "tie": 2,
+      "semantic_regressions": 0
+    },
+    "3": {
+      "skill": 3,
+      "baseline": 0,
+      "tie": 3,
+      "semantic_regressions": 0
+    }
+  },
+  "unblinded_pairs": [
+    {
+      "case_id": "en-agent-retry",
+      "repetition": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "skill",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0001",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the three failed changes, proposes a future response check at the configured address, and leaves credentials unverified. Reachability is scoped to this environment.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the failed changes and future action; distinguishes a response from credential verification and a missing response from a diagnosis of the cause.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "B",
+        "reason": "B explains what both possible outcomes establish. Its explicit warning that no response cannot distinguish a bad address from other access problems materially helps the reader interpret the diagnostic result."
+      }
+    },
+    {
+      "case_id": "ru-agent-retry",
+      "repetition": 3,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "skill",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0002",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the three failed changes, proposes checking the supplied address, and separates confirmed reachability from unverified credentials and an unknown failure cause.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the next diagnostic action and the limitation that it cannot confirm credentials. It reports intended checking, not a completed test.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "A",
+        "reason": "A explains how to interpret both a response and no response, including why no response does not establish the cause. That is useful diagnostic information missing from B."
+      }
+    },
+    {
+      "case_id": "ru-agent-action",
+      "repetition": 2,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0003",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Keeps ./exports unchanged as a protected literal, identifies the only confirmed copies, requires checking completeness and restoration, and leaves deletion awaiting the user decision.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Keeps ./exports and the lack of permission; proposes verifying completeness and readability of the other copy before asking whether to delete or preserve the directory.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both make the data-loss risk, verification step and user decision easy to understand. A expresses usability as restoration and B as readability; neither materially changes the decision conveyed by this prompt."
+      }
+    },
+    {
+      "case_id": "ru-agent-action",
+      "repetition": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0004",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves ./exports, the only-confirmed-copy condition and missing permission, and asks for a decision after verifying complete usable copies.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves ./exports, warns of possible loss, requires checking complete readable copies, and asks for deletion permission only after that check.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both clearly link the risk to checking the other copy and then obtaining permission. A explicitly names keeping the directory; B makes the same choice available by asking for permission. Neither materially helps more."
+      }
+    },
+    {
+      "case_id": "ru-mechanism",
+      "repetition": 3,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0005",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Explains reuse of a cached result and database access on a miss without claiming a measured speedup; explicitly says the time difference for this service is unknown.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 1,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Explains the same hit and miss behavior, uses conditional speed language, and keeps cache and database timings unknown.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both give a nonprogrammer the same causal explanation and uncertainty about this service. A defines the term and repeats the paths as an example; B states them directly. The repetition does not materially improve understanding."
+      }
+    },
+    {
+      "case_id": "en-agent-retry",
+      "repetition": 3,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "skill",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0006",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the failed changes and proposes a future check at the configured address; distinguishes the reachability check from verifying credentials.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 1,
+              "connections": 1,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the failed changes, scopes reachability to the agent environment, and leaves both credentials and the cause of a missing response unverified.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "B",
+        "reason": "B makes the scope of reachability and the interpretation of no response explicit. A leaves the reader to infer those limits from its broad statement about establishing reachability."
+      }
+    },
+    {
+      "case_id": "ru-agent-blocked",
+      "repetition": 3,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "skill",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0007",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Reports the blocked check and inconclusive read log accurately; asks the user to test the configured address from their environment and send the result without promising repair.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Reports the blocked check and inconclusive log; asks for the user test result and optional error text without claiming diagnosis or repair.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 1,
+              "connections": 1,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "A",
+        "reason": "A specifies the address and environment for the user test and explains that the result establishes reachability from that environment. B asks whether the server responds without specifying that scope."
+      }
+    },
+    {
+      "case_id": "ru-agent-action",
+      "repetition": 3,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0008",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves ./exports and missing permission; requires complete, uncorrupted, recoverable alternative copies and conditions the deletion decision on a successful check.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves ./exports, missing permission and the only-confirmed-copy risk; calls for checking complete readable alternative copies before the user decides.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both identify the copies that must be checked, why checking matters and the user decision. A describes restoration and B readability; both convey the needed usable-copy verification clearly."
+      }
+    },
+    {
+      "case_id": "ru-agent-retry",
+      "repetition": 1,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "skill",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0009",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the failed changes and future check; keeps credentials unverified and explains that no response cannot identify why the server is inaccessible.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the failed changes and future check, scopes the result to the current environment and keeps credentials unverified.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "A",
+        "reason": "A explicitly explains the limitation of a missing response, which helps the reader avoid interpreting this check as a diagnosis of a bad address. B explains only the credential limitation."
+      }
+    },
+    {
+      "case_id": "en-mechanism",
+      "repetition": 2,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "baseline",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0010",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Conditions a faster hit on retrieving the copy more quickly than querying the database; explains miss behavior and possible checking overhead as general possibilities, not measured facts about this service.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Conditions a faster hit on retrieval time, explains the database query on a miss and leaves actual timings unknown. Its example adds no facts about this service.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 1,
+              "language": 2
+            }
+          }
+        },
+        "preference": "A",
+        "reason": "A explains that a miss still requires database work and may also add checking time, and relates the overall benefit to copy availability. B mainly repeats the hit and miss paths. Those causal links give A a useful advantage."
+      }
+    },
+    {
+      "case_id": "ru-mechanism",
+      "repetition": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0011",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Conditions a speed benefit on faster copy retrieval, explains database access on a miss and general checking overhead, and leaves the service benefit to measurement.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Conditions a speed benefit on faster copy retrieval, explains misses and possible checking time, and states that copy frequency and timings are unknown.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both explain the timing condition, database work on a miss and checking overhead in plain Russian. B names the unknown copy frequency, while A summarizes the need for measurement; neither materially changes the understanding needed here."
+      }
+    },
+    {
+      "case_id": "ru-agent-blocked",
+      "repetition": 1,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0012",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Accurately reports blocked checking and the already-read inconclusive log; asks the user for a server response check and error text without promising a fix.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Accurately reports the same block and inconclusive log; asks the user for connection success or error and treats the result as further diagnostic information.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both provide a concrete user check and the result to report, while keeping the cause unknown. A explicitly says only the user can do the check and B states that it must be done from their side; neither materially helps more."
+      }
+    },
+    {
+      "case_id": "ru-agent-retry",
+      "repetition": 2,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0013",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the failed changes, proposes the response check, distinguishes it from credential verification and treats no response as requiring further investigation.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves the failed changes, proposes checking communication at the supplied address and keeps credentials for a separate check.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both explain the next action, reachability result and separate credential verification. A spells out the follow-up after no response; B already describes the check as informing the next step. Neither offers a materially clearer decision or diagnosis."
+      }
+    },
+    {
+      "case_id": "en-mechanism",
+      "repetition": 3,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0014",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Explains the possible benefit from avoiding a database query and the retained database wait on a miss, and says the actual speed difference is unknown.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Explains the same possible benefit and miss behavior, defines the cache and leaves actual savings unknown. The example makes no new service claims.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 1,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both explain the two paths and uncertainty for this service. B adds a definition and a repetitive example, while A presents the same mechanism directly; neither materially improves understanding."
+      }
+    },
+    {
+      "case_id": "ru-agent-blocked",
+      "repetition": 2,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "skill",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0015",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Reports blocked checking and an inconclusive already-read log; asks for a response check at the configured address and error text, and makes no repair guarantee.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Reports blocked checking and the inconclusive log; requests a user-side response result and error without claiming the cause is known or the issue fixed.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 1,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "A",
+        "reason": "A makes the requested diagnostic action more specific by naming the configured address, and explicitly identifies the user as the person currently able to perform it. That reduces ambiguity in the next action."
+      }
+    },
+    {
+      "case_id": "en-agent-retry",
+      "repetition": 2,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      },
+      "outcome": "skill",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0016",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves three failed changes and a future check; explains the positive result, possible causes of no response and the separately unverified credentials without claiming a diagnosis.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Preserves three failed changes and a future check; scopes reachability to the agent and leaves credentials for separate verification.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "A",
+        "reason": "A gives a useful interpretation of both response and no response and connects the uncertainty to choosing the next investigation. B states the same action but only explains the credential limitation."
+      }
+    },
+    {
+      "case_id": "en-mechanism",
+      "repetition": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "tie",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0017",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Conditions a faster response on retrieval time, explains retained database work and checking time on a miss, and leaves actual service benefit unknown.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Conditions a faster response on retrieval time, explains database work and possible checking time on a miss, and keeps frequency and timings unknown.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          }
+        },
+        "preference": "tie",
+        "reason": "Both clearly explain why a hit can help and a miss may not. A asks for measurements and B names unknown frequency and retrieval time; those differences do not materially improve one explanation over the other."
+      }
+    },
+    {
+      "case_id": "ru-mechanism",
+      "repetition": 2,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      },
+      "outcome": "baseline",
+      "semantic_regression": false,
+      "judgment": {
+        "pair_id": "pair-0018",
+        "scores": {
+          "A": {
+            "semantic_pass": true,
+            "semantic_reason": "Conditions speedup on faster copy retrieval, explains the database query and possible checking overhead on a miss, and leaves service frequency unknown.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 2,
+              "language": 2
+            }
+          },
+          "B": {
+            "semantic_pass": true,
+            "semantic_reason": "Conditions speedup on faster copy retrieval, explains the database query on a miss, defines the cache and leaves service timings unknown.",
+            "dimensions": {
+              "answer": 2,
+              "terms": 2,
+              "connections": 2,
+              "structure": 1,
+              "language": 2
+            }
+          }
+        },
+        "preference": "A",
+        "reason": "A explains a further reason a miss may not help: the service still queries the database and may spend extra time checking the cache. B repeats the two paths in an example but does not make that useful timing link."
+      }
+    }
+  ]
+}

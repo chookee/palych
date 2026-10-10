@@ -1,0 +1,60 @@
+{
+  "method": "Local Unicode pretokenization and greedy BPE with public o200k_base vocabulary; reference estimate, not native host tokenizer or quota",
+  "vocabulary_sha256": "446a9538cb6c348e3516120d7c08b09f57c36495e2acfffe59a5bf8b0cfb1a2d",
+  "baseline_revision": "6b52164182a78756315c5d533a7d5c76debfb08d",
+  "counts": {
+    "old_core": {
+      "reference_tokens": 2298,
+      "bytes": 11830,
+      "sha256": "6698b85b3f0691dfb8968db6572b67f322afe7ee0adf883f4e20f89ab637ea26"
+    },
+    "new_core": {
+      "reference_tokens": 1162,
+      "bytes": 6229,
+      "sha256": "07437b0a763a70f54c1fe9c2e51fc3e35b380fb6d52033fe639f5b60fb462556"
+    },
+    "old_session_on": {
+      "reference_tokens": 2508,
+      "bytes": 12646,
+      "sha256": "0c336e7cabb56c47d427c6328eeb0c8cb9edcf80009255ead90989d1d5770df3"
+    },
+    "new_session_on": {
+      "reference_tokens": 1310,
+      "bytes": 6838,
+      "sha256": "df1c295e7e653a20a8f46c3b50f2c98c5b635409ff71adc3f39b5d9c9d5dfa9e"
+    },
+    "old_control_on": {
+      "reference_tokens": 2508,
+      "bytes": 12646,
+      "sha256": "0c336e7cabb56c47d427c6328eeb0c8cb9edcf80009255ead90989d1d5770df3"
+    },
+    "new_control_on": {
+      "reference_tokens": 1319,
+      "bytes": 6863,
+      "sha256": "154cf28e41ab7cbaa663d529b0f97acc73fab1e2433f78db614f8c6b56503162"
+    },
+    "new_repeat_on": {
+      "reference_tokens": 159,
+      "bytes": 637,
+      "sha256": "3ff41c1fb24a411a9e23735df473f16d2ef1d1b522e3b8f644bc349d56c23829"
+    },
+    "old_session_off": {
+      "reference_tokens": 234,
+      "bytes": 900,
+      "sha256": "256fd96445c61c65e2624201cef3625e67c65de64eca1fdd3c5477d4db037f5f"
+    },
+    "new_session_off": {
+      "reference_tokens": 155,
+      "bytes": 628,
+      "sha256": "eccfe0fc465289feda1ee4dad889b5830bd53fd5682d5ad13544021f4b1300b8"
+    }
+  },
+  "reductions_percent": {
+    "core": 49.43,
+    "session_on": 47.77,
+    "repeated_on": 93.66,
+    "session_off": 33.76
+  },
+  "live_usage_measured": false,
+  "human_comprehension_tested": false
+}

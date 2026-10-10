@@ -1,0 +1,49 @@
+{
+  "condition": "baseline",
+  "outputs": [
+    {
+      "id": "ru-short",
+      "reply": "HTTP 404 означает, что сервер не нашёл запрошенную страницу или другой ресурс по указанному адресу."
+    },
+    {
+      "id": "ru-mechanism",
+      "reply": "Если нужная копия есть в кэше, сервис может взять готовый результат и избежать обращения к базе данных. Это может ускорить ответ.\n\nЕсли копии нет, сервис всё равно обращается к базе данных, поэтому кэш не избавляет его от этой работы. По имеющимся сведениям нельзя сказать, насколько быстрее будет ответ в каждом случае."
+    },
+    {
+      "id": "ru-referents",
+      "reply": "Сервис отправляет заявку в очередь. Очередь хранит заявку, пока обработчик её не заберёт. Обработчик забирает заявку из очереди и выполняет её."
+    },
+    {
+      "id": "ru-instructions",
+      "reply": "1. Создайте резервную копию.\n2. Проверьте настройки командой `check-config --strict`.\n3. Если проверка прошла успешно, запустите сервис командой `start-service`. Если проверка не прошла, сервис запускать нельзя."
+    },
+    {
+      "id": "ru-error",
+      "reply": "Известно, что сервер вернул 401 и в запросе отсутствовал заголовок `Authorization`. Пока не подтверждено, что отказ вызван именно отсутствием заголовка.\n\nПовторите запрос с нужным заголовком, сохранив остальные условия. Если запрос пройдёт, это поддержит гипотезу. Если сервер снова вернёт 401, добавления заголовка оказалось недостаточно — причину нужно проверять дальше."
+    },
+    {
+      "id": "ru-clarification",
+      "reply": "Пришлите данные о расходах и уточните, за какой квартал и с чем сравнить: с предыдущим кварталом, тем же кварталом прошлого года или бюджетом?"
+    },
+    {
+      "id": "ru-repair",
+      "reply": "Я выразился слишком технически. Повтор одного запроса должен иметь тот же эффект, что и первый: действие не выполняется заново.\n\nНапример, запрос на оплату прошёл, но ответ потерялся. Если повторить тот же запрос, система должна подтвердить уже выполненную оплату, а не списать деньги второй раз."
+    },
+    {
+      "id": "ru-artifact",
+      "reply": ":::writing{variant=\"document\" id=\"73184\"}\nУведомляем, что договор № 17 прекращается 12 ноября 2026 года по соглашению сторон.\n:::\n\nВ уведомлении указаны номер договора, дата прекращения и основание."
+    },
+    {
+      "id": "en-short",
+      "reply": "HTTP 404 means the server could not find the requested page or resource at that address."
+    },
+    {
+      "id": "en-mechanism",
+      "reply": "When the cache has the copy you need, the service can use that result without querying the database. Avoiding that work can make the reply faster.\n\nWhen the copy is missing, the service still has to query the database, so the cache does not save that work. With the facts given, we cannot say how much faster either reply will be."
+    },
+    {
+      "id": "en-protected",
+      "reply": "1. Keep the backup at `./data/backup.json`. Do not delete it.\n2. Run `check-config --strict`.\n3. If the check fails, do not start the service. The error \"backup not found\" means the backup was not found.\n\nFiles larger than 20 MB are rejected. A file exactly 20 MB is accepted."
+    }
+  ]
+}

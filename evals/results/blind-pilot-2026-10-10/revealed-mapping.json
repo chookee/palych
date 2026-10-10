@@ -1,0 +1,176 @@
+{
+  "packet_sha256": "7a0b11d36e49a54b25aaca16754fc786d4cb103cb567c3aab2fe1ff02e4489d3",
+  "manifest": {
+    "model": null,
+    "settings": {
+      "sampling": null,
+      "seed": null,
+      "context_mode": "batched"
+    },
+    "tools": [
+      "native orchestration and local file reads"
+    ],
+    "base_instructions_sha256": null,
+    "observed_host_configuration": "Six fresh native agents inherited the same host configuration without model overrides. Each generated six cases in one batched context. Model identifier, sampling parameters, seed and complete inherited base instructions are not exposed. Generator task wrappers were near-equivalent but differed in condition-specific file and output paths and explicit skill-loading instruction.",
+    "skill_sha256": "6698b85b3f0691dfb8968db6572b67f322afe7ee0adf883f4e20f89ab637ea26",
+    "prompts_sha256": "6de8347b8e9fa3bc1f1a8729f4432113e9225d0b7187b92cb316b51c6e50e8be",
+    "verified": true,
+    "verification_note": "SKILL and prompt hashes computed from exact files. Host inheritance and absence of overrides observed at agent dispatch. Hidden model/settings/base fields remain null, not verified. All inputs and responses synthetic; no API calls."
+  },
+  "pilot": true,
+  "exploratory": true,
+  "unknown_generation_fields": [
+    "generation.model",
+    "generation.settings.sampling",
+    "generation.settings.seed",
+    "generation.base_instructions_sha256"
+  ],
+  "limitation": "Six cases x three batched native generation pairs; exact model, sampling, seed and inherited base hash unavailable; near-equivalent wrappers; not independent statistical samples; same-model editorial judgment; no human readers.",
+  "repetitions": 3,
+  "mapping": {
+    "pair-0001": {
+      "case_id": "en-agent-retry",
+      "repetition": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    },
+    "pair-0002": {
+      "case_id": "ru-agent-retry",
+      "repetition": 3,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0003": {
+      "case_id": "ru-agent-action",
+      "repetition": 2,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0004": {
+      "case_id": "ru-agent-action",
+      "repetition": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    },
+    "pair-0005": {
+      "case_id": "ru-mechanism",
+      "repetition": 3,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0006": {
+      "case_id": "en-agent-retry",
+      "repetition": 3,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    },
+    "pair-0007": {
+      "case_id": "ru-agent-blocked",
+      "repetition": 3,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0008": {
+      "case_id": "ru-agent-action",
+      "repetition": 3,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    },
+    "pair-0009": {
+      "case_id": "ru-agent-retry",
+      "repetition": 1,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0010": {
+      "case_id": "en-mechanism",
+      "repetition": 2,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    },
+    "pair-0011": {
+      "case_id": "ru-mechanism",
+      "repetition": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    },
+    "pair-0012": {
+      "case_id": "ru-agent-blocked",
+      "repetition": 1,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0013": {
+      "case_id": "ru-agent-retry",
+      "repetition": 2,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0014": {
+      "case_id": "en-mechanism",
+      "repetition": 3,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    },
+    "pair-0015": {
+      "case_id": "ru-agent-blocked",
+      "repetition": 2,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0016": {
+      "case_id": "en-agent-retry",
+      "repetition": 2,
+      "labels": {
+        "A": "skill",
+        "B": "baseline"
+      }
+    },
+    "pair-0017": {
+      "case_id": "en-mechanism",
+      "repetition": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    },
+    "pair-0018": {
+      "case_id": "ru-mechanism",
+      "repetition": 2,
+      "labels": {
+        "A": "baseline",
+        "B": "skill"
+      }
+    }
+  }
+}

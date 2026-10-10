@@ -1,0 +1,156 @@
+{
+  "instructions": "Assess each reply against the prompt. Semantic pass requires no invented decision-relevant facts, lost conditions, altered obligations, numbers or protected literals. Mark semantic pass/fail before clarity. Use null only for a clarity dimension that does not apply, and explain this in the preference reason. Prefer A, B or tie with a specific reason. A semantically failing reply cannot win; both failures require tie. Do not infer which condition produced a reply.",
+  "dimensions": {
+    "answer": "0: misses request; 1: answer present but hard to find; 2: main answer easy to find",
+    "terms": "0: confusing terms or referents; 1: some avoidable ambiguity; 2: terms and referents clear",
+    "connections": "0: missing reasoning; 1: reader must infer a useful link; 2: necessary links explicit",
+    "structure": "0: obstructs reading; 1: usable with avoidable clutter; 2: structure fits the task",
+    "language": "0: hard to follow or disrespectful; 1: some unnatural wording; 2: natural for stated reader"
+  },
+  "pairs": [
+    {
+      "pair_id": "pair-0001",
+      "prompt": "Three configuration changes have not fixed a connection error. The server address and credentials remain unverified. The agent can check whether the server responds at the configured address. Write a progress message about the next diagnostic action and what it can establish. Do not run commands.",
+      "replies": {
+        "A": "Three configuration changes have not resolved the connection error. Next, I’ll check whether the server responds at the configured address. This can establish whether the server is reachable from this environment. A response would still leave the credentials unverified.",
+        "B": "Three configuration changes have not fixed the connection error. Next, I’ll check whether the server responds at the configured address. That will help establish whether the server is reachable from this environment. A response would not confirm that the credentials are correct; those still need checking. No response would not, by itself, tell us whether the address is wrong or the server is unreachable for another reason."
+      }
+    },
+    {
+      "pair_id": "pair-0002",
+      "prompt": "Три изменения настроек не устранили ошибку подключения. Адрес сервера и учётные данные ещё не проверены. Агент может сам проверить, отвечает ли сервер по указанному адресу. Напиши сообщение о ближайшем диагностическом действии и о том, что его результат позволит узнать. Команды не выполняй.",
+      "replies": {
+        "A": "Три изменения настроек не устранили ошибку подключения. Следующим шагом проверю, отвечает ли сервер по указанному адресу. Это поможет выяснить, доступен ли сервер из моей среды, прежде чем снова менять настройки.\n\nЕсли сервер ответит, доступность будет подтверждена, но правильность учётных данных останется непроверенной. Если ответа не будет, нужно будет выяснить, верен ли адрес и что мешает соединению; отсутствие ответа само по себе не установит причину.",
+        "B": "Три изменения настроек не устранили ошибку. Следующим шагом проверю, отвечает ли сервер по указанному адресу. Это покажет, доступен ли он для подключения; правильность учётных данных такая проверка сама по себе не подтвердит."
+      }
+    },
+    {
+      "pair_id": "pair-0003",
+      "prompt": "Ты готовишь удаление ./exports. Удаление пока не разрешено. Каталог содержит единственные подтверждённые копии выгрузок; другая копия не проверена. Напиши сообщение перед действием: что нужно выяснить и какое решение нужно от пользователя. Команды не выполняй.",
+      "replies": {
+        "A": "Удаление ./exports может привести к потере выгрузок: сейчас только в этом каталоге есть подтверждённые копии. Перед удалением нужно проверить, что другая копия содержит все выгрузки и что из неё можно восстановить данные.\n\nПосле проверки нужно ваше решение: разрешить удаление ./exports или сохранить каталог. Пока удаление не разрешено.",
+        "B": "В ./exports находятся единственные подтверждённые копии выгрузок. Перед удалением нужно проверить другую копию: все ли выгрузки сохранены и доступны ли они для чтения. Пока это не подтверждено, удаление может привести к потере данных.\n\nПосле проверки потребуется ваше решение: разрешить удаление ./exports или сохранить каталог. Сейчас разрешения на удаление нет."
+      }
+    },
+    {
+      "pair_id": "pair-0004",
+      "prompt": "Ты готовишь удаление ./exports. Удаление пока не разрешено. Каталог содержит единственные подтверждённые копии выгрузок; другая копия не проверена. Напиши сообщение перед действием: что нужно выяснить и какое решение нужно от пользователя. Команды не выполняй.",
+      "replies": {
+        "A": "В ./exports находятся единственные подтверждённые копии выгрузок. Перед удалением нужно проверить, что другая копия содержит все выгрузки и что их можно восстановить. Пока это не проверено, удаление может привести к потере данных.\n\nПосле проверки нужно ваше решение: разрешить удаление ./exports или сохранить каталог. Сейчас разрешения на удаление нет.",
+        "B": "В ./exports находятся единственные подтверждённые копии выгрузок. Удаление этого каталога может привести к потере данных, поэтому сначала нужно проверить, что другая копия содержит все выгрузки и их можно прочитать.\n\nПосле проверки потребуется ваше разрешение удалить ./exports. Сейчас удаление не разрешено, и полнота другой копии не подтверждена."
+      }
+    },
+    {
+      "pair_id": "pair-0005",
+      "prompt": "Я управляю небольшим сервисом и не программист. Объясни, почему кэш иногда ускоряет ответ, а иногда нет. В нашем примере кэш хранит копии результатов; если нужной копии нет, сервис получает результат из базы данных. Других сведений о сервисе у тебя нет.",
+      "replies": {
+        "A": "Кэш может ускорить ответ, когда в нём уже есть нужный результат: сервис берёт готовую копию и не ждёт ответа базы данных. Кэш — это место, где хранятся такие копии.\n\nЕсли нужной копии нет, сервису всё равно приходится получать результат из базы данных. В этом случае кэш не избавляет от ожидания базы.\n\nНапример, если результат вашего запроса уже есть в кэше, сервис может использовать его сразу. Если результата нет, сервис обращается к базе. Насколько велика разница во времени в вашем сервисе, по имеющимся сведениям определить нельзя.",
+        "B": "Кэш помогает, когда в нём уже есть нужный результат: сервис берёт готовую копию и может ответить быстрее, чем при обращении к базе данных.\n\nЕсли копии нет, сервису всё равно приходится получать результат из базы. В таком случае кэш не избавляет от этого ожидания. Насколько быстрее будет ответ при наличии копии, мы не знаем: данных о скорости кэша и базы нет."
+      }
+    },
+    {
+      "pair_id": "pair-0006",
+      "prompt": "Three configuration changes have not fixed a connection error. The server address and credentials remain unverified. The agent can check whether the server responds at the configured address. Write a progress message about the next diagnostic action and what it can establish. Do not run commands.",
+      "replies": {
+        "A": "The three configuration changes have not fixed the error. Next, I’ll check whether the server responds at the configured address. That will establish whether it is reachable; it will not, by itself, confirm that the credentials are correct.",
+        "B": "Three configuration changes haven't fixed the connection error. Next, I'll check whether the server responds at the configured address. That will help establish whether the server is reachable from my environment before changing more settings.\n\nA response would confirm reachability, but it wouldn't verify the credentials. No response would leave the address or connection path in question; it wouldn't identify the cause by itself."
+      }
+    },
+    {
+      "pair_id": "pair-0007",
+      "prompt": "Проверка подключения не выполнена: среда запрещает доступ к рабочему серверу. Локальный журнал ты уже прочитал, но он не объясняет причину. Напиши сообщение пользователю. Нельзя обещать, что предоставление доступа исправит сбой; можно запросить результат проверки, которую сейчас может выполнить только пользователь.",
+      "replies": {
+        "A": "Проверка подключения не выполнена: моя среда запрещает доступ к рабочему серверу. Локальный журнал я прочитал, но он не объясняет причину сбоя.\n\nПожалуйста, проверьте из своей среды, отвечает ли рабочий сервер по настроенному адресу, и пришлите результат, включая точный текст ошибки, если она появится. Это поможет понять, доступен ли сервер из вашей среды, но само по себе не исправит сбой и не установит его причину.",
+        "B": "Проверку подключения выполнить не удалось: среда запрещает доступ к рабочему серверу. Локальный журнал прочитан, но причину сбоя он не объясняет. Пожалуйста, проверьте, отвечает ли рабочий сервер, и пришлите результат, включая сообщение об ошибке, если оно появится. Это поможет продолжить диагностику; причина пока неизвестна."
+      }
+    },
+    {
+      "pair_id": "pair-0008",
+      "prompt": "Ты готовишь удаление ./exports. Удаление пока не разрешено. Каталог содержит единственные подтверждённые копии выгрузок; другая копия не проверена. Напиши сообщение перед действием: что нужно выяснить и какое решение нужно от пользователя. Команды не выполняй.",
+      "replies": {
+        "A": "В ./exports находятся единственные подтверждённые копии выгрузок. Перед удалением нужно проверить, что другая копия содержит все выгрузки, не повреждена и пригодна для восстановления. Затем нужно ваше решение: разрешить удаление ./exports после успешной проверки или сохранить каталог. Сейчас удаление не разрешено.",
+        "B": "Удаление ./exports пока не разрешено. В этом каталоге находятся единственные подтверждённые копии выгрузок, поэтому удаление может привести к потере данных.\n\nСначала нужно проверить, что другая копия содержит все выгрузки и что их можно прочитать. После проверки потребуется ваше решение: разрешаете ли вы удалить ./exports или каталог нужно сохранить?"
+      }
+    },
+    {
+      "pair_id": "pair-0009",
+      "prompt": "Три изменения настроек не устранили ошибку подключения. Адрес сервера и учётные данные ещё не проверены. Агент может сам проверить, отвечает ли сервер по указанному адресу. Напиши сообщение о ближайшем диагностическом действии и о том, что его результат позволит узнать. Команды не выполняй.",
+      "replies": {
+        "A": "Три изменения настроек не устранили ошибку. Следующим шагом проверю, отвечает ли сервер по указанному адресу. Это поможет выяснить, доступен ли сервер из нашей среды. Если сервер ответит, это ещё не подтвердит правильность учётных данных; их нужно будет проверить отдельно. Если ответа не будет, проверка сама по себе не покажет, неверен ли адрес или есть другая причина недоступности.",
+        "B": "Три изменения настроек не устранили ошибку. Теперь проверю, отвечает ли сервер по указанному адресу. Это позволит выяснить, доступен ли сервер из нашей среды. Даже если он ответит, правильность учётных данных останется непроверенной."
+      }
+    },
+    {
+      "pair_id": "pair-0010",
+      "prompt": "I'm a project manager, not a programmer. Explain why caching sometimes makes a reply faster and sometimes does not. In this example, the cache stores copies of results; if the copy is missing, the service queries the database. You have no other facts about the service.",
+      "replies": {
+        "A": "When the cache has the result you need, the service can return that copy without querying the database. This makes the reply faster if fetching the cached copy takes less time than querying the database.\n\nWhen the copy is missing, the service checks the cache and then still has to query the database. The cache saves no database work in that case, and checking it may add a little time.\n\nSo the benefit depends on how often the needed copy is available and how quickly it can be fetched. We don't have enough information about your service to say how much time caching saves overall.",
+        "B": "Caching can make a reply faster when the needed copy is available and retrieving that copy takes less time than querying the database. A cache is a place where the service keeps copies of results so it can reuse them.\n\nIf the copy is missing, the service still has to query the database. The cache has not saved that database query, so the reply may not be faster.\n\nFor example, a request for a saved result can use the cached copy. A request for a result that is missing from the cache must get the result from the database. We would need measurements to know how much faster either path is in this service."
+      }
+    },
+    {
+      "pair_id": "pair-0011",
+      "prompt": "Я управляю небольшим сервисом и не программист. Объясни, почему кэш иногда ускоряет ответ, а иногда нет. В нашем примере кэш хранит копии результатов; если нужной копии нет, сервис получает результат из базы данных. Других сведений о сервисе у тебя нет.",
+      "replies": {
+        "A": "Кэш может ускорить ответ, когда нужная копия уже есть: сервис берёт готовый результат и ему не нужно обращаться к базе данных. Выигрыш будет, если получить копию быстрее, чем результат из базы.\n\nЕсли копии нет, сервис всё равно обращается к базе данных. Проверка кэша в таком случае не избавляет от ожидания ответа базы и сама тоже занимает время. Поэтому кэш не обязательно ускоряет каждый запрос. Насколько он помогает вашему сервису, без измерений сказать нельзя.",
+        "B": "Кэш может ускорить ответ, когда нужная копия результата уже есть и сервис получает её быстрее, чем результат из базы данных. Кэш — это место, где хранятся такие копии: сервис может взять готовый результат, не обращаясь к базе.\n\nЕсли нужной копии нет, сервис всё равно обращается к базе данных. В этом случае кэш не избавляет от ожидания результата из базы, а проверка кэша сама может занять время.\n\nПоэтому наличие кэша ещё не гарантирует ускорения каждого ответа. Для вашего сервиса мы пока не знаем, как часто нужные копии есть в кэше и сколько времени занимает их получение."
+      }
+    },
+    {
+      "pair_id": "pair-0012",
+      "prompt": "Проверка подключения не выполнена: среда запрещает доступ к рабочему серверу. Локальный журнал ты уже прочитал, но он не объясняет причину. Напиши сообщение пользователю. Нельзя обещать, что предоставление доступа исправит сбой; можно запросить результат проверки, которую сейчас может выполнить только пользователь.",
+      "replies": {
+        "A": "Проверить подключение к рабочему серверу не удалось: среда запрещает доступ к нему. Локальный журнал прочитан, но причину сбоя он не объясняет.\n\nПроверьте, отвечает ли сервер по указанному адресу, и пришлите результат проверки, включая точный текст ошибки, если она возникнет. Сейчас эту проверку можете выполнить только вы. Результат поможет продолжить диагностику; причина сбоя пока неизвестна.",
+        "B": "Проверить подключение не удалось: среда запрещает доступ к рабочему серверу. Локальный журнал прочитан, но причину сбоя он не объясняет.\n\nПожалуйста, выполните проверку подключения к рабочему серверу со своей стороны и пришлите результат — удалось ли подключиться и какая ошибка появилась, если нет. Это даст дополнительные сведения для диагностики; причина пока неизвестна."
+      }
+    },
+    {
+      "pair_id": "pair-0013",
+      "prompt": "Три изменения настроек не устранили ошибку подключения. Адрес сервера и учётные данные ещё не проверены. Агент может сам проверить, отвечает ли сервер по указанному адресу. Напиши сообщение о ближайшем диагностическом действии и о том, что его результат позволит узнать. Команды не выполняй.",
+      "replies": {
+        "A": "Три изменения настроек не устранили ошибку подключения. Теперь проверю, отвечает ли сервер по указанному адресу.\n\nОтвет сервера покажет, что сервер доступен по этому адресу, но не подтвердит правильность учётных данных. Если ответа не будет, нужно выяснить, неверен ли адрес или сервер недоступен. Эта проверка поможет выбрать следующее действие; учётные данные пока остаются непроверенными.",
+        "B": "Три изменения настроек не устранили ошибку. Теперь проверю, отвечает ли сервер по указанному адресу. Результат покажет, удаётся ли связаться с сервером по этому адресу, и поможет выбрать следующую проверку. Даже если сервер ответит, правильность учётных данных ещё нужно будет проверить отдельно."
+      }
+    },
+    {
+      "pair_id": "pair-0014",
+      "prompt": "I'm a project manager, not a programmer. Explain why caching sometimes makes a reply faster and sometimes does not. In this example, the cache stores copies of results; if the copy is missing, the service queries the database. You have no other facts about the service.",
+      "replies": {
+        "A": "When the cache has the result you need, the service can use that ready-made copy. This can make the reply faster because it avoids querying the database.\n\nWhen the copy is missing, the service still has to query the database, so the cache does not save that wait. We cannot say how much faster a cached reply would be without knowing how quickly the cache and database respond.",
+        "B": "Caching can make a reply faster when the result is already stored: the service can use that copy without waiting for the database. A cache is simply a place that holds copies of results.\n\nWhen the copy is missing, the service still has to query the database and wait for the result. The cache therefore doesn't remove that wait for every request.\n\nFor example, a request whose result is already in the cache can use the stored copy. A request whose result is missing needs a database query. We don't have enough information to say how much time this saves in your service."
+      }
+    },
+    {
+      "pair_id": "pair-0015",
+      "prompt": "Проверка подключения не выполнена: среда запрещает доступ к рабочему серверу. Локальный журнал ты уже прочитал, но он не объясняет причину. Напиши сообщение пользователю. Нельзя обещать, что предоставление доступа исправит сбой; можно запросить результат проверки, которую сейчас может выполнить только пользователь.",
+      "replies": {
+        "A": "Проверить подключение не удалось: среда запрещает доступ к рабочему серверу. Локальный журнал уже прочитан, но причину сбоя он не объясняет.\n\nПожалуйста, проверьте, отвечает ли рабочий сервер по настроенному адресу, и пришлите результат, включая текст ошибки, если она появится. Сейчас эту проверку можете выполнить только вы. Результат поможет выяснить причину, но сам по себе не исправит сбой.",
+        "B": "Проверить подключение не удалось: среда запрещает доступ к рабочему серверу. Локальный журнал прочитан, но причину сбоя он не объясняет.\n\nПожалуйста, выполните проверку подключения со своей стороны и сообщите, отвечает ли сервер; если нет, пришлите текст ошибки. Это поможет продолжить диагностику. Причина сбоя пока неизвестна."
+      }
+    },
+    {
+      "pair_id": "pair-0016",
+      "prompt": "Three configuration changes have not fixed a connection error. The server address and credentials remain unverified. The agent can check whether the server responds at the configured address. Write a progress message about the next diagnostic action and what it can establish. Do not run commands.",
+      "replies": {
+        "A": "Three configuration changes have not fixed the connection error. I’ll now check whether the server responds at the configured address.\n\nA response would show that the server is reachable at that address, but it would not verify the credentials. No response would leave an incorrect address or an unreachable server as possible causes. This check will help decide what to investigate next; the credentials remain unverified.",
+        "B": "Three configuration changes haven't fixed the connection error. I'll now check whether the server responds at the configured address. This will establish whether I can reach it there and help narrow down the next check. A response won't confirm that the credentials are correct; those still need checking separately."
+      }
+    },
+    {
+      "pair_id": "pair-0017",
+      "prompt": "I'm a project manager, not a programmer. Explain why caching sometimes makes a reply faster and sometimes does not. In this example, the cache stores copies of results; if the copy is missing, the service queries the database. You have no other facts about the service.",
+      "replies": {
+        "A": "When the cache has the result, the service can use that copy without querying the database. This makes the reply faster if retrieving the copy takes less time than getting the result from the database.\n\nWhen the copy is missing, the service still has to query the database. Checking the cache has not saved that work, and the check itself takes time. So caching does not necessarily speed up every reply. We would need measurements to know how much it helps this service.",
+        "B": "Caching can make a reply faster when the needed copy is available and the service can retrieve it faster than getting the result from the database. A cache is a place that holds copies of results, so the service can use an existing result without querying the database.\n\nIf the copy is missing, the service still has to query the database. The cache does not remove that wait, and checking the cache may itself take time.\n\nSo a cache does not guarantee that every reply will be faster. We do not yet know how often this service finds the copy it needs or how long retrieving a copy takes."
+      }
+    },
+    {
+      "pair_id": "pair-0018",
+      "prompt": "Я управляю небольшим сервисом и не программист. Объясни, почему кэш иногда ускоряет ответ, а иногда нет. В нашем примере кэш хранит копии результатов; если нужной копии нет, сервис получает результат из базы данных. Других сведений о сервисе у тебя нет.",
+      "replies": {
+        "A": "Если нужная копия есть в кэше, сервис может вернуть её без обращения к базе данных. Это ускоряет ответ, если получить копию из кэша быстрее, чем результат из базы.\n\nЕсли копии нет, сервис сначала проверяет кэш, а затем всё равно обращается к базе данных. В таком случае кэш не избавляет от ожидания базы и может добавить время на свою проверку.\n\nПоэтому ускорение зависит от того, есть ли нужная копия и сколько времени занимает её получение. Без других сведений о вашем сервисе нельзя сказать, насколько часто кэш помогает.",
+        "B": "Кэш может ускорить ответ, когда в нём есть нужная копия результата и получить эту копию быстрее, чем обратиться к базе данных. Кэш — это место, где сервис хранит уже полученные результаты для повторного использования.\n\nЕсли нужной копии нет, сервис всё равно обращается к базе данных. В этом случае кэш не избавляет сервис от получения результата из базы, поэтому ускорения может не быть.\n\nНапример, если копия результата уже сохранена, сервис может взять её из кэша. Если копия отсутствует, результат нужно получить из базы. Насколько эти два пути различаются по скорости в вашем сервисе, без измерений неизвестно."
+      }
+    }
+  ]
+}

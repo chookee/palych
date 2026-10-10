@@ -1,0 +1,80 @@
+{
+  "skill_sha256": "07437b0a763a70f54c1fe9c2e51fc3e35b380fb6d52033fe639f5b60fb462556",
+  "missing_ids": [
+    "ru-cache",
+    "en-cache",
+    "ru-conditions",
+    "ru-protected-literals"
+  ],
+  "cases": [
+    {
+      "requested_id": "ru-cache",
+      "selected_id": "ru-mechanism",
+      "prompt": "Я управляю небольшим сервисом и не программист. Объясни, почему кэш иногда ускоряет ответ, а иногда нет. В нашем примере кэш хранит копии результатов; если нужной копии нет, сервис получает результат из базы данных. Других сведений о сервисе у тебя нет.",
+      "response": "Кэш может ускорить ответ, если в нём уже есть нужный результат: сервис берёт готовую копию и обходится без запроса к базе данных.\n\nЕсли копии нет, сервису всё равно приходится получать результат из базы данных. Поэтому кэш в этом случае не избавляет от ожидания ответа базы.\n\nДаже при наличии копии ускорение не гарантировано: оно зависит от того, сколько времени занимает получение копии по сравнению с запросом к базе. Этих данных о вашем сервисе у нас нет.",
+      "editorial_assessment": {
+        "meaning_error_observed": false,
+        "note": "Checked against the supplied synthetic facts; this is not a comprehension measurement."
+      }
+    },
+    {
+      "requested_id": "en-cache",
+      "selected_id": "en-mechanism",
+      "prompt": "I'm a project manager, not a programmer. Explain why caching sometimes makes a reply faster and sometimes does not. In this example, the cache stores copies of results; if the copy is missing, the service queries the database. You have no other facts about the service.",
+      "response": "Caching can make a reply faster when the cache already has the needed result. The service can use that copy and skip the database query.\n\nIf the copy is missing, the service still has to query the database, so the cache does not remove that wait.\n\nHaving a cached copy does not guarantee a faster reply. It depends on how long retrieving the copy takes compared with querying the database. We do not have those timings for your service.",
+      "editorial_assessment": {
+        "meaning_error_observed": false,
+        "note": "Checked against the supplied synthetic facts; this is not a comprehension measurement."
+      }
+    },
+    {
+      "requested_id": "ru-conditions",
+      "selected_id": "ru-values",
+      "prompt": "Расскажи, какие условия загрузки мне нужно соблюсти: срок — 12 ноября 2026 года, 13:15 UTC+3; сервис не принимает файлы больше 20 МБ, файл ровно 20 МБ принимает. Нельзя удалять резервную копию. Комиссия выросла с 10% до 12%: поясни изменение.",
+      "response": "Загрузите файл к 12 ноября 2026 года, 13:15 UTC+3.\n\nРазмер файла должен быть не больше 20 МБ: ровно 20 МБ сервис принимает, больше 20 МБ — не принимает. Резервную копию удалять нельзя.\n\nКомиссия выросла с 10% до 12% — на 2 процентных пункта. Относительно прежней комиссии это рост на 20%.",
+      "editorial_assessment": {
+        "meaning_error_observed": false,
+        "note": "Checked against the supplied synthetic facts; this is not a comprehension measurement."
+      }
+    },
+    {
+      "requested_id": "ru-protected-literals",
+      "selected_id": "en-protected",
+      "prompt": "Explain the procedure. The command is exactly check-config --strict. The path is exactly ./data/backup.json. Keep the quoted error exactly as given: \"backup not found\". If the check fails, do not start the service. Do not delete the backup. Files larger than 20 MB are rejected, but a file exactly 20 MB is accepted.",
+      "response": "Run `check-config --strict`. The backup path is `./data/backup.json`.\n\nIf you see the error \"backup not found\", the check could not find the backup. If the check fails, do not start the service. Do not delete the backup.\n\nFiles larger than 20 MB are rejected. A file exactly 20 MB is accepted.",
+      "editorial_assessment": {
+        "meaning_error_observed": false,
+        "note": "Checked against the supplied synthetic facts; this is not a comprehension measurement."
+      }
+    },
+    {
+      "requested_id": "ru-agent-retry",
+      "selected_id": "ru-agent-retry",
+      "prompt": "Три изменения настроек не устранили ошибку подключения. Адрес сервера и учётные данные ещё не проверены. Агент может сам проверить, отвечает ли сервер по указанному адресу. Напиши сообщение о ближайшем диагностическом действии и о том, что его результат позволит узнать. Команды не выполняй.",
+      "response": "Три изменения настроек не устранили ошибку, поэтому следующим шагом проверю, отвечает ли сервер по указанному адресу. Адрес сервера и учётные данные пока не проверены.\n\nОтвет сервера подтвердит, что по этому адресу доступен сервер, но сам по себе не подтвердит правильность учётных данных. Если ответа нет, нужно будет различить неверный адрес, недоступность сервера и проблему соединения.",
+      "editorial_assessment": {
+        "meaning_error_observed": false,
+        "note": "Checked against the supplied synthetic facts; this is not a comprehension measurement."
+      }
+    },
+    {
+      "requested_id": "en-agent-action",
+      "selected_id": "en-agent-action",
+      "prompt": "You are preparing to delete ./exports. Deletion is not authorized yet. This directory contains the only verified copies of exports; another copy has not been checked. Write the message before this action: what needs checking and what decision is needed from the user. Do not run commands.",
+      "response": "Before deleting `./exports`, I need to verify that the other copy contains all the exports, matches the originals, and can be recovered. `./exports` currently contains the only verified copies; deleting it could leave you without usable exports.\n\nAfter that check, the decision is yours: approve or decline deletion of `./exports`. Deletion requires your explicit approval.",
+      "editorial_assessment": {
+        "meaning_error_observed": false,
+        "note": "Checked against the supplied synthetic facts; this is not a comprehension measurement."
+      }
+    }
+  ],
+  "conditions": {
+    "kind": "exploratory_native_generation",
+    "comparison": false,
+    "human_readers": false,
+    "model_id": "not exposed",
+    "sampling": "not exposed",
+    "cases_share_context": true,
+    "assessor": "parent agent; skill and labels visible"
+  }
+}

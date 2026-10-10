@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-09",
+  "skill_sha256": "cbb9ae2ce78a8450c2014d802569e49f4c0c99f0dbda7d03722809ea82faf075",
+  "method": "Successive native-agent turns in one existing conversation; not a simulated single completion.",
+  "limitations": [
+    "Normal host instructions and earlier batched evaluation context remained present.",
+    "The checks combined the supplied probe scenarios; they were not four fresh isolated sessions.",
+    "Disable confirmation was observed; internal host activation state was not inspectable.",
+    "Context compaction and other platforms were not tested.",
+    "No human reader comprehension was measured."
+  ],
+  "turns": [
+    {
+      "request": "Прочитай актуальный SKILL.md и включи clear-replies для этого разговора.",
+      "reply": "Clear Replies включён для этого разговора.",
+      "observation": "Activation confirmation observed."
+    },
+    {
+      "request": "Что означает HTTP 404?",
+      "reply": "HTTP 404 означает, что сервер получил запрос, но не нашёл запрошенную страницу или другой ресурс. Например, ссылка может вести на удалённую страницу или содержать ошибку в адресе.",
+      "observation": "Direct Russian explanation; causes labeled as possibilities."
+    },
+    {
+      "request": "New topic. I'm a project manager, not a programmer. Explain why caching sometimes makes a reply faster and sometimes does not. In this example, the cache stores copies of results; if the copy is missing, the service queries the database. You have no other facts about the service.",
+      "reply": "A cache is a place where the service keeps copies of results. It can make a reply faster when the needed copy is already there: the service can use the copy and skip the database query.\n\nIf the copy is missing, the service still has to query the database. In that case, the cache does not save that step.\n\nWe have no timing data, so we cannot say how much faster using a cached copy is for this service.",
+      "observation": "Topic and language change preserved the explanation and uncertainty."
+    },
+    {
+      "request": "Ответь на следующий вопрос ровно одним словом: 2 + 2?",
+      "reply": "Четыре",
+      "observation": "One-reply format override respected."
+    },
+    {
+      "request": "Теперь объясни, что означает: комиссия выросла с 10% до 12%.",
+      "reply": "Комиссия увеличилась на 2 процентных пункта. Относительно прежней комиссии это рост на 20%.\n\nНапример, со суммы 100 рублей раньше брали 10 рублей комиссии, теперь — 12 рублей.",
+      "observation": "Returned to explanatory Russian reply after the one-word override; exact change preserved."
+    },
+    {
+      "request": "Напиши официальное уведомление: договор № 17 прекращается 12 ноября 2026 года по соглашению сторон. Дай одно короткое пояснение отдельно от текста уведомления. Уведомление должно оставаться в официальном стиле. Других сведений нет.",
+      "reply": ":::writing{variant=\"document\" id=\"74192\"}\nУВЕДОМЛЕНИЕ\n\nНастоящим уведомляем, что договор № 17 прекращается 12 ноября 2026 года по соглашению сторон.\n:::\n\nВ уведомлении указаны дата и основание прекращения договора.",
+      "observation": "Notice stayed formal; conversational explanation was separate."
+    },
+    {
+      "request": "Вернёмся к разговору: я не понял слово «идемпотентность». Здесь это свойство, при котором повтор одного запроса даёт тот же эффект, что и первый, без повторного действия. Объясни с примером.",
+      "reply": "Идемпотентность означает, что повтор одного и того же запроса не выполняет действие заново.\n\nПредставим оплату: первый запрос списал деньги, но ответ об успешной оплате не дошёл. Ты повторяешь тот же запрос. Если операция идемпотентна, деньги второй раз не спишутся — останется одна оплата.",
+      "observation": "Repaired explanation with a hypothetical example, without extra response-content guarantees."
+    },
+    {
+      "request": "Отключи clear-replies.",
+      "reply": "Clear Replies отключён.",
+      "observation": "Explicit disable request received a brief confirmation."
+    }
+  ]
+}

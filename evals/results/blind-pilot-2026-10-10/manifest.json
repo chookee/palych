@@ -1,0 +1,17 @@
+{
+  "model": null,
+  "settings": {
+    "sampling": null,
+    "seed": null,
+    "context_mode": "batched"
+  },
+  "tools": [
+    "native orchestration and local file reads"
+  ],
+  "base_instructions_sha256": null,
+  "observed_host_configuration": "Six fresh native agents inherited the same host configuration without model overrides. Each generated six cases in one batched context. Model identifier, sampling parameters, seed and complete inherited base instructions are not exposed. Generator task wrappers were near-equivalent but differed in condition-specific file and output paths and explicit skill-loading instruction.",
+  "skill_sha256": "6698b85b3f0691dfb8968db6572b67f322afe7ee0adf883f4e20f89ab637ea26",
+  "prompts_sha256": "6de8347b8e9fa3bc1f1a8729f4432113e9225d0b7187b92cb316b51c6e50e8be",
+  "verified": true,
+  "verification_note": "SKILL and prompt hashes computed from exact files. Host inheritance and absence of overrides observed at agent dispatch. Hidden model/settings/base fields remain null, not verified. All inputs and responses synthetic; no API calls."
+}

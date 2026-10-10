@@ -1,0 +1,104 @@
+{
+  "cases": [
+    {
+      "id": "ru-short",
+      "language": "ru",
+      "prompt": "Что означает HTTP 404? Ответь по-русски."
+    },
+    {
+      "id": "ru-mechanism",
+      "language": "ru",
+      "prompt": "Я управляю небольшим сервисом и не программист. Объясни, почему кэш иногда ускоряет ответ, а иногда нет. В нашем примере кэш хранит копии результатов; если нужной копии нет, сервис получает результат из базы данных. Других сведений о сервисе у тебя нет."
+    },
+    {
+      "id": "ru-referents",
+      "language": "ru",
+      "prompt": "Объясни, кто что делает в этой схеме: сервис отправляет заявку в очередь, очередь хранит заявку до обработки, обработчик забирает заявку из очереди и выполняет её. Не добавляй новых компонентов."
+    },
+    {
+      "id": "ru-values",
+      "language": "ru",
+      "prompt": "Расскажи, какие условия загрузки мне нужно соблюсти: срок — 12 ноября 2026 года, 13:15 UTC+3; сервис не принимает файлы больше 20 МБ, файл ровно 20 МБ принимает. Нельзя удалять резервную копию. Комиссия выросла с 10% до 12%: поясни изменение."
+    },
+    {
+      "id": "ru-instructions",
+      "language": "ru",
+      "prompt": "Как выполнить процедуру? Исходные правила: сначала создать резервную копию, затем проверить настройки, затем запустить сервис. Если проверка настроек не прошла, сервис запускать нельзя. Команда проверки — check-config --strict, запуска — start-service. Других правил не дано."
+    },
+    {
+      "id": "ru-error",
+      "language": "ru",
+      "prompt": "Расскажи, что известно об ошибке и как проверить гипотезу. Сервер вернул 401, в запросе нет заголовка Authorization. Мы ещё не проверили, вызван ли отказ именно отсутствием заголовка. Проверка состоит в повторе запроса с нужным заголовком."
+    },
+    {
+      "id": "ru-clarification",
+      "language": "ru",
+      "prompt": "Сравни расходы за квартал."
+    },
+    {
+      "id": "ru-progress",
+      "language": "ru",
+      "prompt": "Сообщи результат работы. Проверка настроек добавлена; локальная проверка прошла. Запуск в рабочей среде ещё не проверен. Новых действий от меня сейчас не требуется."
+    },
+    {
+      "id": "ru-repair",
+      "language": "ru",
+      "prompt": "Ты раньше написал: «Нужна идемпотентность операции». Я не понял. Объясни ещё раз: здесь речь о том, что повтор одного запроса должен давать тот же эффект, что и первый запрос, без повторного действия. Можно привести гипотетический пример оплаты."
+    },
+    {
+      "id": "ru-artifact",
+      "language": "ru",
+      "prompt": "Напиши официальное уведомление: договор № 17 прекращается 12 ноября 2026 года по соглашению сторон. Дай одно короткое пояснение отдельно от текста уведомления. Уведомление должно оставаться в официальном стиле. Других сведений нет."
+    },
+    {
+      "id": "en-short",
+      "language": "en",
+      "prompt": "What does HTTP 404 mean? Answer in English."
+    },
+    {
+      "id": "en-mechanism",
+      "language": "en",
+      "prompt": "I'm a project manager, not a programmer. Explain why caching sometimes makes a reply faster and sometimes does not. In this example, the cache stores copies of results; if the copy is missing, the service queries the database. You have no other facts about the service."
+    },
+    {
+      "id": "en-modality",
+      "language": "en",
+      "prompt": "Explain the recommendation and its limits. An update may fix the bug, but nobody has tested this. Updating is recommended, not required. Local checks passed, but production use remains unverified."
+    },
+    {
+      "id": "en-protected",
+      "language": "en",
+      "prompt": "Explain the procedure. The command is exactly check-config --strict. The path is exactly ./data/backup.json. Keep the quoted error exactly as given: \"backup not found\". If the check fails, do not start the service. Do not delete the backup. Files larger than 20 MB are rejected, but a file exactly 20 MB is accepted."
+    },
+    {
+      "id": "ru-agent-action",
+      "language": "ru",
+      "prompt": "Ты готовишь удаление ./exports. Удаление пока не разрешено. Каталог содержит единственные подтверждённые копии выгрузок; другая копия не проверена. Напиши сообщение перед действием: что нужно выяснить и какое решение нужно от пользователя. Команды не выполняй."
+    },
+    {
+      "id": "ru-agent-retry",
+      "language": "ru",
+      "prompt": "Три изменения настроек не устранили ошибку подключения. Адрес сервера и учётные данные ещё не проверены. Агент может сам проверить, отвечает ли сервер по указанному адресу. Напиши сообщение о ближайшем диагностическом действии и о том, что его результат позволит узнать. Команды не выполняй."
+    },
+    {
+      "id": "ru-agent-autonomy",
+      "language": "ru",
+      "prompt": "Ты расследуешь сбой; журнал ошибки доступен тебе для чтения. Журнал ещё не прочитан, причина неизвестна. Напиши краткое сообщение о ближайшем действии. Сам журнал в этом задании не предоставлен; не выдумывай его содержание."
+    },
+    {
+      "id": "ru-agent-blocked",
+      "language": "ru",
+      "prompt": "Проверка подключения не выполнена: среда запрещает доступ к рабочему серверу. Локальный журнал ты уже прочитал, но он не объясняет причину. Напиши сообщение пользователю. Нельзя обещать, что предоставление доступа исправит сбой; можно запросить результат проверки, которую сейчас может выполнить только пользователь."
+    },
+    {
+      "id": "en-agent-retry",
+      "language": "en",
+      "prompt": "Three configuration changes have not fixed a connection error. The server address and credentials remain unverified. The agent can check whether the server responds at the configured address. Write a progress message about the next diagnostic action and what it can establish. Do not run commands."
+    },
+    {
+      "id": "en-agent-action",
+      "language": "en",
+      "prompt": "You are preparing to delete ./exports. Deletion is not authorized yet. This directory contains the only verified copies of exports; another copy has not been checked. Write the message before this action: what needs checking and what decision is needed from the user. Do not run commands."
+    }
+  ]
+}

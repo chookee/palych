@@ -1,0 +1,49 @@
+{
+  "condition": "skill",
+  "outputs": [
+    {
+      "id": "ru-short",
+      "reply": "HTTP 404 означает, что сервер не нашёл запрошенную страницу или другой ресурс."
+    },
+    {
+      "id": "ru-mechanism",
+      "reply": "Кэш хранит копии уже полученных результатов. Если нужная копия есть, сервис может взять её из кэша, без обращения к базе данных. Это может сократить время ответа.\n\nЕсли нужной копии нет, сервису всё равно приходится получать результат из базы данных. В таком случае кэш не избавляет от этого ожидания.\n\nМы не знаем, сколько времени занимают эти действия в вашем сервисе, поэтому нельзя обещать ускорение при каждом запросе."
+    },
+    {
+      "id": "ru-referents",
+      "reply": "В схеме три участника:\n\n- Сервис отправляет заявку в очередь.\n- Очередь хранит заявку до обработки.\n- Обработчик забирает заявку из очереди и выполняет её."
+    },
+    {
+      "id": "ru-instructions",
+      "reply": "1. Создайте резервную копию.\n2. Проверьте настройки командой `check-config --strict`.\n3. Если проверка прошла, запустите сервис командой `start-service`.\n\nЕсли проверка настроек не прошла, сервис запускать нельзя."
+    },
+    {
+      "id": "ru-error",
+      "reply": "Известно, что сервер вернул 401 и в запросе нет заголовка `Authorization`. Но мы ещё не проверили, вызван ли отказ именно отсутствием заголовка.\n\nПовторите запрос с нужным заголовком `Authorization`. Если запрос пройдёт, это поддержит гипотезу о причине отказа. Если сервер снова вернёт 401, добавления заголовка оказалось недостаточно; причину нужно уточнять."
+    },
+    {
+      "id": "ru-clarification",
+      "reply": "За какой квартал нужно сравнить расходы, с чем их сравнить — например, с предыдущим кварталом или бюджетом — и где взять суммы?"
+    },
+    {
+      "id": "ru-repair",
+      "reply": "Речь о защите от повторного действия: если один и тот же запрос отправить снова, результат должен остаться таким же, как после первого выполнения.\n\nГипотетический пример: запрос на оплату списал деньги, а затем тот же запрос пришёл повторно. Система должна сохранить результат первой оплаты и не списывать деньги второй раз. Это свойство и называется идемпотентностью."
+    },
+    {
+      "id": "ru-artifact",
+      "reply": "В уведомлении указаны только предоставленные сведения о прекращении договора.\n\n:::writing{variant=\"document\" id=\"57281\"}\nУВЕДОМЛЕНИЕ\n\nУведомляем, что договор № 17 прекращается 12 ноября 2026 года по соглашению сторон.\n:::"
+    },
+    {
+      "id": "en-short",
+      "reply": "HTTP 404 means the server could not find the requested page or other resource."
+    },
+    {
+      "id": "en-mechanism",
+      "reply": "A cache stores copies of results. When the needed copy is available, the service can use it without querying the database. Avoiding that database query can make the reply faster.\n\nWhen the copy is missing, the service still has to query the database. The cache does not remove that wait in this case.\n\nWe have no timing information for this service, so we cannot say how much faster a cached reply would be or promise that every reply will be faster."
+    },
+    {
+      "id": "en-protected",
+      "reply": "The backup path is `./data/backup.json`. Do not delete the backup. Files larger than 20 MB are rejected; a file exactly 20 MB is accepted.\n\nRun `check-config --strict`. If the check fails, do not start the service.\n\nThe quoted error is exactly \"backup not found\". It reports that the backup was not found."
+    }
+  ]
+}

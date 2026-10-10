@@ -1,0 +1,37 @@
+{
+  "condition": "baseline",
+  "outputs": [
+    {
+      "id": "ru-mechanism",
+      "reply": "Если нужная копия есть в кэше, сервис берёт готовый результат и может ответить быстрее: получать его из базы данных уже не нужно.\n\nЕсли копии нет, сервис обращается к базе данных. В таком случае кэш может не дать ускорения. Насколько заметна разница в вашем сервисе, по имеющимся сведениям сказать нельзя."
+    },
+    {
+      "id": "ru-referents",
+      "reply": "В схеме три участника:\n\n- Сервис отправляет заявку в очередь.\n- Очередь хранит заявку, пока её не заберут на обработку.\n- Обработчик забирает заявку из очереди и выполняет её."
+    },
+    {
+      "id": "ru-values",
+      "reply": "Нужно соблюсти следующие условия:\n\n- Загрузить файл не позднее 12 ноября 2026 года, 13:15 по UTC+3.\n- Размер файла должен быть не больше 20 МБ. Файл ровно 20 МБ сервис принимает, больше — не принимает.\n- Резервную копию удалять нельзя.\n\nКомиссия выросла с 10% до 12% — на 2 процентных пункта, или на 20% относительно прежней комиссии."
+    },
+    {
+      "id": "ru-error",
+      "reply": "Известно, что сервер вернул 401 и в запросе отсутствует заголовок Authorization. Отсутствие заголовка — возможная причина отказа, но пока это не проверено.\n\nЧтобы проверить гипотезу, повторите тот же запрос с нужным заголовком Authorization и сравните ответ. Если отказ исчезнет, это подтвердит гипотезу; если 401 останется, потребуется дальнейшая проверка."
+    },
+    {
+      "id": "ru-progress",
+      "reply": "Проверка настроек добавлена, локальная проверка прошла. Запуск в рабочей среде ещё не проверен. Сейчас никаких действий от вас не требуется."
+    },
+    {
+      "id": "ru-repair",
+      "reply": "Это значит, что повтор одного и того же запроса не должен выполнять действие ещё раз. Эффект должен оставаться таким же, как после первого запроса.\n\nНапример, вы отправили запрос на оплату, но не получили ответ и повторили его. Деньги должны списаться один раз: повторный запрос не должен приводить к ещё одному списанию."
+    },
+    {
+      "id": "en-mechanism",
+      "reply": "When the cache has the copy you need, the service can use that ready-made result without querying the database. That can make the reply faster.\n\nWhen the copy is missing, the service still has to query the database, so caching may provide no speed improvement for that request. We do not have enough information to say how much difference it makes in your service."
+    },
+    {
+      "id": "en-modality",
+      "reply": "Updating is recommended because it may fix the bug, but it is optional. Nobody has tested whether the update fixes this issue, so it is not a confirmed solution.\n\nLocal checks passed. Production use remains unverified, so those checks do not establish that it works in production."
+    }
+  ]
+}
