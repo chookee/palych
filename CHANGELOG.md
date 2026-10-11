@@ -2,6 +2,13 @@
 
 ## 0.6.0 — unreleased
 
+- Follow the question's language explicitly; retain Russian priority in package
+  examples and evaluation rather than forcing English questions into Russian.
+- Keep definitions within the requested concept and comparisons within the
+  decision criteria. Check actor counts, routes and exclusive-role claims.
+- Keep optional advice separate from behavioral guarantees. Preserve copies
+  during diagnosis; recovery changes need evidence of need and authorization.
+- Calibrate assessor criteria and keep unblinded audits separate from locked scores.
 - Make compact, clear replies the primary goal. Put reply construction before
   activation details: direct answer, smallest useful form, necessary detail only.
 - Choose content by task: definition, explanation, ordered instructions,

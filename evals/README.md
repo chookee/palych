@@ -31,6 +31,11 @@ relabel them as blind or as a controlled comparison. Model scoring still measure
 editorial proxies, not reader comprehension. Use the separate
 [reader protocol](reader-check.md) for that claim.
 
+Record language compliance separately and use the rubric's assessor calibration.
+Audit verdicts against raw replies after locking; keep the audit separate from
+the locked score. A missed error is not repaired by silently changing an earlier
+judgment. Label any later audit as unblinded and record the exact tested core hash.
+
 ## Paired reply checks
 
 1. Select the same case IDs for both conditions. Include Russian and English.

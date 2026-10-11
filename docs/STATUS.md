@@ -10,6 +10,11 @@ See [design and verification scope](COMPACT-REPLIES.md).
 Original RU/EN examples and a separate 20-case regression set are included.
 The previous prompt set and historical result files remain unchanged. New
 controlled generation and reader comprehension tests have not been performed.
+An exploratory one-response-per-case Claude Code pilot was performed on the
+earlier candidate. It showed shorter replies but automatic judgments missed
+content and language errors. The core and assessor rubric were revised from the
+source audit; repeat runs are recorded separately by tested core hash.
+These results do not establish reader comprehension or universal compliance.
 The source revision does not update personal installations or establish live
 hook delivery. This candidate is not yet published to main.
 

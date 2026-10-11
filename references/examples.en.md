@@ -145,6 +145,7 @@ Whether it resolves the failure has not been tested. The reason for the recommen
 is unknown.”
 
 No story about why it was released or why installation is optional is needed.
+Optional installation does not promise that the system will keep behaving unchanged.
 
 ## One representation of a process
 
@@ -156,6 +157,7 @@ the result.” If the reader needs the flow, describe that sequence once instead
 of repeating roles, a diagram and a recap.
 
 Storage does not establish execution order or protection against data loss.
+The result's recipient does not establish its route; intermediaries are unspecified.
 
 ## Actions after a failed check
 
@@ -178,3 +180,32 @@ does not prevent answering the main question.
 Show all seven options when the reader asks to compare seven. Preserve stages
 and their connections when a detailed explanation is requested. Remove repetition,
 not requested options or necessary reasoning.
+
+## Language and a short definition
+
+Question: “What does a draft mean?”
+Clearer: “A draft is a provisional version that can still be revised.”
+
+Russian development priority does not change the language of an English question.
+This definition needs no claim about contracts or their legal status.
+
+## The decision criterion
+
+Facts: K costs $24 for 6 GB, L costs $36 for 10 GB, M costs $45 for 16 GB.
+The reader wants all options and the lowest total price for at least 10 GB.
+
+Clearer: “K does not qualify: 6 GB is below your 10 GB minimum. L and M qualify;
+choose L at $36 for 10 GB. M costs $45 for 16 GB.”
+
+Price per GB does not determine this choice and need not be calculated.
+
+## Actor counts and assigned tasks
+
+Facts: an author writes a request, an editor checks it, a manager approves it,
+and a worker executes it. An incomplete request returns to the author.
+
+Clearer: “There are four actors. The author completes the request, then the
+editor checks it again.”
+
+Assignment does not establish that only this person knows the answer or can
+make a correction. Exclusive knowledge or authority needs its own evidence.

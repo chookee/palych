@@ -7,14 +7,15 @@ the smallest form that fits the request, keep only the detail that serves it.
 Activation mechanics follow the writing rules. Nothing about loading or persistence
 was moved into a required external reference.
 
-The six task forms specify content, not headings to print:
+The task forms specify content, not headings to print:
 
 | Task | Content needed |
 |---|---|
 | Definition | Meaning and an essential distinction. |
 | Explanation | Conclusion, mechanism and relevant limits. |
 | Instructions | Necessary actions in order, with prerequisites and failure gates. |
-| Comparison | Common criteria, tradeoffs and all requested items. |
+| Comparison | Requested decision criteria and every requested option with its values. |
+| Rewrite | Supplied facts and modality, with explanation only for a comprehension gap. |
 | Progress/error | Result or effect, verification scope and a material gap/blocker. |
 | Clarification | The missing input or decision that changes the answer. |
 
@@ -46,6 +47,23 @@ not only to facts copied from the question.
 The self-check now names both kinds of failure: unnecessary reading and unsupported
 meaning. It is part of writing, without a second model, runtime tool or compulsory
 reader survey. Optional examples remain optional.
+
+## Corrections after the 2026-10-12 pilot
+
+The question's language now controls the reply explicitly. Russian remains the
+priority for package examples and evaluation. Definitions stay within the
+concept; comparisons show all requested options using the decision criterion.
+Price per unit is unnecessary when choosing minimum total price at a capacity threshold.
+
+Assigned roles establish actions and recipients, not exclusive knowledge or
+transport routes. Actor counts are checked separately from grouped stages.
+Optional advice establishes no guarantee of unchanged behavior. Existing copies
+are preserved during diagnosis; adding recovery changes to a supplied procedure
+requires evidence of need and authorization.
+
+The assessor rubric separates conditional examples from system facts and records
+reply language independently. Locked scores stay intact; any later source audit
+is separately labeled as unblinded. Schema validity does not prove model verdicts.
 
 ## Verification boundary
 

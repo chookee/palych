@@ -49,6 +49,7 @@ particular model will always answer this way or that readers understand it bette
 
 ## Main principles
 
+- Follow the question's language; Russian remains the development priority.
 - Lead with the answer. Keep conditions that change the conclusion nearby.
 - Match the form to the question: definition, explanation, instructions, comparison or progress.
 - Explain each point once. Add reference material or diagnostics when the task needs them.
