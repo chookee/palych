@@ -78,8 +78,11 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(other.read_text(), 'Owner rules.')
         path.unlink()
         installer.change(self.config, 'codex', 'install')
-        path.write_text(path.read_text().replace('Russian is the priority language', 'Russian is my preferred language'))
+        installed = path.read_text()
+        self.assertEqual(installed.count(installer.END), 1)
+        path.write_text(installed.replace(installer.END, 'Owner edit.\n' + installer.END, 1))
         edited = path.read_bytes()
+        self.assertNotEqual(edited, installed.encode('utf-8'))
         for action in ('install', 'uninstall', 'check'):
             with self.assertRaises(ValueError):
                 installer.change(self.config, 'codex', action)

@@ -1,4 +1,19 @@
-# Palych 0.5.0 — development status
+# Palych — development status
+
+## 0.6.0 candidate: compact replies
+
+The revised core prioritizes compactness and clarity through task-specific reply
+construction, single representations, necessary detail and a concrete stop rule.
+It also checks supported causes, universal claims and implementation assumptions.
+See [design and verification scope](COMPACT-REPLIES.md).
+
+Original RU/EN examples and a separate 20-case regression set are included.
+The previous prompt set and historical result files remain unchanged. New
+controlled generation and reader comprehension tests have not been performed.
+The source revision does not update personal installations or establish live
+hook delivery. This candidate is not yet published to main.
+
+## 0.5.0 installation and verification history
 
 The default installation now adds Palych's runtime rules to Codex or Claude Code
 user instructions. This makes the rules available from the first reply without

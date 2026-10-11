@@ -14,6 +14,7 @@ within the server-side processing context.”
 Clearer: “HTTP 404 means the server could not find the requested page or file.”
 
 One sentence is sufficient; no next action is required.
+A definition does not need a catalog of other codes or a troubleshooting plan.
 
 ## An unfamiliar term and its mechanism
 
@@ -122,3 +123,58 @@ responds at the configured address. That can help separate a reachability proble
 from a credentials problem; neither cause is confirmed yet.”
 
 The diagnostic step changes the investigation instead of promising a fourth fix.
+
+## Compact explanation with a condition
+
+Facts: completed results were loaded into the cache before the first request.
+Retrieving a stored result costs less than computing it again.
+
+Clearer: “Even the first request can be faster: its result is already stored.
+The request does not need to have been made before.”
+
+When only storage is known, preserve the condition for a speedup: retrieval must
+cost less than computation. A high hit rate alone does not establish that.
+
+## Independent facts without an invented cause
+
+Facts: a new version is recommended but optional. It may resolve a failure;
+that has not been tested. The reason for the recommendation is unknown.
+
+Clearer: “The new version is recommended, but you do not have to install it.
+Whether it resolves the failure has not been tested. The reason for the recommendation
+is unknown.”
+
+No story about why it was released or why installation is optional is needed.
+
+## One representation of a process
+
+Facts: an app sends a job to a buffer; the buffer stores it; a worker executes
+the job and sends the result to the app.
+
+Clearer: “The buffer stores the job, the worker executes it, and the app receives
+the result.” If the reader needs the flow, describe that sequence once instead
+of repeating roles, a diagram and a recap.
+
+Storage does not establish execution order or protection against data loss.
+
+## Actions after a failed check
+
+Facts: a backup exists; a configuration check failed; starting after failure is
+forbidden. The backup's contents and any changes during checking are unknown.
+
+Clearer:
+
+> Do not start the service.
+>
+> 1. Keep the backup and read the error message.
+> 2. Resolve the reported problem and repeat the configuration check.
+> 3. Start the service only after the check passes.
+
+Replacing the backup or rolling back changes needs more information. That gap
+does not prevent answering the main question.
+
+## Compactness preserves the request
+
+Show all seven options when the reader asks to compare seven. Preserve stages
+and their connections when a detailed explanation is requested. Remove repetition,
+not requested options or necessary reasoning.

@@ -66,3 +66,34 @@ smoke-test observations.
   unavailable check or its result, without guaranteeing a fix.
 
 These fixtures test communication about actions, not actual command execution.
+
+## Compactness without loss
+
+Use [compact-prompts.json](compact-prompts.json) for the new regression set.
+Both languages have the same ten scenario families. The generator receives only
+the selected prompt and runtime rules; these criteria stay with the assessor.
+
+| Case suffix, RU/EN | Meaning that must survive | Reader question |
+|---|---|---|
+| definition | A draft is a provisional document, not necessarily approved or final. | Is it the final version? |
+| preloaded | An already stored result can benefit the first request; a previous request is unnecessary. | Can the first request be faster? |
+| cost | For the given measurements, lookup is slower than computation. Do not infer other service timings. | Which is faster here? |
+| unknown-reason | Advice, optional installation, untested possible fix and unknown reason remain separate facts. | Is installing required or the fix established? |
+| roles | Buffer stores, worker executes, app receives; no ordering, durability or nonblocking guarantees. | Who does each task? |
+| failed-check | No start after failure; keep the existing backup and resolve/recheck the problem. No unsupported replacement or rollback instruction. | When can the service start? |
+| deadline | Exact date, time, UTC+4 and 16 MB boundary; explicit prohibition after failure; no invented late-submission behavior. | Is exactly 16 MB allowed after a passed check? |
+| verification | Filter added, local test passed; users' environment unverified, cause unknown, no reader action. Unverified does not mean never run. | What remains unverified? |
+| seven | All seven plans and supplied values retained; RU Д / EN E is the cheapest satisfying 8 GB. No invented features. | Which plan meets the requirement at the lowest total price? |
+| depth | All stages, correction/recheck loop, order, approval gate and given reasons remain; no extra process rules. | What happens to an incomplete request, and what permits execution? |
+
+For presentation, ask whether each paragraph serves the question and whether the
+same facts are needlessly restated in multiple forms. A short definition should
+not become a catalog or troubleshooting guide. An explanation still needs the
+connection that makes it understandable. A progress message should not invent a
+future rollout or an action for the reader. A comparison must retain requested
+items even when a smaller visible set would be shorter. A request for detail
+must retain necessary stages and reasoning.
+
+Word/character counts may describe output size; they do not decide quality.
+Do not require exact phrases, a maximum number of sentences or a mandatory format.
+Meaning failures override compactness preferences. Record ties and tradeoffs.

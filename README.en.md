@@ -4,8 +4,8 @@
 
 Named in honor of А.П. Чехов (A.P. Chekhov).
 
-Palych helps an agent answer clearly: the main point first, followed by enough
-explanation to understand it. Russian is the primary language; English is also
+Palych helps an agent answer compactly and clearly: the main point first, followed
+by the explanation the reader needs. Russian is the primary language; English is also
 supported. After installation, the rules apply to every reply, question and
 progress update. No separate skill invocation is needed.
 
@@ -26,19 +26,23 @@ conversation afterward. Manual installation, updates and removal are in
 
 ## Example
 
-**Question:** “What is a cache, and why do I see an old page after a website update?”
+**Question:** “Why does caching sometimes make a response faster and sometimes not?”
+
+In this example, the cache stores completed results. If a result is missing,
+the service computes it again.
 
 **Without Palych:**
 
-> The client may be serving a cached resource. Perform client-side cache invalidation.
+> Caching reduces latency on a cache hit. A cache miss triggers computation.
+> Check TTL, eviction policy, hit rate and the invalidation mechanism.
 
 **With Palych:**
 
-> Your browser may be showing an old copy of the page it saved earlier.
-> These saved copies are called a cache. They help websites load faster.
+> A cache can make a response faster when the result is already stored and
+> retrieving it takes less time than computing it again.
 >
-> Try reloading the page without using the saved copy. If the page still looks
-> the same, the cause may be in the website's settings.
+> If the result is missing, the computation still happens, with the cache lookup
+> adding extra time. That request can therefore be slightly slower.
 
 This is an illustrative edit written for the package. It does not prove that a
 particular model will always answer this way or that readers understand it better.
@@ -46,8 +50,10 @@ particular model will always answer this way or that readers understand it bette
 ## Main principles
 
 - Lead with the answer. Keep conditions that change the conclusion nearby.
+- Match the form to the question: definition, explanation, instructions, comparison or progress.
+- Explain each point once. Add reference material or diagnostics when the task needs them.
 - Use familiar words and concrete actions. Explain necessary terms at first use.
-- Explain enough to preserve causes and connections between ideas.
+- Preserve connections between ideas; keep unknown causes unknown.
 - Use the same name for the same concept. Replace ambiguous pronouns with names.
 - Preserve exact meaning: numbers, negations, limits and uncertainty.
 - Choose structure for the task. No mandatory word limit, next action or repeated status.

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.0 — unreleased
+
+- Make compact, clear replies the primary goal. Put reply construction before
+  activation details: direct answer, smallest useful form, necessary detail only.
+- Choose content by task: definition, explanation, ordered instructions,
+  comparison, progress/error or clarification. Avoid repeating one explanation
+  as a list, diagram and recap; retain requested items and depth.
+- Preserve supported causes and conditions; keep unknown reasons unknown and
+  avoid unsupported universal claims or implementation guarantees.
+- Add original RU/EN examples and a separate 20-case compactness regression set,
+  including completeness and detailed-explanation counterchecks.
+- Keep always-on loading, mode controls and optional examples unchanged.
+- This is an instruction revision; new controlled model and reader tests remain
+  separate. Existing historical results are not evidence for this version.
+
 ## 0.5.0 — 2026-10-11
 
 - Make always-on the normal installation for Codex and Claude Code: generate the

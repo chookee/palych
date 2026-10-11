@@ -5,6 +5,18 @@ The input sets are [single-turn prompts](prompts.json) and
 Use the [rubric](rubric.md) for assessment and record results in
 [observations](observations.md).
 
+The additional [compactness regression set](compact-prompts.json) contains
+20 original cases, ten per language. It checks task-specific reply shapes,
+unsupported causes and system guarantees, cache conditions, exact restrictions,
+and retention of requested options and depth. Its case criteria are in the rubric.
+The original 20-case set and its historical evidence remain unchanged.
+
+For a focused pilot select affected families; for a full run of the additional
+set, pass `--prompts evals/compact-prompts.json` to the existing masking tool.
+Three repetitions make 60 pairs for this set. Generation consumes the agent's
+usage limits; run the free offline package checks first. Record new results in
+distinct files. This revision adds tasks, not measured model results.
+
 ## Reproducible blind checks
 
 Use [blind-protocol.md](blind-protocol.md) and `blind_eval.py` for new comparisons.
