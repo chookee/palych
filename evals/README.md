@@ -36,6 +36,16 @@ The [reassurance set](reassurance-prompts.json) has four synthetic RU/EN cases o
 optional actions with unknown consequences. Use it with the unknown-reason cases;
 it checks that "optional" does not become "safe to skip".
 
+The [empty-moves set](empty-moves-prompts.json) adds 12 synthetic RU/EN cases:
+grading labels and placeholder explanations, causal chains under shortening,
+price and count bounds, conflicting supplied facts, a plainly reported failure
+and a legitimate contrast with a stated claim. Its candidate failed a masked pilot
+and was dropped; the set remains for the recorded evidence.
+
+The [bounds and conflicts set](bounds-conflicts-prompts.json) has eight synthetic
+RU/EN cases: price and count bounds, "at least"/"at most" limits, and conflicting
+delivery terms or prices. Use it with the unknown-reason, roles and deadline cases.
+
 The [full-comparison set](full-comparison-prompts.json) adds six synthetic RU/EN
 cases: complete option lists, an unknown qualifying price, and a two-sentence
 choice-only request. Repeat each case three times per condition. Check individual

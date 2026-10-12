@@ -124,6 +124,15 @@ when the source does not state them. "Nothing will break", "safe to skip", "you
 can safely stay" and similar reassurance are semantic failures unless the source
 supports them. An invented risk is a failure too. Labelled possibilities are allowed.
 
+## Bounds and conflicting facts
+
+Use [bounds-conflicts-prompts.json](bounds-conflicts-prompts.json) with the
+unknown-reason, roles and deadline cases as regression guards. "From", "at least",
+"at most" and "more than" remain conditions; an exact or approximate number must
+not replace them. When supplied facts conflict, the reply names the conflict and
+does not resolve it by choice, average, range or an invented reason. A request for
+a ready text may get the conflict and a question first. Do not require phrases.
+
 ## Assessor calibration and audit
 
 Record the observed reply language separately. A wrong language lowers the

@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "id": "ru-bounds",
+      "language": "ru",
+      "prompt": "Перепиши коротко для сайта: «Стоимость осуществления настройки составляет от 18 000 рублей. На сегодняшний день нам доверяют более 100 компаний».",
+      "protected": [
+        "price lower bound 'from 18 000 rubles' kept",
+        "'more than 100' kept, no exact count invented",
+        "no added evaluations or guarantees"
+      ]
+    },
+    {
+      "id": "en-bounds",
+      "language": "en",
+      "prompt": "Rewrite briefly for the website: “The cost of carrying out the setup amounts to from $250. At the present time, more than 100 companies trust us.”",
+      "protected": [
+        "price lower bound 'from $250' kept",
+        "'more than 100' kept, no exact count invented",
+        "no added evaluations or guarantees"
+      ]
+    },
+    {
+      "id": "ru-conflict",
+      "language": "ru",
+      "prompt": "Напиши клиенту одно предложение о сроке доставки. В карточке услуги: «Доставка в течение двух дней». В памятке менеджеру: «Доставка в течение пяти дней».",
+      "protected": [
+        "conflict between two and five days named to the requester",
+        "no term chosen, averaged or ranged",
+        "no client-ready promise before clarification"
+      ]
+    },
+    {
+      "id": "en-conflict",
+      "language": "en",
+      "prompt": "Write one sentence to a customer about the delivery time. The service card says “Delivery within two days”. The manager's note says “Delivery within five days”.",
+      "protected": [
+        "conflict between two and five days named to the requester",
+        "no term chosen, averaged or ranged",
+        "no customer-ready promise before clarification"
+      ]
+    },
+    {
+      "id": "ru-at-least",
+      "language": "ru",
+      "prompt": "Перепиши коротко для объявления: «От участников требуется наличие опыта работы в течение не менее трёх лет. Количество мест для участников составляет не более 20».",
+      "protected": [
+        "'at least three years' kept",
+        "'no more than 20 places' kept",
+        "no exact numbers or new requirements invented"
+      ]
+    },
+    {
+      "id": "en-at-least",
+      "language": "en",
+      "prompt": "Rewrite briefly for an announcement: “Participants are required to have work experience of a duration of at least three years. The number of places for participants amounts to no more than 20.”",
+      "protected": [
+        "'at least three years' kept",
+        "'no more than 20 places' kept",
+        "no exact numbers or new requirements invented"
+      ]
+    },
+    {
+      "id": "ru-price-conflict",
+      "language": "ru",
+      "prompt": "Ответь клиенту, сколько стоит подписка. На странице тарифов: 900 ₽ в месяц. В счёте за прошлый месяц: 990 ₽.",
+      "protected": [
+        "both 900 and 990 rubles kept",
+        "conflict named",
+        "no price chosen and no invented reason such as tax or price change"
+      ]
+    },
+    {
+      "id": "en-price-conflict",
+      "language": "en",
+      "prompt": "Tell the customer how much the subscription costs. The pricing page says $9 per month. Last month's invoice says $9.90.",
+      "protected": [
+        "both $9 and $9.90 kept",
+        "conflict named",
+        "no price chosen and no invented reason such as tax or price change"
+      ]
+    }
+  ]
+}

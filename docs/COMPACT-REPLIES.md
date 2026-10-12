@@ -121,3 +121,11 @@ condition when checking the overall effect. Reader checks remain separate.
 
 The 0.6.0 entry is an unreleased candidate until publication. Updating source or
 building a plugin does not update an existing personal installation.
+
+## Bounds and conflicting facts
+
+A lower bound or "more than" is a condition, not an approximate value; replacing
+it changes the claim. Conflicting supplied facts are reported rather than resolved
+by choosing one. A broader candidate that also removed empty rhetorical moves added
+about 100 words, showed no measurable effect in a masked pilot and had two semantic
+regressions. Only this narrow rule was kept for retesting.
