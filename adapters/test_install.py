@@ -41,21 +41,41 @@ class InstallTests(unittest.TestCase):
     def test_new_config_contains_runtime_rules_without_a_skill_call(self):
         installer.change(self.config, 'codex', 'install')
         text = (self.config / 'AGENTS.md').read_text()
-        self.assertIn('## Preserve meaning', text)
+        runtime = (ROOT / 'SKILL.md').read_text().split('---', 2)[2]
+        self.assertIn(runtime.split('## Activation and scope', 1)[0].strip(), text)
         self.assertIn('every chat reply', text)
         self.assertIn('explicit request to turn it off takes priority', text)
         self.assertNotIn('## Optional examples', text)
+        self.assertNotIn('references/examples.ru.md', text)
+        self.assertNotIn('references/examples.en.md', text)
         self.assertEqual((self.config / 'AGENTS.md').stat().st_mode & 0o777, 0o600)
+
+    def test_optional_examples_do_not_remove_the_final_runtime_check(self):
+        required = '# Palych\n\nKeep exact values.\n\nCheck claims before sending.\n'
+        for optional in (
+            '## Optional examples\nRead [RU](references/examples.ru.md).\n',
+            'Consult only relevant optional\n[RU](references/examples.ru.md).\n',
+        ):
+            with self.subTest(optional=optional):
+                source = self.base / 'source'
+                source.mkdir(exist_ok=True)
+                (source / 'SKILL.md').write_text(
+                    '---\nname: palych\n---\n\n' + required + optional)
+                block = installer.block(source)
+                self.assertIn(required, block)
+                self.assertNotIn('references/examples.ru.md', block)
 
     def test_updated_source_replaces_block_once(self):
         installer.change(self.config, 'codex', 'install')
         source = self.base / 'source'
         source.mkdir()
-        (source / 'SKILL.md').write_text((ROOT / 'SKILL.md').read_text().replace('## Preserve meaning', '## Keep exact meaning'))
+        updated = (ROOT / 'SKILL.md').read_text().replace(
+            '# Palych\n', '# Palych\n\nSynthetic revised instruction.\n', 1)
+        (source / 'SKILL.md').write_text(updated)
         installer.change(self.config, 'codex', 'install', source)
         text = (self.config / 'AGENTS.md').read_text()
         self.assertEqual(text.count(installer.START), 1)
-        self.assertIn('## Keep exact meaning', text)
+        self.assertIn('Synthetic revised instruction.', text)
         with self.assertRaises(ValueError):
             installer.change(self.config, 'codex', 'check')
 
@@ -78,8 +98,11 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(other.read_text(), 'Owner rules.')
         path.unlink()
         installer.change(self.config, 'codex', 'install')
-        path.write_text(path.read_text().replace('Russian is the priority language', 'Russian is my preferred language'))
+        installed = path.read_text()
+        self.assertEqual(installed.count(installer.END), 1)
+        path.write_text(installed.replace(installer.END, 'Owner edit.\n' + installer.END, 1))
         edited = path.read_bytes()
+        self.assertNotEqual(edited, installed.encode('utf-8'))
         for action in ('install', 'uninstall', 'check'):
             with self.assertRaises(ValueError):
                 installer.change(self.config, 'codex', action)

@@ -1,0 +1,76 @@
+{
+  "cases": [
+    {
+      "id": "ru-cache-new",
+      "language": "ru",
+      "suite": "new",
+      "prompt": "Я не программист. Нужный готовый результат уже есть в кэше. Поиск в кэше занимает 9 мс, а вычисление этого результата без кэша — 3 мс. Ускоряет ли кэш этот запрос? Объясни почему. Других измерений нет."
+    },
+    {
+      "id": "en-cache-new",
+      "language": "en",
+      "suite": "new",
+      "prompt": "I am not a programmer. The needed completed result is already in the cache. Looking it up takes 9 ms; computing it without the cache takes 3 ms. Does caching speed up this request? Explain why. No other measurements are available."
+    },
+    {
+      "id": "ru-process-new",
+      "language": "ru",
+      "suite": "new",
+      "prompt": "Подробно объясни, как проходит публикация и зачем нужен каждый этап. Автор готовит материал. Редактор проверяет, указаны ли источники. Если источников не хватает, материал возвращают автору, а после исправления проверяют повторно. Материал со всеми источниками утверждает руководитель. Только после утверждения публикатор размещает материал и сообщает автору ссылку. Проверка предотвращает публикацию без источников; утверждение даёт разрешение на публикацию. Других правил нет."
+    },
+    {
+      "id": "en-process-new",
+      "language": "en",
+      "suite": "new",
+      "prompt": "Explain in detail how publication works and why each stage is needed. An author prepares a text. An editor checks whether sources are listed. Missing sources send the text back to the author; after correction it is checked again. A manager approves a text with all sources. Only after approval does a publisher post it and send the author a link. Checking prevents publication without sources; approval grants permission to publish. No other rules are given."
+    },
+    {
+      "id": "ru-comparison-new",
+      "language": "ru",
+      "suite": "new",
+      "prompt": "Сравни все семь тарифов по указанным цене и объёму: А — 80 ₽, 1 ГБ; Б — 130 ₽, 3 ГБ; В — 190 ₽, 5 ГБ; Г — 250 ₽, 9 ГБ; Д — 310 ₽, 14 ГБ; Е — цена неизвестна, 12 ГБ; Ж — 420 ₽, 20 ГБ. Мне нужно минимум 9 ГБ и самая низкая общая цена. Что можно выбрать по этим данным?"
+    },
+    {
+      "id": "en-comparison-new",
+      "language": "en",
+      "suite": "new",
+      "prompt": "Compare all seven plans by their listed price and capacity: A — $8, 1 GB; B — $13, 3 GB; C — $19, 5 GB; D — $25, 9 GB; E — $31, 14 GB; F — unknown price, 12 GB; G — $42, 20 GB. I need at least 9 GB and the lowest total price. What can I choose from these data?"
+    },
+    {
+      "id": "ru-failure-new",
+      "language": "ru",
+      "suite": "new",
+      "prompt": "Процедура: создать копию, выполнить `./check-config`, затем выполнить `./start-service`. Если проверка завершилась ошибкой, запуск запрещён; копию удалять нельзя. Копия уже создана, но `./check-config` завершилась ошибкой. Состав копии и изменения при проверке неизвестны. Объясни, что делать сейчас, сохрани точные команды."
+    },
+    {
+      "id": "en-failure-new",
+      "language": "en",
+      "suite": "new",
+      "prompt": "The procedure is to create a backup, run `./check-config`, then run `./start-service`. If the check fails, starting is forbidden; the backup must not be deleted. A backup was created, but `./check-config` failed. The backup's contents and any changes during checking are unknown. Explain what to do now, preserving the exact commands."
+    },
+    {
+      "id": "ru-values-new",
+      "language": "ru",
+      "suite": "new",
+      "prompt": "Перепиши понятно: отправка разрешена до 18 декабря 2026 года, 14:35 UTC+4; файлы больше 24 МБ не принимаются, ровно 24 МБ допускается. После ошибки проверки отправка запрещена. Комиссия изменилась с 10% до 12%. Причина изменения и обработка опозданий неизвестны. Не добавляй правил или причин."
+    },
+    {
+      "id": "en-values-new",
+      "language": "en",
+      "suite": "new",
+      "prompt": "Rewrite clearly: submission is permitted before 18 December 2026, 14:35 UTC+4; files larger than 24 MB are rejected and exactly 24 MB is accepted. Submission after a failed check is forbidden. The fee changed from 10% to 12%. The reason for the change and the handling of late submissions are unknown. Do not add rules or causes."
+    },
+    {
+      "id": "ru-progress-new",
+      "language": "ru",
+      "suite": "new",
+      "prompt": "Напиши короткое сообщение о ходе работы. Тайм-аут увеличен, один локальный тест прошёл. Работа в среде пользователей не проверена; причина прежнего сбоя неизвестна. Ещё один тест запущен, но результат пока не получен. Новых действий от пользователя не требуется."
+    },
+    {
+      "id": "en-progress-new",
+      "language": "en",
+      "suite": "new",
+      "prompt": "Write a short progress update. The timeout was increased and one local test passed. Operation in the users' environment is unverified; the cause of the previous failure is unknown. Another test is running, with no result yet. No new action from the user is needed."
+    }
+  ]
+}

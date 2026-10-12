@@ -40,6 +40,9 @@ ISO text or claim certification.
 [ASD-STE100-based skill](https://github.com/0xpili/simplified-technical-english)
 and [i-have-adhd](https://github.com/ayghri/i-have-adhd) were considered as related
 approaches. Neither is a dependency and no files from them are bundled.
+The 2026-10-11 revision draws on i-have-adhd's explicit reply shapes, suppression
+of tangents, bounded actions and pre-send pruning. Palych instead chooses the form
+by the question and tests whether each paragraph contributes to that request.
 Palych uses no controlled dictionary, mandatory action-first opening,
 fixed list size, per-turn status ritual, or unsupported time estimate.
 

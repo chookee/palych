@@ -26,7 +26,9 @@ def digest(text):
 def block(source=ROOT):
     core = (source / 'SKILL.md').read_text(encoding='utf-8')
     # Optional examples and installation links are not needed in global context.
-    body = core.split('---', 2)[2].split('## Optional examples', 1)[0].strip()
+    body = core.split('---', 2)[2].split('## Optional examples', 1)[0]
+    # The compact core keeps its optional pointer after the final self-check.
+    body = body.split('Consult only relevant optional', 1)[0].strip()
     body = body.replace('[host adapter](adapters/README.md)', 'host adapter')
     payload = ('Palych is enabled by default for every chat reply in this conversation.\n'
                'An explicit request to turn it off takes priority until enabled again.\n'

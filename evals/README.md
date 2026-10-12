@@ -5,6 +5,46 @@ The input sets are [single-turn prompts](prompts.json) and
 Use the [rubric](rubric.md) for assessment and record results in
 [observations](observations.md).
 
+The additional [compactness regression set](compact-prompts.json) contains
+20 original cases, ten per language. It checks task-specific reply shapes,
+unsupported causes and system guarantees, cache conditions, exact restrictions,
+and retention of requested options and depth. Its case criteria are in the rubric.
+The original 20-case set and its historical evidence remain unchanged.
+
+The [focused compactness set](compactness-prompts.json) adds 12 synthetic cases,
+six per language: cache measurements, detailed processes, full comparisons with
+unknown prices, failed checks, exact restrictions and progress updates. For a
+bounded pilot, use two fresh replies per case and condition; add the existing
+RU/EN `cost` and `depth` cases when testing the known repetition defects. Generate
+both controls anew. Two repetitions are exploratory, below the full protocol.
+Lock masked judgments before disclosure, then separately audit source meaning.
+Report core size, native input/output tokens, output size and editorial preferences
+separately. Smaller instructions or answers do not establish better understanding
+or reduced subscription-limit debits.
+
+The [repetition set](repetition-prompts.json) checks semantic duplicates,
+unambiguous referents and repetitive colon links. Use it alongside detailed
+process, full-comparison and exact-condition cases; shortening cannot hide
+missing stages, changed actors or lost conditions. The rubric treats synonym
+cycling and punctuation counts as different from useful compactness. The next
+candidate is prepared from one owner-supplied human-preferred example; it has
+not undergone a new model run or a reader comprehension study.
+Give generators only each case's `prompt`; `protected` criteria stay with the
+assessor. Exact colons in URLs and quoted messages remain protected literals.
+
+The [full-comparison set](full-comparison-prompts.json) adds six synthetic RU/EN
+cases: complete option lists, an unknown qualifying price, and a two-sentence
+choice-only request. Repeat each case three times per condition. Check individual
+values and uncertainty before presentation; record answer placement separately
+from clarity judgments. Choice-only requests do not require a full table.
+
+For a focused pilot select affected families; for a full run of the additional
+set, pass `--prompts evals/compact-prompts.json` to the existing masking tool.
+Three repetitions make 60 pairs for this set. Generation consumes the agent's
+usage limits; run the free offline package checks first. Record new results in
+distinct files. Focused model checks and their limits are recorded separately in
+[development status](../docs/STATUS.md); historical results remain unchanged.
+
 ## Reproducible blind checks
 
 Use [blind-protocol.md](blind-protocol.md) and `blind_eval.py` for new comparisons.
@@ -18,6 +58,14 @@ The original results below remain historical editorial smoke tests; do not
 relabel them as blind or as a controlled comparison. Model scoring still measures
 editorial proxies, not reader comprehension. Use the separate
 [reader protocol](reader-check.md) for that claim.
+
+Record language compliance separately and use the rubric's assessor calibration.
+Give the assessor only judging criteria and calibration, keeping later workflow
+steps out of its prompt. An assessor's claim that it performed an unblinded audit
+is not evidence of that audit; verify the actual inputs and recorded operations.
+Audit verdicts against raw replies after locking; keep the audit separate from
+the locked score. A missed error is not repaired by silently changing an earlier
+judgment. Label any later audit as unblinded and record the exact tested core hash.
 
 ## Paired reply checks
 

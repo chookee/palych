@@ -159,7 +159,7 @@ class HookTests(unittest.TestCase):
         self.assertTrue(json.loads((self.state / 'state.json').read_text())['always_on'])
 
     def test_activate_then_restore_in_new_process_without_context(self):
-        self.assertIn('## Preserve meaning', self.control('Включи palych для этого разговора.'))
+        self.assertTrue(self.control('Включи palych для этого разговора.').endswith(self.core()))
         for source in ('compact', 'resume', 'clear', 'startup'):
             context = self.event(source=source)
             self.assertIn('is ON', context)
@@ -171,7 +171,7 @@ class HookTests(unittest.TestCase):
         self.control('Turn off palych.')
         context = self.event(source='compact')
         self.assertIn('is OFF', context)
-        self.assertNotIn('## Preserve meaning', context)
+        self.assertNotIn(self.core(), context)
         self.assertIn('is ON', self.event(source='compact', sid='another-session'))
 
     def test_always_off_does_not_change_other_explicit_sessions(self):

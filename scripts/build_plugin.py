@@ -48,7 +48,7 @@ def build(source, target, host):
         (hooks / 'hooks.json').write_text(json.dumps(config, indent=2) + '\n', encoding='utf-8')
         directory = staging / ('.codex-plugin' if host == 'codex' else '.claude-plugin')
         directory.mkdir()
-        manifest = {'name': 'palych', 'version': '0.5.0',
+        manifest = {'name': 'palych', 'version': '0.6.0',
                     'description': 'Clear conversational replies in Russian and English, enabled by default with persistent mode controls.',
                     'license': 'MIT', 'skills': './skills/'}
         (directory / 'plugin.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')

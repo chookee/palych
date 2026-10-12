@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "id": "ru-duplicate-update",
+      "language": "ru",
+      "prompt": "Перепиши коротко, сохранив все факты. «Файл сохранён. Сохранение файла завершено. Проверка файла ещё идёт. Результат проверки пока неизвестен. Пока проверка продолжается, её результат не получен. Действий от пользователя сейчас не требуется».",
+      "protected": [
+        "file saved",
+        "check running",
+        "result unknown",
+        "no user action"
+      ]
+    },
+    {
+      "id": "en-duplicate-update",
+      "language": "en",
+      "prompt": "Rewrite briefly while retaining all facts. “The file is saved. Saving the file is complete. The file check is still running. The result of the check is unknown. While the check continues, its result has not been received. No action is needed from the user now.”",
+      "protected": [
+        "file saved",
+        "check running",
+        "result unknown",
+        "no user action"
+      ]
+    },
+    {
+      "id": "ru-clear-actors",
+      "language": "ru",
+      "prompt": "Перепиши без лишних повторов, сохранив все факты и ясность участников. «Редактор прочитал текст автора. Редактор нашёл ошибку. Автор исправляет текст». Не добавляй действий или правил.",
+      "protected": [
+        "reviewer read author's text",
+        "reviewer found error",
+        "author correcting text",
+        "no new actions"
+      ]
+    },
+    {
+      "id": "en-clear-actors",
+      "language": "en",
+      "prompt": "Rewrite without needless repetition while keeping every fact and the actors clear. “The reviewer read the author's note. The reviewer found an error. The author is correcting the note.” Do not add actions or rules.",
+      "protected": [
+        "reviewer read author's note",
+        "reviewer found error",
+        "author correcting note",
+        "no new actions"
+      ]
+    },
+    {
+      "id": "ru-colon-chain",
+      "language": "ru",
+      "prompt": "Перепиши понятнее. «Копия создана: проверка настроек завершилась ошибкой: запуск запрещён до успешной повторной проверки». Копию удалять нельзя. Сохрани эти условия; причину ошибки не придумывай.",
+      "protected": [
+        "backup exists",
+        "check failed",
+        "start forbidden until successful recheck",
+        "backup deletion forbidden",
+        "no invented cause"
+      ]
+    },
+    {
+      "id": "en-colon-chain",
+      "language": "en",
+      "prompt": "Rewrite clearly. “The backup exists: configuration checking failed: starting is forbidden until a successful recheck.” The backup must not be deleted. Preserve these conditions; do not invent the cause of the failure.",
+      "protected": [
+        "backup exists",
+        "check failed",
+        "start forbidden until successful recheck",
+        "backup deletion forbidden",
+        "no invented cause"
+      ]
+    },
+    {
+      "id": "ru-protected-colons",
+      "language": "ru",
+      "prompt": "Составь короткое сообщение из этих данных. Адрес для проверки — `https://example.org:8443/status`. Получено сообщение `status: pending`. Проверка ещё идёт, результата нет. Сохрани адрес и сообщение точно.",
+      "protected": [
+        "https://example.org:8443/status",
+        "status: pending",
+        "check running",
+        "result unavailable"
+      ]
+    },
+    {
+      "id": "en-protected-colons",
+      "language": "en",
+      "prompt": "Write a short update from these facts. The address to check is `https://example.org:8443/status`. The message received is `status: pending`. The check is still running and its result is unavailable. Preserve the address and message exactly.",
+      "protected": [
+        "https://example.org:8443/status",
+        "status: pending",
+        "check running",
+        "result unavailable"
+      ]
+    }
+  ]
+}
