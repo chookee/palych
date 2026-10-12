@@ -7,7 +7,22 @@ After the failed pilot only one rule was kept: keep "from", "at least" and
 The other candidate rules, examples and documentation were reverted to `main`.
 The core grows from 1082 to 1100 words, SHA-256 `bba312add40b81cd0727f40d3f5de7e207163e21973a09ea1d83d7a657cebaa8`.
 An eight-case [bounds and conflicts set](../evals/bounds-conflicts-prompts.json)
-was added. A three-repetition pilot is pending.
+was added.
+
+A three-repetition exploratory masked pilot on `claude-sonnet-5-5` (effort medium,
+isolated Claude Code 2.1.287 subscription sessions) used the eight focused cases and
+six guards (unknown-reason, roles, deadline): 84 fresh replies, seven same-model
+assessor sessions, judgments locked before unblinding. Locked results: 16 candidate
+preferences, 9 current-core preferences, 17 ties. Semantic failures: 6 current,
+2 candidate. The current core chose one conflicting delivery term or price in 5 of
+12 conflict replies; the candidate chose none. Both cores kept every bound.
+
+Both candidate failures are guard regressions of a pre-existing type: an unsupported
+"nothing will break" guarantee (`ru-unknown-reason`, which the current core produced
+in the previous pilot) and an added "fix the problem first" instruction
+(`en-deadline`). The fixed semantic gate is formally not met; integration is the
+owner's decision. Input tokens +1.30%, output tokens +2.75%, answer characters
++6.34%, mostly where the candidate explains a conflict. Reader comprehension untested.
 
 ## Empty-moves pilot: semantic gate failed — 2026-10-12
 
