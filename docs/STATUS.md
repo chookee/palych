@@ -14,7 +14,7 @@ Original RU/EN examples and a 12-case [empty-moves set](../evals/empty-moves-pro
 support the change. No model run was made; shorter replies, token savings and
 reader comprehension are not established. A paired blind run of the current and
 candidate cores is the next step. Candidate SKILL.md SHA-256:
-`13abf24557586c2fb4d292a01656483d5543fec21d88efd98222aeae9eedcfe9`.
+`e6990d032eb06ed47110573becc6eecdf685c850c871d3a2472beed7e9522245`.
 
 ## 0.6.0 candidate: compact replies
 

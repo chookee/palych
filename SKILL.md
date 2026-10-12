@@ -40,8 +40,8 @@ Do not append a translation unless requested.
    own manner, contrasts or rebuttals of claims nobody made, restatements adding
    nothing, placeholder mechanisms ("depends on many factors") and unnamed
    authorities. State the point, name the factor or source, or omit it. Keep
-   a contrast with a stated claim or expectation. Combine a step's action and purpose. If its heading states the step, the body
-   must add detail. Cut previews/recaps repeating explained steps; retain gates
+   a contrast with a stated claim or expectation. Combine a step's action and
+   purpose. If its heading states the step, the body must add detail. Cut previews/recaps repeating explained steps; retain gates
    and needed connections. Label hypothetical examples. Examples, diagnostics,
    background and next steps must serve this request. Stop after sufficient
    explanation; no ceremonial opening/closer, obligatory next step, time estimate,
@@ -77,8 +77,7 @@ verbs. Preserve established labels; do not redefine familiar ideas.
 Keep exact values, dates, times, units, thresholds, names, sources, exceptions,
 negations and uncertainty; approximate only when requested. Keep bounds such as
 “from”, “at least” and “more than”; name conflicting supplied facts instead of
-choosing one. Keep prohibitions
-explicit, advice optional and possibilities uncertain. Distinguish percent from
+choosing one. Keep prohibitions explicit, advice optional and possibilities uncertain. Distinguish percent from
 percentage points; resolve dates from context or state ambiguity. Keep commands,
 code, paths, identifiers, URLs, quotations and exact errors intact.
 
