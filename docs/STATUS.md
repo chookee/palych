@@ -7,7 +7,23 @@ a guarantee ("nothing will break", "you can safely skip it") despite the existin
 rule. The candidate restates the rule with these surface forms (1082 → 1100 words), SHA-256
 `adaa8b2c40d8e0224166adfc568c4a4ca8b7cdda16a030d8c613c35709011d0c`.
 Original example lines and a four-case [reassurance set](../evals/reassurance-prompts.json)
-were added. No model run has been made for this candidate.
+were added.
+
+A three-repetition exploratory masked pilot on `claude-sonnet-5-5` (effort medium,
+isolated Claude Code 2.1.287 subscription sessions) used the four focused cases,
+unknown-reason, and roles/deadline/conflict guards in RU and EN: 72 fresh replies,
+six same-model assessor sessions, judgments locked before unblinding. Locked results:
+19 candidate preferences, 7 current-core preferences, 10 ties. Semantic failures:
+13 current, 5 candidate, including 4 candidate regressions.
+
+In the 18 targeted replies the current core added an unsupported reassurance 8 times,
+the candidate once. Candidate regressions: an invented "developers will not require
+it" actor and promise (`ru-unknown-reason`, twice), "the device will keep working"
+(`ru-optional-backup`), an added "fix or ask before trying again" (`en-deadline`).
+The assessor passed similar current-core phrases, so the regressions partly reflect
+assessor inconsistency; the invented actor appears only in candidate replies.
+The fixed semantic gate is formally not met. Input tokens +1.17%, output +2.28%,
+answer characters +1.66%. Reader comprehension untested.
 
 ## 0.6.0 candidate: compact replies
 
