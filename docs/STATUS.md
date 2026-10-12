@@ -1,5 +1,14 @@
 # Palych — development status
 
+## Actors, promises and next steps — 2026-10-13
+
+After the no-reassurance pilot, one clause was added: do not add actors, promises
+or next steps the source does not state (1100 → 1113 words), SHA-256
+`5161ced213ad40e116ffe7a4a56c4780f9428b1bc089e34d7619af942e3c9bd5`. It targets the
+remaining candidate failures: an invented "developers will not require it" and an
+added "fix the problem before trying again". A focused three-repetition pilot on
+unknown-reason and deadline is pending.
+
 ## No-reassurance candidate prepared — 2026-10-12
 
 In both 2026-10-12 Claude pilots, both cores sometimes turned an optional update into
