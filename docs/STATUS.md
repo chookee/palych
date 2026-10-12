@@ -6,8 +6,16 @@ After the no-reassurance pilot, one clause was added: do not add actors, promise
 or next steps the source does not state (1100 → 1113 words), SHA-256
 `5161ced213ad40e116ffe7a4a56c4780f9428b1bc089e34d7619af942e3c9bd5`. It targets the
 remaining candidate failures: an invented "developers will not require it" and an
-added "fix the problem before trying again". A focused three-repetition pilot on
-unknown-reason and deadline is pending.
+added "fix the problem before trying again".
+
+A focused three-repetition exploratory pilot on unknown-reason and deadline (RU/EN,
+24 fresh replies, two same-model assessor sessions, locked before unblinding) gave
+5 candidate preferences, 4 current-core preferences and 3 ties. The assessor marked
+1 current and 3 candidate failures; the source audit confirms two candidate failures
+(an invented "developers" subject, an added "ask the organizers") and treats the
+literal reading of "before 09:40" as an assessor error. Both cores wrote "fix the
+problem and pass the check first". The clause showed no measurable effect on the
+targeted additions. Input tokens +1.79%, output −4.82%, characters −5.22%.
 
 ## No-reassurance candidate prepared — 2026-10-12
 
