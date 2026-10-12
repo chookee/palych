@@ -32,6 +32,11 @@ not undergone a new model run or a reader comprehension study.
 Give generators only each case's `prompt`; `protected` criteria stay with the
 assessor. Exact colons in URLs and quoted messages remain protected literals.
 
+The [empty-moves set](empty-moves-prompts.json) adds 12 synthetic RU/EN cases:
+grading labels and placeholder explanations, causal chains under shortening,
+price and count bounds, conflicting supplied facts, a plainly reported failure
+and a legitimate contrast with a stated claim. It has not undergone a model run.
+
 The [full-comparison set](full-comparison-prompts.json) adds six synthetic RU/EN
 cases: complete option lists, an unknown qualifying price, and a two-sentence
 choice-only request. Repeat each case three times per condition. Check individual

@@ -1,5 +1,21 @@
 # Palych — development status
 
+## Empty-moves candidate prepared — 2026-10-12
+
+Several public Russian editing skills were reviewed for principles; no text or
+code from them is bundled. The candidate adds about 100 words to the core
+(1082 → 1182): it removes empty rhetorical moves, keeps causal and contrast links
+when shortening, replaces unsupported evaluations with facts, names failures
+plainly, keeps lower bounds and "more than" conditions, and names conflicting
+supplied facts. Rejected ideas included mandatory output blocks, scores, required
+numbers, minimum lengths, fixed paragraph sizes and automatic rounding.
+
+Original RU/EN examples and a 12-case [empty-moves set](../evals/empty-moves-prompts.json)
+support the change. No model run was made; shorter replies, token savings and
+reader comprehension are not established. A paired blind run of the current and
+candidate cores is the next step. Candidate SKILL.md SHA-256:
+`13abf24557586c2fb4d292a01656483d5543fec21d88efd98222aeae9eedcfe9`.
+
 ## 0.6.0 candidate: compact replies
 
 The revised core prioritizes compactness and clarity through task-specific reply

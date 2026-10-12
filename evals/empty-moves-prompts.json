@@ -1,0 +1,128 @@
+{
+  "cases": [
+    {
+      "id": "ru-empty-moves",
+      "language": "ru",
+      "prompt": "Почему после смены цены на сайте покупатели ещё минуту видят старую? Известно: страница кэшируется на 60 секунд.",
+      "protected": [
+        "cause is the 60-second page cache",
+        "new price appears within that time",
+        "no grading labels, manner praise, unprompted contrast or placeholder factors"
+      ]
+    },
+    {
+      "id": "en-empty-moves",
+      "language": "en",
+      "prompt": "Why do customers still see the old price for a minute after I change it on the site? Known: the page is cached for 60 seconds.",
+      "protected": [
+        "cause is the 60-second page cache",
+        "new price appears within that time",
+        "no grading labels, manner praise, unprompted contrast or placeholder factors"
+      ]
+    },
+    {
+      "id": "ru-connected",
+      "language": "ru",
+      "prompt": "Коротко объясни команде, почему релиз отложен. Сборка упала, потому что тест базы данных не прошёл из-за истёкшего сертификата. Новый сертификат выпустят завтра; новая дата релиза не назначена.",
+      "protected": [
+        "certificate expired -> database test failed -> build failed -> release postponed",
+        "new certificate tomorrow",
+        "release date not set; none invented",
+        "causal links kept, not chopped into fragments"
+      ]
+    },
+    {
+      "id": "en-connected",
+      "language": "en",
+      "prompt": "Briefly tell the team why the release is postponed. The build failed because the database test did not pass due to an expired certificate. A new certificate will be issued tomorrow; no new release date is set.",
+      "protected": [
+        "certificate expired -> database test failed -> build failed -> release postponed",
+        "new certificate tomorrow",
+        "release date not set; none invented",
+        "causal links kept, not chopped into fragments"
+      ]
+    },
+    {
+      "id": "ru-bounds",
+      "language": "ru",
+      "prompt": "Перепиши коротко для сайта: «Стоимость осуществления настройки составляет от 18 000 рублей. На сегодняшний день нам доверяют более 100 компаний».",
+      "protected": [
+        "price lower bound 'from 18 000 rubles' kept",
+        "'more than 100' kept, no exact count invented",
+        "no added evaluations or guarantees"
+      ]
+    },
+    {
+      "id": "en-bounds",
+      "language": "en",
+      "prompt": "Rewrite briefly for the website: “The cost of carrying out the setup amounts to from $250. At the present time, more than 100 companies trust us.”",
+      "protected": [
+        "price lower bound 'from $250' kept",
+        "'more than 100' kept, no exact count invented",
+        "no added evaluations or guarantees"
+      ]
+    },
+    {
+      "id": "ru-conflict",
+      "language": "ru",
+      "prompt": "Напиши клиенту одно предложение о сроке доставки. В карточке услуги: «Доставка в течение двух дней». В памятке менеджеру: «Доставка в течение пяти дней».",
+      "protected": [
+        "conflict between two and five days named to the requester",
+        "no term chosen, averaged or ranged",
+        "no client-ready promise before clarification"
+      ]
+    },
+    {
+      "id": "en-conflict",
+      "language": "en",
+      "prompt": "Write one sentence to a customer about the delivery time. The service card says “Delivery within two days”. The manager's note says “Delivery within five days”.",
+      "protected": [
+        "conflict between two and five days named to the requester",
+        "no term chosen, averaged or ranged",
+        "no customer-ready promise before clarification"
+      ]
+    },
+    {
+      "id": "ru-plain-failure",
+      "language": "ru",
+      "prompt": "Сообщи результат прогона: из 10 тестов 8 прошли, 2 упали, причина падений пока неизвестна.",
+      "protected": [
+        "8 passed, 2 failed stated plainly",
+        "cause unknown",
+        "no euphemism softening the failure",
+        "no invented cause or fix"
+      ]
+    },
+    {
+      "id": "en-plain-failure",
+      "language": "en",
+      "prompt": "Report the test run: 8 of 10 tests passed, 2 failed, and the cause of the failures is not known yet.",
+      "protected": [
+        "8 passed, 2 failed stated plainly",
+        "cause unknown",
+        "no euphemism softening the failure",
+        "no invented cause or fix"
+      ]
+    },
+    {
+      "id": "ru-real-contrast",
+      "language": "ru",
+      "prompt": "Коллега считает, что задержка обновления цены — это баг. Кэш страницы настроен на 60 секунд. Это баг?",
+      "protected": [
+        "direct answer: not a bug, configured 60-second cache",
+        "contrast with the colleague's stated claim allowed",
+        "no invented setting change"
+      ]
+    },
+    {
+      "id": "en-real-contrast",
+      "language": "en",
+      "prompt": "A colleague thinks the price update delay is a bug. The page cache is set to 60 seconds. Is it a bug?",
+      "protected": [
+        "direct answer: not a bug, configured 60-second cache",
+        "contrast with the colleague's stated claim allowed",
+        "no invented setting change"
+      ]
+    }
+  ]
+}
