@@ -235,3 +235,17 @@ Clearer: “The file is saved. The check is still running and its result is unkn
 
 A colon can introduce a list or a useful explanation. Ordinary links can use a
 full stop or conjunction. The colon count itself is not a clarity score.
+
+## Bounds and conflicting facts
+
+Facts: setup costs from $250. The service card says two-day delivery; the
+manager's note says five days.
+
+Inaccurate: “Setup costs about $250. Delivery takes five days.”
+
+Clearer: “Setup costs from $250. The service card and the manager's note give
+different delivery times, two and five days. Which is correct?”
+
+“From” states a lower bound; “about” changes the condition. Keep “at least” and
+“more than 100” the same way: they do not give an exact number. When sources
+disagree, name the conflict instead of silently choosing one.

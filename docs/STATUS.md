@@ -1,5 +1,67 @@
 # Palych — development status
 
+## Narrowed bounds/conflicts candidate — 2026-10-12
+
+After the failed pilot only one rule was kept: keep "from", "at least" and
+"more than" bounds, and name conflicting supplied facts instead of choosing one.
+The other candidate rules, examples and documentation were reverted to `main`.
+The core grows from 1082 to 1100 words, SHA-256 `bba312add40b81cd0727f40d3f5de7e207163e21973a09ea1d83d7a657cebaa8`.
+An eight-case [bounds and conflicts set](../evals/bounds-conflicts-prompts.json)
+was added.
+
+A three-repetition exploratory masked pilot on `claude-sonnet-5-5` (effort medium,
+isolated Claude Code 2.1.287 subscription sessions) used the eight focused cases and
+six guards (unknown-reason, roles, deadline): 84 fresh replies, seven same-model
+assessor sessions, judgments locked before unblinding. Locked results: 16 candidate
+preferences, 9 current-core preferences, 17 ties. Semantic failures: 6 current,
+2 candidate. The current core chose one conflicting delivery term or price in 5 of
+12 conflict replies; the candidate chose none. Both cores kept every bound.
+
+Both candidate failures are guard regressions of a pre-existing type: an unsupported
+"nothing will break" guarantee (`ru-unknown-reason`, which the current core produced
+in the previous pilot) and an added "fix the problem first" instruction
+(`en-deadline`). The fixed semantic gate is formally not met; integration is the
+owner's decision. Input tokens +1.30%, output tokens +2.75%, answer characters
++6.34%, mostly where the candidate explains a conflict. Reader comprehension untested.
+
+## Empty-moves pilot: semantic gate failed — 2026-10-12
+
+An exploratory masked pilot compared the current core (SHA-256 `eba7a41f…efc92`)
+with the candidate (`e6990d03…22245`) on `claude-sonnet-5-5`, effort medium, through
+an isolated Claude Code 2.1.287 subscription session. 32 cases (12 empty-moves,
+20 compact) received one fresh reply per core: 64 processes with empty tools, MCP,
+skills and hooks. Eight fresh same-model assessor sessions judged masked pairs;
+judgments were locked before unblinding. One batch was re-judged before unblinding
+after violating the protocol; 16 calls were rejected by an item-count schema error.
+
+Locked results: 13 candidate preferences, 10 current-core preferences, 9 ties.
+Semantic failures: 3 current, 2 candidate; both candidate failures are regressions.
+`en-unknown-reason` promised unchanged behavior; `ru-roles` added a direct route as
+"not through the buffer". The current core picked one conflicting delivery term in
+`en-conflict`; the candidate named the conflict. A separate unblinded source audit
+confirmed all five failures and found two borderline candidate statements.
+
+Input tokens rose 6.84% (103449 → 110527) and output tokens 2.13%; answer characters
+fell 2.21%. Neither core produced grading labels or manner praise, so the run shows
+no measurable benefit from the empty-moves rule. The fixed semantic gate failed:
+the candidate is not ready for integration. Reader comprehension was not tested.
+
+## Empty-moves candidate prepared — 2026-10-12
+
+Several public Russian editing skills were reviewed for principles; no text or
+code from them is bundled. The candidate adds about 100 words to the core
+(1082 → 1182): it removes empty rhetorical moves, keeps causal and contrast links
+when shortening, replaces unsupported evaluations with facts, names failures
+plainly, keeps lower bounds and "more than" conditions, and names conflicting
+supplied facts. Rejected ideas included mandatory output blocks, scores, required
+numbers, minimum lengths, fixed paragraph sizes and automatic rounding.
+
+Original RU/EN examples and a 12-case [empty-moves set](../evals/empty-moves-prompts.json)
+support the change. No model run was made; shorter replies, token savings and
+reader comprehension are not established. A paired blind run of the current and
+candidate cores is the next step. Candidate SKILL.md SHA-256:
+`e6990d032eb06ed47110573becc6eecdf685c850c871d3a2472beed7e9522245`.
+
 ## 0.6.0 candidate: compact replies
 
 The revised core prioritizes compactness and clarity through task-specific reply

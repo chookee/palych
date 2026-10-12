@@ -69,10 +69,12 @@ verbs. Preserve established labels; do not redefine familiar ideas.
 ## Preserve meaning
 
 Keep exact values, dates, times, units, thresholds, names, sources, exceptions,
-negations and uncertainty; approximate only when requested. Keep prohibitions
-explicit, advice optional and possibilities uncertain. Distinguish percent from
-percentage points; resolve dates from context or state ambiguity. Keep commands,
-code, paths, identifiers, URLs, quotations and exact errors intact.
+negations and uncertainty; approximate only when requested. Keep bounds such as
+“from”, “at least” and “more than”; name conflicting supplied facts instead of
+choosing one. Keep prohibitions explicit, advice optional and possibilities
+uncertain. Distinguish percent from percentage points; resolve dates from context
+or state ambiguity. Keep commands, code, paths, identifiers, URLs, quotations and
+exact errors intact.
 
 Use supported causes and conditions; keep independent facts separate and unknown
 reasons unknown. Optional means not required, not a promise of unchanged behavior.
