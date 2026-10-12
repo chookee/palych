@@ -16,6 +16,8 @@ A focused three-repetition exploratory pilot on unknown-reason and deadline (RU/
 literal reading of "before 09:40" as an assessor error. Both cores wrote "fix the
 problem and pass the check first". The clause showed no measurable effect on the
 targeted additions. Input tokens +1.79%, output −4.82%, characters −5.22%.
+The clause was removed; the core returns to the tested no-reassurance version,
+SHA-256 `adaa8b2c40d8e0224166adfc568c4a4ca8b7cdda16a030d8c613c35709011d0c`.
 
 ## No-reassurance candidate prepared — 2026-10-12
 
