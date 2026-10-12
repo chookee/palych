@@ -32,6 +32,10 @@ not undergone a new model run or a reader comprehension study.
 Give generators only each case's `prompt`; `protected` criteria stay with the
 assessor. Exact colons in URLs and quoted messages remain protected literals.
 
+The [reassurance set](reassurance-prompts.json) has four synthetic RU/EN cases on
+optional actions with unknown consequences. Use it with the unknown-reason cases;
+it checks that "optional" does not become "safe to skip".
+
 The [full-comparison set](full-comparison-prompts.json) adds six synthetic RU/EN
 cases: complete option lists, an unknown qualifying price, and a two-sentence
 choice-only request. Repeat each case three times per condition. Check individual

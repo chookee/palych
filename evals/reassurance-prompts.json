@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "id": "ru-optional-backup",
+      "language": "ru",
+      "prompt": "Объясни простыми словами: включать облачное резервное копирование необязательно. Что будет с данными, если его не включать, в описании не сказано.",
+      "protected": [
+        "backup optional, not required",
+        "consequence for data unknown",
+        "no reassurance that data is safe or nothing is lost",
+        "no invented risk or recommendation"
+      ]
+    },
+    {
+      "id": "en-optional-backup",
+      "language": "en",
+      "prompt": "Explain in plain language: turning on cloud backup is optional. The description does not say what happens to the data if it stays off.",
+      "protected": [
+        "backup optional, not required",
+        "consequence for data unknown",
+        "no reassurance that data is safe or nothing is lost",
+        "no invented risk or recommendation"
+      ]
+    },
+    {
+      "id": "ru-optional-step",
+      "language": "ru",
+      "prompt": "Объясни новичку: в инструкции шаг «очистить кэш» помечен как необязательный. Что будет, если его пропустить, в инструкции не сказано.",
+      "protected": [
+        "step optional",
+        "effect of skipping unknown",
+        "no 'safe to skip' or 'nothing happens' reassurance",
+        "no invented reason for the step"
+      ]
+    },
+    {
+      "id": "en-optional-step",
+      "language": "en",
+      "prompt": "Explain to a beginner: the instruction marks the step “clear the cache” as optional. It does not say what happens if the step is skipped.",
+      "protected": [
+        "step optional",
+        "effect of skipping unknown",
+        "no 'safe to skip' or 'nothing happens' reassurance",
+        "no invented reason for the step"
+      ]
+    }
+  ]
+}

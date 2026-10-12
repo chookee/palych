@@ -1,5 +1,14 @@
 # Palych — development status
 
+## No-reassurance candidate prepared — 2026-10-12
+
+In both 2026-10-12 Claude pilots, both cores sometimes turned an optional update into
+a guarantee ("nothing will break", "you can safely skip it") despite the existing
+rule. The candidate restates the rule with these surface forms (1082 → 1100 words), SHA-256
+`adaa8b2c40d8e0224166adfc568c4a4ca8b7cdda16a030d8c613c35709011d0c`.
+Original example lines and a four-case [reassurance set](../evals/reassurance-prompts.json)
+were added. No model run has been made for this candidate.
+
 ## 0.6.0 candidate: compact replies
 
 The revised core prioritizes compactness and clarity through task-specific reply

@@ -2,6 +2,8 @@
 
 ## 0.6.0 — unreleased
 
+- Do not turn "optional" into a safety reassurance such as "nothing will break"
+  or "safe to skip" without support. Add four focused RU/EN cases.
 - Prepare a narrow candidate that merges semantic duplicates, makes headings
   and body add different information, reduces unambiguous noun echoes and avoids
   routine colon chains. Keep stable terminology and all source-fidelity rules;
