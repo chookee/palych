@@ -209,3 +209,29 @@ editor checks it again.”
 
 Assignment does not establish that only this person knows the answer or can
 make a correction. Exclusive knowledge or authority needs its own evidence.
+
+## A heading and its explanation add different information
+
+Facts: a reviewer checks whether sources are listed in a note. This prevents
+publication without sources.
+
+Repetitive: “The reviewer checks for sources. The reviewer's task is to check
+whether sources are listed. This check prevents publication without sources.”
+
+Clearer: “The reviewer checks whether sources are listed. This prevents the note
+from being published without them.”
+
+“Them” has one clear referent. Repeat a name when a pronoun could identify two
+different things or actors. Do not cycle through synonyms for one concept.
+When a heading already states a step, the body must add information; it may be absent.
+
+## Sentence links without a chain of colons
+
+Facts: the file is saved, the check is running, its result is unknown.
+
+Cluttered: “The file is saved: the check is running: the result is unknown.”
+
+Clearer: “The file is saved. The check is still running and its result is unknown.”
+
+A colon can introduce a list or a useful explanation. Ordinary links can use a
+full stop or conjunction. The colon count itself is not a clarity score.

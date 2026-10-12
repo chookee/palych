@@ -98,6 +98,24 @@ Word/character counts may describe output size; they do not decide quality.
 Do not require exact phrases, a maximum number of sentences or a mandatory format.
 Meaning failures override compactness preferences. Record ties and tradeoffs.
 
+## Repetition and sentence links
+
+Use [repetition-prompts.json](repetition-prompts.json) with the affected process
+cases. Check whether each sentence adds a fact, needed connection or condition.
+A heading followed by its paraphrase, or a preview and recap of the same stages,
+can be clutter. A brief overview may aid navigation; requested depth and gates
+must survive. Judge the added value, not a mandated layout.
+
+Reduce nearby noun echoes with clear pronouns or ellipsis; do not trade stable
+terminology for rotating synonyms or ambiguous actors. Keep a repeated name when
+it resolves the referent, especially with actors of the same grammatical gender.
+Check assigned actions and recipients against the source, including any new handoff.
+
+Colons may introduce a useful explanation or list. A chain between ordinary
+claims can obstruct reading; a full stop or conjunction may be clearer. Colon,
+word and repeated-term counts are diagnostics, not pass/fail quotas. Semantic
+fidelity takes precedence over smaller counts.
+
 ## Assessor calibration and audit
 
 Record the observed reply language separately. A wrong language lowers the

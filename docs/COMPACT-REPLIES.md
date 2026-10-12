@@ -69,6 +69,25 @@ the legacy `## Optional examples` section and the compact trailing pointer begin
 Installation tests verify full required content and the final runtime check,
 without depending on the prose heading for semantic preservation.
 
+## Reader-informed repetition candidate
+
+After rejecting the shorter core, the owner supplied a preferred human edit of
+one process explanation. The next revision targets repeated meaning, noun echoes
+and habitual colon links in the restored core. It does not copy the supplied
+private example into public resources or broaden the claim into reader validation.
+All added public examples are independently written for the package.
+
+A heading may state the whole step; following text earns its place by adding a
+purpose, condition or explanation. An overview can orient the reader, but needs
+no repeated recap. Pronouns and ellipsis can reduce noun echoes when their referent
+is clear; repeated names remain necessary when ambiguity would result. Stable
+terminology must not become a rotation of synonyms. Colons retain their useful
+roles; no punctuation or word-count quota is imposed.
+
+Meaning, agent work and activation rules remain unchanged. The focused cases
+include semantic duplicates, ambiguous actors, colon chains and literal URL/error
+colons that must remain exact. No new model run was performed for this candidate.
+
 ## Corrections after the 2026-10-12 pilot
 
 The question's language now controls the reply explicitly. Russian remains the

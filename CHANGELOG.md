@@ -2,6 +2,10 @@
 
 ## 0.6.0 — unreleased
 
+- Prepare a narrow candidate that merges semantic duplicates, makes headings
+  and body add different information, reduces unambiguous noun echoes and avoids
+  routine colon chains. Keep stable terminology and all source-fidelity rules;
+  add original RU/EN examples and focused evaluation cases. Live testing pending.
 - Test a shorter core with fresh paired controls; reject it after source audits
   find unsupported process actions and restore the preceding runtime core.
   Add RU/EN compactness fixtures, preserve optional-pointer trimming for both

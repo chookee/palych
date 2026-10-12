@@ -18,6 +18,27 @@ These results do not establish reader comprehension or universal compliance.
 The source revision does not update personal installations or establish live
 hook delivery. This candidate is not yet published to main.
 
+## Repetition candidate prepared — 2026-10-12
+
+The owner supplied a human-preferred edit of one Russian publication explanation
+and identified missing brevity, repeated meanings/terms and overused colon links.
+This is specific reader editorial feedback, not a blinded comparison or evidence
+of improved comprehension across readers.
+
+The next candidate is a narrow revision of the restored 1048-word core. It merges
+semantic duplicates, joins a step's action and purpose, lets a heading carry a
+complete step, and removes previews/recaps that add no information. Pronouns or
+ellipsis reduce nearby noun echoes only when unambiguous; terminology stays stable.
+Ordinary sentence links prefer full stops/conjunctions, keeping useful colons.
+
+The meaning-preservation, agent-work and activation sections are byte-for-byte
+unchanged. No broad compression of the accuracy rules was repeated. Original
+RU/EN examples and a focused repetition set support the new rules. The core
+grew from 1048 to 1082 words; shorter generated replies or token savings have not
+been established. No new model calls were made for this candidate. The preceding
+75-request pilot does not validate these changes. Main and personal installation
+remain unchanged; reader comprehension and fresh model evaluation are pending.
+
 ## Shorter-core pilot completed; candidate rejected — 2026-10-12
 
 A 762-word candidate (5938 bytes) was compared with the current 1048-word core
