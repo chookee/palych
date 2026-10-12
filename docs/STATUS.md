@@ -16,7 +16,8 @@ content and language errors. The core and assessor rubric were revised from the
 source audit; repeat runs are recorded separately by tested core hash.
 These results do not establish reader comprehension or universal compliance.
 The source revision does not update personal installations or establish live
-hook delivery. This candidate is not yet published to main.
+hook delivery. This remains a candidate revision; merging the source does not
+establish model or reader validation.
 
 ## Repetition candidate prepared — 2026-10-12
 
@@ -36,8 +37,9 @@ unchanged. No broad compression of the accuracy rules was repeated. Original
 RU/EN examples and a focused repetition set support the new rules. The core
 grew from 1048 to 1082 words; shorter generated replies or token savings have not
 been established. No new model calls were made for this candidate. The preceding
-75-request pilot does not validate these changes. Main and personal installation
-remain unchanged; reader comprehension and fresh model evaluation are pending.
+75-request pilot does not validate these changes. Source integration does not
+update personal installations; reader comprehension and fresh model evaluation
+are pending.
 
 ## Shorter-core pilot completed; candidate rejected — 2026-10-12
 
