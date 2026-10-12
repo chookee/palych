@@ -11,6 +11,17 @@ unsupported causes and system guarantees, cache conditions, exact restrictions,
 and retention of requested options and depth. Its case criteria are in the rubric.
 The original 20-case set and its historical evidence remain unchanged.
 
+The [focused compactness set](compactness-prompts.json) adds 12 synthetic cases,
+six per language: cache measurements, detailed processes, full comparisons with
+unknown prices, failed checks, exact restrictions and progress updates. For a
+bounded pilot, use two fresh replies per case and condition; add the existing
+RU/EN `cost` and `depth` cases when testing the known repetition defects. Generate
+both controls anew. Two repetitions are exploratory, below the full protocol.
+Lock masked judgments before disclosure, then separately audit source meaning.
+Report core size, native input/output tokens, output size and editorial preferences
+separately. Smaller instructions or answers do not establish better understanding
+or reduced subscription-limit debits.
+
 The [full-comparison set](full-comparison-prompts.json) adds six synthetic RU/EN
 cases: complete option lists, an unknown qualifying price, and a two-sentence
 choice-only request. Repeat each case three times per condition. Check individual

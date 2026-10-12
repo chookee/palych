@@ -2,6 +2,9 @@
 
 ## 0.6.0 — unreleased
 
+- Shorten the runtime core and join each process stage with its purpose; avoid
+  repeated previews/recaps and irrelevant hypothetical scenarios. Add fresh
+  RU/EN compactness fixtures and preserve installer trimming for both layouts.
 - Build full comparisons per option, check the supplied values, and put the
   recommendation first. Add RU/EN checks for full lists, unknown prices and
   short choice-only replies; keep assessor criteria separate from later workflow.

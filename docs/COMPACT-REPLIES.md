@@ -48,6 +48,25 @@ The self-check now names both kinds of failure: unnecessary reading and unsuppor
 meaning. It is part of writing, without a second model, runtime tool or compulsory
 reader survey. Optional examples remain optional.
 
+## Focused compactness revision
+
+The next candidate combines overlapping wording, meaning and self-check rules
+without moving runtime constraints behind external references. Detailed processes
+pair each stage's action with its purpose, retaining loops and approval gates.
+A preview and recap must not repeat the same process. Hypothetical scenarios and
+unknowns earn space only when they affect interpretation, a decision or diagnosis.
+Supplied uncertainty remains part of the source meaning to preserve.
+
+The entrypoint is 762 words instead of 1048. This is a static size change, not a
+token or comprehension result. The focused paired pilot uses fresh controls and
+reports native usage separately; its outcome is recorded in development status.
+
+The global installer omits optional example pointers in both supported layouts:
+the legacy `## Optional examples` section and the compact trailing pointer beginning
+`Consult only relevant optional`. Preserve that boundary when changing the pointer.
+Installation tests verify full required content and the final runtime check,
+without depending on the prose heading for semantic preservation.
+
 ## Corrections after the 2026-10-12 pilot
 
 The question's language now controls the reply explicitly. Russian remains the

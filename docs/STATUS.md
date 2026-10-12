@@ -7,9 +7,9 @@ construction, single representations, necessary detail and a concrete stop rule.
 It also checks supported causes, universal claims and implementation assumptions.
 See [design and verification scope](COMPACT-REPLIES.md).
 
-Original RU/EN examples and a separate 20-case regression set are included.
-The previous prompt set and historical result files remain unchanged. New
-controlled generation and reader comprehension tests have not been performed.
+Original RU/EN examples and separate regression sets are included.
+The previous prompt set and historical result files remain unchanged. Reader
+comprehension tests have not been performed; model pilots are recorded below.
 An exploratory one-response-per-case Claude Code pilot was performed on the
 earlier candidate. It showed shorter replies but automatic judgments missed
 content and language errors. The core and assessor rubric were revised from the
@@ -17,6 +17,35 @@ source audit; repeat runs are recorded separately by tested core hash.
 These results do not establish reader comprehension or universal compliance.
 The source revision does not update personal installations or establish live
 hook delivery. This candidate is not yet published to main.
+
+## Shorter-core pilot in progress — 2026-10-12
+
+The draft runtime core is 762 words (5938 bytes), down from 1048 words (7628
+bytes). Runtime constraints remain self-contained. Installer tests cover both
+optional-pointer layouts and required final self-check retention; 35
+installer/adapter/builder tests and 17 blind-tool tests passed. Both plugins built.
+
+The fixed plan contains 12 new RU/EN tasks plus the four existing RU/EN cache-cost
+and detailed-process tasks, two fresh replies per condition: 64 replies and
+eight masked assessor sessions. Current and candidate controls are both fresh.
+The total limit is 75 logical model requests, including at most three manual
+transient retries. Two repetitions and unexposed provider/sampling fields make
+this an exploratory editorial pilot, not a full controlled run or reader test.
+
+56 replies were saved. One subsequent turn lost its stream, attempted native
+reconnections, fell back to HTTPS and timed out without a completed reply. Its
+usage is unknown. Relaunching the isolated process was blocked twice because
+automatic permission review did not finish before its deadline. The restricted
+environment also refused nested sandbox setup. Eight replies and all eight
+assessor sessions remain. No quality verdict, input/output savings claim or
+keep decision has been made. Native transport reconnections are distinct from
+the logical request limit and may have unexposed consumption.
+
+Draft core SHA-256:
+`74c8fe86b0d083f1799d3d020f71d0ea2429688b4fdbeddbc766027fa5cd548a`.
+The earlier actual-compaction result below tested the preceding core, not this
+draft. Main and personal installations remain unchanged. Raw replies and the
+bounded continuation command are retained outside the public package.
 
 ## Focused Codex follow-up — 2026-10-12
 
