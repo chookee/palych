@@ -18,34 +18,52 @@ These results do not establish reader comprehension or universal compliance.
 The source revision does not update personal installations or establish live
 hook delivery. This candidate is not yet published to main.
 
-## Shorter-core pilot in progress — 2026-10-12
+## Shorter-core pilot completed; candidate rejected — 2026-10-12
 
-The draft runtime core is 762 words (5938 bytes), down from 1048 words (7628
-bytes). Runtime constraints remain self-contained. Installer tests cover both
-optional-pointer layouts and required final self-check retention; 35
-installer/adapter/builder tests and 17 blind-tool tests passed. Both plugins built.
+A 762-word candidate (5938 bytes) was compared with the current 1048-word core
+(7628 bytes) on `gpt-6.1-sol`, medium effort, default tier. Twelve new RU/EN tasks
+plus the four existing cache-cost and detailed-process tasks were repeated twice
+per condition: 64 fresh replies in distinct threads. Neither control was reused.
+Local instruction sources, other skills and tool use were excluded and verified;
+hidden provider instructions and sampling settings remain unavailable. Generation
+was interrupted and resumed, so hidden provider state across the pause is unknown.
 
-The fixed plan contains 12 new RU/EN tasks plus the four existing RU/EN cache-cost
-and detailed-process tasks, two fresh replies per condition: 64 replies and
-eight masked assessor sessions. Current and candidate controls are both fresh.
-The total limit is 75 logical model requests, including at most three manual
-transient retries. Two repetitions and unexposed provider/sampling fields make
-this an exploratory editorial pilot, not a full controlled run or reader test.
+Eight fresh assessor sessions judged 32 masked pairs before the mapping was
+opened. Locked results: 4 candidate preferences, 1 current-core preference and
+27 ties; the assessor found one candidate semantic regression. The subsequent
+unblinded source audit confirmed it and found the same unsupported author-to-editor
+handoff in the second Russian publication reply. A third candidate reply assigned
+an unprovided handoff to the request sender. The audit also found an unsupported
+return-action actor in one current-core English publication reply. These findings
+are separate from the unchanged locked judgments; neither measures human reading.
 
-56 replies were saved. One subsequent turn lost its stream, attempted native
-reconnections, fell back to HTTPS and timed out without a completed reply. Its
-usage is unknown. Relaunching the isolated process was blocked twice because
-automatic permission review did not finish before its deadline. The restricted
-environment also refused nested sandbox setup. Eight replies and all eight
-assessor sessions remain. No quality verdict, input/output savings claim or
-keep decision has been made. Native transport reconnections are distinct from
-the logical request limit and may have unexposed consumption.
+Candidate input tokens were 202297 versus 212025 (-4.59%); reported output tokens
+5142 versus 5697 (-9.74%). RU output -13.53%, EN output -4.68%. Answer characters
+fell 10.17%. Each candidate input was 304 tokens smaller. Cached input varied and
+is included in input totals; subscription debit, failed-turn usage and native
+transport retry consumption were not measured. Savings do not override a meaning
+failure or establish that compression caused the errors.
 
-Draft core SHA-256:
-`74c8fe86b0d083f1799d3d020f71d0ea2429688b4fdbeddbc766027fa5cd548a`.
-The earlier actual-compaction result below tested the preceding core, not this
-draft. Main and personal installations remain unchanged. Raw replies and the
-bounded continuation command are retained outside the public package.
+The fixed semantic gate failed: the candidate was rejected and the original core
+restored, SHA-256
+`e3ad8877c3028afc6d422686a2b46fd166a32a6ee6118d37fa47f5a9fd0185dc`.
+The rejected candidate remains recoverable in history and separate evidence,
+SHA-256 `74c8fe86b0d083f1799d3d020f71d0ea2429688b4fdbeddbc766027fa5cd548a`.
+Installer compatibility, heading-independent tests and the 12 new fixtures remain.
+
+Exactly 75 logical model requests were logged: 64 completed replies, 8 completed
+assessor sessions and 3 failed/incomplete operations (stream timeout, capacity,
+usage limit), each followed by one authorized retry. Native reconnection attempts
+are recorded separately and their provider count/cost is unknown. Two process
+launches were blocked by permission-review timeouts; the restricted environment
+also refused nested sandbox setup. A narrower reviewed launch succeeded, then
+usage-limit recovery was resumed at the owner's request. The total cap did not
+change; a send guard refuses request 76. All jobs completed; no further runs.
+
+35 installer/adapter/builder tests and 17 blind-tool tests passed before the live
+pilot. The final restored package is verified separately. Runtime hooks, automatic
+compaction and reader comprehension were not retested here. Main and personal
+installations remain unchanged; raw host logs remain outside the public package.
 
 ## Focused Codex follow-up — 2026-10-12
 

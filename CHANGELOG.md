@@ -2,9 +2,10 @@
 
 ## 0.6.0 — unreleased
 
-- Shorten the runtime core and join each process stage with its purpose; avoid
-  repeated previews/recaps and irrelevant hypothetical scenarios. Add fresh
-  RU/EN compactness fixtures and preserve installer trimming for both layouts.
+- Test a shorter core with fresh paired controls; reject it after source audits
+  find unsupported process actions and restore the preceding runtime core.
+  Add RU/EN compactness fixtures, preserve optional-pointer trimming for both
+  layouts and make installation checks independent of prose headings.
 - Build full comparisons per option, check the supplied values, and put the
   recommendation first. Add RU/EN checks for full lists, unknown prices and
   short choice-only replies; keep assessor criteria separate from later workflow.

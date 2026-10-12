@@ -50,16 +50,18 @@ reader survey. Optional examples remain optional.
 
 ## Focused compactness revision
 
-The next candidate combines overlapping wording, meaning and self-check rules
+The tested candidate combined overlapping wording, meaning and self-check rules
 without moving runtime constraints behind external references. Detailed processes
 pair each stage's action with its purpose, retaining loops and approval gates.
 A preview and recap must not repeat the same process. Hypothetical scenarios and
 unknowns earn space only when they affect interpretation, a decision or diagnosis.
 Supplied uncertainty remains part of the source meaning to preserve.
 
-The entrypoint is 762 words instead of 1048. This is a static size change, not a
-token or comprehension result. The focused paired pilot uses fresh controls and
-reports native usage separately; its outcome is recorded in development status.
+The tested entrypoint was 762 words instead of 1048. It reduced observed input
+and output tokens, but added unsupported process actions in Russian replies.
+The semantic gate failed and the 1048-word core was restored. Candidate evidence
+is retained separately; see development status for the masked and source-audit
+results. This does not establish a causal effect of compression or reader benefit.
 
 The global installer omits optional example pointers in both supported layouts:
 the legacy `## Optional examples` section and the compact trailing pointer beginning
