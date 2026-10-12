@@ -1,5 +1,27 @@
 # Palych — development status
 
+## Empty-moves pilot: semantic gate failed — 2026-10-12
+
+An exploratory masked pilot compared the current core (SHA-256 `eba7a41f…efc92`)
+with the candidate (`e6990d03…22245`) on `claude-sonnet-5-5`, effort medium, through
+an isolated Claude Code 2.1.287 subscription session. 32 cases (12 empty-moves,
+20 compact) received one fresh reply per core: 64 processes with empty tools, MCP,
+skills and hooks. Eight fresh same-model assessor sessions judged masked pairs;
+judgments were locked before unblinding. One batch was re-judged before unblinding
+after violating the protocol; 16 calls were rejected by an item-count schema error.
+
+Locked results: 13 candidate preferences, 10 current-core preferences, 9 ties.
+Semantic failures: 3 current, 2 candidate; both candidate failures are regressions.
+`en-unknown-reason` promised unchanged behavior; `ru-roles` added a direct route as
+"not through the buffer". The current core picked one conflicting delivery term in
+`en-conflict`; the candidate named the conflict. A separate unblinded source audit
+confirmed all five failures and found two borderline candidate statements.
+
+Input tokens rose 6.84% (103449 → 110527) and output tokens 2.13%; answer characters
+fell 2.21%. Neither core produced grading labels or manner praise, so the run shows
+no measurable benefit from the empty-moves rule. The fixed semantic gate failed:
+the candidate is not ready for integration. Reader comprehension was not tested.
+
 ## Empty-moves candidate prepared — 2026-10-12
 
 Several public Russian editing skills were reviewed for principles; no text or
