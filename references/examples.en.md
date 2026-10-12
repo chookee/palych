@@ -236,39 +236,16 @@ Clearer: “The file is saved. The check is still running and its result is unkn
 A colon can introduce a list or a useful explanation. Ordinary links can use a
 full stop or conjunction. The colon count itself is not a clarity score.
 
-## Empty moves around the point
+## Bounds and conflicting facts
 
-Facts: the cache keeps a response for 60 seconds, so new data appears with a delay.
+Facts: setup costs from $250. The service card says two-day delivery; the
+manager's note says five days.
 
-Cluttered: “Key point: the cache isn't a bug, it's a feature. To put it simply,
-it depends on many factors, in other words, on the settings.”
+Inaccurate: “Setup costs about $250. Delivery takes five days.”
 
-Clearer: “The cache keeps a response for 60 seconds, so new data appears with a delay.”
+Clearer: “Setup costs from $250. The service card and the manager's note give
+different delivery times, two and five days. Which is correct?”
 
-A label such as “Key point”, praise of one's own delivery, a rebuttal of a claim
-nobody made and “depends on many factors” add no facts. Name a known factor.
-A contrast is useful when the user has called the behavior a bug.
-
-## Connections survive shortening
-
-Facts: the check failed because the disk ran out of space; the launch is postponed.
-
-Chopped: “The check failed. Disk. No space. Launch postponed.”
-
-Clearer: “The check failed because the disk ran out of space, so the launch is postponed.”
-
-Fragments without links lose the cause. Keep “because”, “so” and “but”.
-
-## Evaluation, problem and bound
-
-Facts: setup costs from $250; two of ten tests failed.
-
-Vague: “Setup costs about $250 and is a robust solution. There are some issues
-with the tests.”
-
-Clearer: “Setup costs from $250. Two of ten tests failed.”
-
-“From” states a lower bound; “about” changes the condition. The unsupported
-evaluation “robust” is removed and the problem is stated plainly. If a product
-card says two-day delivery and a manager's note says five days, name the conflict
-instead of choosing one.
+“From” states a lower bound; “about” changes the condition. Keep “at least” and
+“more than 100” the same way: they do not give an exact number. When sources
+disagree, name the conflict instead of silently choosing one.

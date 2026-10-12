@@ -116,20 +116,14 @@ claims can obstruct reading; a full stop or conjunction may be clearer. Colon,
 word and repeated-term counts are diagnostics, not pass/fail quotas. Semantic
 fidelity takes precedence over smaller counts.
 
-## Empty moves, connections and bounds
+## Bounds and conflicting facts
 
-Use [empty-moves-prompts.json](empty-moves-prompts.json) with the repetition and
-compactness cases. Flag a fragment as an empty move when deleting it loses no fact,
-condition or link: a label that only grades the next point, praise of the reply's
-own manner, a contrast or rebuttal of a claim nobody made, a restatement, a
-placeholder mechanism or an unnamed authority. A contrast with the user's stated
-claim, a narrowing "that is" and "important" followed by its consequence are not
-defects. Do not count markers or require phrases.
-
-Shortening must keep cause, contrast and sequence; chopped fragments that lose a
-link are a meaning failure, not compactness. Lower bounds and "more than" remain
-conditions. Conflicting supplied facts must be named, not resolved by choice,
-average or range. A failure must be recognizable as a failure.
+Use [bounds-conflicts-prompts.json](bounds-conflicts-prompts.json) with the
+unknown-reason, roles and deadline cases as regression guards. "From", "at least",
+"at most" and "more than" remain conditions; an exact or approximate number must
+not replace them. When supplied facts conflict, the reply names the conflict and
+does not resolve it by choice, average, range or an invented reason. A request for
+a ready text may get the conflict and a question first. Do not require phrases.
 
 ## Assessor calibration and audit
 

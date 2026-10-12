@@ -1,5 +1,14 @@
 # Palych — development status
 
+## Narrowed bounds/conflicts candidate — 2026-10-12
+
+After the failed pilot only one rule was kept: keep "from", "at least" and
+"more than" bounds, and name conflicting supplied facts instead of choosing one.
+The other candidate rules, examples and documentation were reverted to `main`.
+The core grows from 1082 to 1100 words, SHA-256 `bba312add40b81cd0727f40d3f5de7e207163e21973a09ea1d83d7a657cebaa8`.
+An eight-case [bounds and conflicts set](../evals/bounds-conflicts-prompts.json)
+was added. A three-repetition pilot is pending.
+
 ## Empty-moves pilot: semantic gate failed — 2026-10-12
 
 An exploratory masked pilot compared the current core (SHA-256 `eba7a41f…efc92`)

@@ -2,11 +2,9 @@
 
 ## 0.6.0 — unreleased
 
-- Cut empty rhetorical moves: grading labels, praise of the reply's own manner,
-  contrasts or rebuttals of claims nobody made, restatements, placeholder
-  mechanisms and unnamed authorities. Keep connections when shortening, replace
-  evaluations with facts, name failures plainly, keep bounds and name conflicting
-  supplied facts. Add original RU/EN examples and 12 regression cases; untested.
+- Keep bounds such as "from", "at least" and "more than", and name conflicting
+  supplied facts instead of choosing one. Add original RU/EN examples and eight
+  focused cases. A broader empty-moves candidate failed its blind pilot and was dropped.
 - Prepare a narrow candidate that merges semantic duplicates, makes headings
   and body add different information, reduces unambiguous noun echoes and avoids
   routine colon chains. Keep stable terminology and all source-fidelity rules;
