@@ -11,11 +11,18 @@ unsupported causes and system guarantees, cache conditions, exact restrictions,
 and retention of requested options and depth. Its case criteria are in the rubric.
 The original 20-case set and its historical evidence remain unchanged.
 
+The [full-comparison set](full-comparison-prompts.json) adds six synthetic RU/EN
+cases: complete option lists, an unknown qualifying price, and a two-sentence
+choice-only request. Repeat each case three times per condition. Check individual
+values and uncertainty before presentation; record answer placement separately
+from clarity judgments. Choice-only requests do not require a full table.
+
 For a focused pilot select affected families; for a full run of the additional
 set, pass `--prompts evals/compact-prompts.json` to the existing masking tool.
 Three repetitions make 60 pairs for this set. Generation consumes the agent's
 usage limits; run the free offline package checks first. Record new results in
-distinct files. This revision adds tasks, not measured model results.
+distinct files. Focused model checks and their limits are recorded separately in
+[development status](../docs/STATUS.md); historical results remain unchanged.
 
 ## Reproducible blind checks
 
@@ -32,6 +39,9 @@ editorial proxies, not reader comprehension. Use the separate
 [reader protocol](reader-check.md) for that claim.
 
 Record language compliance separately and use the rubric's assessor calibration.
+Give the assessor only judging criteria and calibration, keeping later workflow
+steps out of its prompt. An assessor's claim that it performed an unblinded audit
+is not evidence of that audit; verify the actual inputs and recorded operations.
 Audit verdicts against raw replies after locking; keep the audit separate from
 the locked score. A missed error is not repaired by silently changing an earlier
 judgment. Label any later audit as unblinded and record the exact tested core hash.

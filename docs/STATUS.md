@@ -18,6 +18,37 @@ These results do not establish reader comprehension or universal compliance.
 The source revision does not update personal installations or establish live
 hook delivery. This candidate is not yet published to main.
 
+## Focused Codex follow-up — 2026-10-12
+
+The comparison rule was tested on `gpt-6.1-sol`, medium effort, with six new
+RU/EN prompts and three fresh replies per condition. All 18 masked pairs tied;
+both cores preserved the requested values. In the 12 full comparisons per core,
+the conclusion preceded the table in 10 candidate replies versus 3 controls.
+All six candidate choice-only replies retained the requested two-sentence form.
+
+Twenty further candidate replies were compared with saved current-core controls.
+The known English seven-plan omission was repaired; one Russian cache explanation
+had more avoidable detail. No new semantic regressions were found by the masked
+assessor or the subsequent unblinded source audit. Reused controls and unavailable
+provider settings limit causal conclusions; this does not establish an overall
+compactness improvement or reader comprehension.
+
+Two eight-turn Codex conversations completed actual manual compaction after turn
+six. The candidate core was supplied once through developer instructions; it was
+not reinjected. Post-compaction replies retained the memo's exact deadline,
+timezone, file-size boundary and failed-check prohibition. RU/EN switching and
+the one-word override worked. This tests the injected core in a short conversation,
+not personal installation, global-instructions loading, plugin hooks or automatic
+compaction near the context limit.
+
+In those conversations, the candidate's reported input tokens were 27.1% higher
+and output tokens 7.8% higher than the no-skill control. Cached input varied;
+subscription debit and separately attributable compaction consumption were not
+measured. Loading the core once does not remove its cost in later input contexts.
+Candidate core SHA-256:
+`e3ad8877c3028afc6d422686a2b46fd166a32a6ee6118d37fa47f5a9fd0185dc`.
+Raw host logs and model replies remain outside the public package.
+
 ## 0.5.0 installation and verification history
 
 The default installation now adds Palych's runtime rules to Codex or Claude Code

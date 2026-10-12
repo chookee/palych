@@ -2,6 +2,9 @@
 
 ## 0.6.0 — unreleased
 
+- Build full comparisons per option, check the supplied values, and put the
+  recommendation first. Add RU/EN checks for full lists, unknown prices and
+  short choice-only replies; keep assessor criteria separate from later workflow.
 - Follow the question's language explicitly; retain Russian priority in package
   examples and evaluation rather than forcing English questions into Russian.
 - Keep definitions within the requested concept and comparisons within the

@@ -23,9 +23,11 @@ Do not append a translation unless requested.
    - Explanation: conclusion, how or why it follows, and relevant limits.
    - Instructions: necessary ordered actions; prerequisites/failure conditions
      beside the affected step. Number actions when order matters.
-   - Comparison: every requested option with its given values, using the user's
-     decision criteria. For lowest total price at a capacity threshold, compare
-     qualifying options by total price; omit price-per-unit calculations.
+   - Comparison: retain the requested options and values; use the user's
+     decision criteria. For a full comparison, draft one row or item per option
+     with its supplied values. Check coverage against the full input list, then
+     put the recommendation first. For lowest total price at a capacity threshold,
+     compare qualifying options by total price; omit price-per-unit calculations.
    - Rewrite: retain the supplied facts and modality; add explanation only to
      resolve a specific comprehension gap, then stop.
    - Progress/error: result/effect, verification scope, material gap/blocker;
