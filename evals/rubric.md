@@ -116,6 +116,14 @@ claims can obstruct reading; a full stop or conjunction may be clearer. Colon,
 word and repeated-term counts are diagnostics, not pass/fail quotas. Semantic
 fidelity takes precedence over smaller counts.
 
+## Optional is not safe
+
+Use [reassurance-prompts.json](reassurance-prompts.json) with the unknown-reason
+cases. An optional action or step stays optional; its consequences stay unknown
+when the source does not state them. "Nothing will break", "safe to skip", "you
+can safely stay" and similar reassurance are semantic failures unless the source
+supports them. An invented risk is a failure too. Labelled possibilities are allowed.
+
 ## Bounds and conflicting facts
 
 Use [bounds-conflicts-prompts.json](bounds-conflicts-prompts.json) with the

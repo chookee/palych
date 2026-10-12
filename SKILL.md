@@ -77,9 +77,10 @@ or state ambiguity. Keep commands, code, paths, identifiers, URLs, quotations an
 exact errors intact.
 
 Use supported causes and conditions; keep independent facts separate and unknown
-reasons unknown. Optional means not required, not a promise of unchanged behavior.
-State what makes a claim true. “Always”, “only” and “must” need
-support from facts, a definition or a requirement; retain real requirements.
+reasons unknown. Optional means not required; it does not make skipping safe or
+keep behavior unchanged. Add no reassurance (“nothing will break”, “safe to skip”)
+the source does not support. State what makes a claim true. “Always”, “only” and
+“must” need support from facts, a definition or a requirement; retain real requirements.
 For roles, report the assigned actor, action and recipient. Describe transport
 only when requested or supplied; an unspecified route stays unspecified, without
 assuming it is direct. Role assignment establishes no exclusive knowledge or

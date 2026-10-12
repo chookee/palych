@@ -1,5 +1,49 @@
 # Palych — development status
 
+## Actors, promises and next steps — 2026-10-13
+
+After the no-reassurance pilot, one clause was added: do not add actors, promises
+or next steps the source does not state (1100 → 1113 words), SHA-256
+`5161ced213ad40e116ffe7a4a56c4780f9428b1bc089e34d7619af942e3c9bd5`. It targets the
+remaining candidate failures: an invented "developers will not require it" and an
+added "fix the problem before trying again".
+
+A focused three-repetition exploratory pilot on unknown-reason and deadline (RU/EN,
+24 fresh replies, two same-model assessor sessions, locked before unblinding) gave
+5 candidate preferences, 4 current-core preferences and 3 ties. The assessor marked
+1 current and 3 candidate failures; the source audit confirms two candidate failures
+(an invented "developers" subject, an added "ask the organizers") and treats the
+literal reading of "before 09:40" as an assessor error. Both cores wrote "fix the
+problem and pass the check first". The clause showed no measurable effect on the
+targeted additions. Input tokens +1.79%, output −4.82%, characters −5.22%.
+The clause was removed; the core returns to the tested no-reassurance version,
+SHA-256 `adaa8b2c40d8e0224166adfc568c4a4ca8b7cdda16a030d8c613c35709011d0c`.
+
+## No-reassurance candidate prepared — 2026-10-12
+
+In both 2026-10-12 Claude pilots, both cores sometimes turned an optional update into
+a guarantee ("nothing will break", "you can safely skip it") despite the existing
+rule. The candidate restates the rule with these surface forms (1082 → 1100 words), SHA-256
+`adaa8b2c40d8e0224166adfc568c4a4ca8b7cdda16a030d8c613c35709011d0c`.
+Original example lines and a four-case [reassurance set](../evals/reassurance-prompts.json)
+were added.
+
+A three-repetition exploratory masked pilot on `claude-sonnet-5-5` (effort medium,
+isolated Claude Code 2.1.287 subscription sessions) used the four focused cases,
+unknown-reason, and roles/deadline/conflict guards in RU and EN: 72 fresh replies,
+six same-model assessor sessions, judgments locked before unblinding. Locked results:
+19 candidate preferences, 7 current-core preferences, 10 ties. Semantic failures:
+13 current, 5 candidate, including 4 candidate regressions.
+
+In the 18 targeted replies the current core added an unsupported reassurance 8 times,
+the candidate once. Candidate regressions: an invented "developers will not require
+it" actor and promise (`ru-unknown-reason`, twice), "the device will keep working"
+(`ru-optional-backup`), an added "fix or ask before trying again" (`en-deadline`).
+The assessor passed similar current-core phrases, so the regressions partly reflect
+assessor inconsistency; the invented actor appears only in candidate replies.
+The fixed semantic gate is formally not met. Input tokens +1.17%, output +2.28%,
+answer characters +1.66%. Reader comprehension untested.
+
 ## Narrowed bounds/conflicts candidate — 2026-10-12
 
 After the failed pilot only one rule was kept: keep "from", "at least" and

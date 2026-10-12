@@ -2,6 +2,8 @@
 
 ## 0.6.0 — unreleased
 
+- Do not turn "optional" into a safety reassurance such as "nothing will break"
+  or "safe to skip" without support. Add four focused RU/EN cases.
 - Keep bounds such as "from", "at least" and "more than", and name conflicting
   supplied facts instead of choosing one. Add original RU/EN examples and eight
   focused cases. A broader empty-moves candidate failed its blind pilot and was dropped.

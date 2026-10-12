@@ -146,6 +146,8 @@ is unknown.”
 
 No story about why it was released or why installation is optional is needed.
 Optional installation does not promise that the system will keep behaving unchanged.
+“Nothing will break if you skip it” or “you can safely stay on the current version”
+adds a guarantee that the facts do not contain.
 
 ## One representation of a process
 
