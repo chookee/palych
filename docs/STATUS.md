@@ -1,5 +1,27 @@
 # Palych — development status
 
+## Palych versus no skill; combined rules — 2026-10-13
+
+Exploratory masked pilots on `claude-sonnet-5-5` (effort medium, isolated Claude Code
+2.1.287 subscription sessions, same-model assessors, judgments locked before
+unblinding). Reader comprehension was not tested.
+
+No skill versus `main` 466fb77 (SHA-256 `3b176dce…a6828`): 30 RU/EN cases from the
+compact, bounds/conflicts and reassurance sets, three fresh replies per condition,
+180 replies and 15 assessor sessions. Locked results: 86 Palych preferences, 1
+no-skill preference, 3 ties. Semantic failures: 45 without Palych, 3 with it; one
+Palych regression (`en-depth`, an unsupported "cannot be undone" claim). Palych
+replies were 45.4% fewer output tokens and 47.9% fewer characters, in both languages.
+Input tokens rose by about 2600 per request because the core is sent each time;
+cached-input pricing and subscription debits were not measured.
+
+Combined rules: the pre-merge core (`eba7a41f…efc92`) versus `main` on eight cases
+with earlier failures (unknown-reason, deadline, conflict, optional-backup; RU/EN),
+three replies each. The `main` replies were reused from the no-skill pilot. Locked
+results: 13 `main`, 4 pre-merge, 7 ties; semantic failures 12 versus 4. The pre-merge
+core chose one conflicting term in 5 of 6 conflict replies, `main` in none. All three
+`main` regressions are in `optional-backup`, where "the app works without it" persists.
+
 ## Actors, promises and next steps — 2026-10-13
 
 After the no-reassurance pilot, one clause was added: do not add actors, promises

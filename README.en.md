@@ -74,3 +74,23 @@ Palych adapts selected Easy-to-read guidance for chat. It assumes no reader
 diagnosis and makes no claim of compliance with the full methodology.
 [Sources](references/sources.md) · [Checks and limits](docs/STATUS.md) ·
 [Development](docs/DEVELOPMENT.md). License: [MIT](LICENSE).
+
+## Sample skill test results
+
+Blind comparison on 13 October 2026: `claude-sonnet-5-5` replies without Palych and
+with Palych from `main` 466fb77. 30 tasks in Russian and English, 3 replies per task,
+90 pairs. The same model judged the pairs without knowing which reply was which.
+
+| Measure | Without Palych | With Palych |
+|---|---:|---:|
+| Pair wins | 1 | 86 |
+| Ties | 3 | 3 |
+| Meaning errors | 45 | 3 |
+| Output tokens | 38,284 | 20,918 (−45%) |
+| Reply characters | 98,562 | 51,390 (−48%) |
+| Input tokens per request | ~690 | ~3,300 |
+
+A meaning error is an invented guarantee, picking one of conflicting facts or another
+distortion of the task. Input tokens grow because the core is sent with every request.
+This is an exploratory pilot, not a test of reader comprehension. Details are in
+[STATUS.md](docs/STATUS.md).
