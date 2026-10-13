@@ -138,7 +138,10 @@ def context(root, host, state_dir, session_id, enabled, skill_text='', mode=None
     return text + 'Palych is ON for this conversation.\n' + skill_text
 
 
-def emit_context(root, host, state_dir, sid, name, mode):
+def emit_context(root, host, state_dir, sid, name, mode, source=None):
+    # Codex keeps earlier hook context in the resumed rollout; Claude Code reruns
+    # SessionStart on resume instead of replaying the old context.
+    replayed = host == 'codex' and source == 'resume'
     with locked_state(state_dir) as obj:
         if mode:
             change_mode(obj, sid, mode)
@@ -151,8 +154,11 @@ def emit_context(root, host, state_dir, sid, name, mode):
             body = (root / 'skills' / 'palych' / 'SKILL.md').read_text(encoding='utf-8')
             digest = hashlib.sha256(body.encode('utf-8')).hexdigest()
             emitted = obj.setdefault('emitted', {})
-            if name == 'SessionStart' or emitted.get(key) != digest:
+            if emitted.get(key) != digest or (name == 'SessionStart' and not replayed):
                 skill_text = body
+            elif replayed:
+                # The resumed history already holds this core and current mode.
+                return None
             emitted[key] = digest
         message = context(root, host, state_dir, sid, enabled, skill_text, mode)
     return message
@@ -178,7 +184,9 @@ def handle(event, root, host, state_dir):
             return None
     elif event.get('source') not in ('startup', 'resume', 'clear', 'compact', 'fork'):
         return None
-    message = emit_context(root, host, state_dir, sid, name, mode)
+    message = emit_context(root, host, state_dir, sid, name, mode, event.get('source'))
+    if message is None:
+        return None
     return {'hookSpecificOutput': {'hookEventName': name, 'additionalContext': message}}
 
 

@@ -38,13 +38,25 @@ hook context in the Claude transcript and the Codex rollout, not from reply styl
   core was absent and off was delivered. A new conversation received the core again.
 - Codex adds the core again on every `exec resume` (about 2,221 tokens each),
   because the adapter emits it on each SessionStart. Claude Code showed no
-  duplicate after resume. Not fixed.
+  duplicate after resume. Fixed in the adapter afterwards; see below.
 - Codex does not run plugin hooks without persisted hook trust: the plugin is
   enabled but loads no rules and reports no error. How a user persists trust
   (TUI or config) was not checked.
 - Not verified live: progress messages, plugin update and reinstall followed by a
   conversation, the global-block installation route, and Hermes, Cursor, Gemini
   CLI and `npx skills`.
+
+## Codex resume deduplication — 2026-10-14
+
+The adapter no longer re-emits the core on a Codex `resume` when this session's
+emission marker matches the current core. It still emits on a changed core, a
+session without a marker (started before installation) and in off mode (short
+off block). Claude Code resume, startup, clear, compact and fork are unchanged.
+Offline checks pass: `check_package.py`, `build_packages.py --check`, adapter
+and eval unit tests, including new Codex resume cases with synthetic events.
+Not verified live: that `codex exec resume` keeps the same `session_id` and the
+rollout then holds one core message. A Codex fork, if it copies history into a
+new session, may still duplicate the core.
 
 ## Palych versus no skill; combined rules — 2026-10-13
 
