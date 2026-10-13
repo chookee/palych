@@ -23,18 +23,23 @@ def digest(text):
     return hashlib.sha256(text.encode('utf-8')).hexdigest()
 
 
-def block(source=ROOT):
+def payload(source=ROOT):
+    """Return the always-on instructions shared by global installs and host packages."""
     core = (source / 'SKILL.md').read_text(encoding='utf-8')
     # Optional examples and installation links are not needed in global context.
     body = core.split('---', 2)[2].split('## Optional examples', 1)[0]
     # The compact core keeps its optional pointer after the final self-check.
     body = body.split('Consult only relevant optional', 1)[0].strip()
     body = body.replace('[host adapter](adapters/README.md)', 'host adapter')
-    payload = ('Palych is enabled by default for every chat reply in this conversation.\n'
+    return ('Palych is enabled by default for every chat reply in this conversation.\n'
                'An explicit request to turn it off takes priority until enabled again.\n'
                'Keep the current on/off state when compacting or handing off context.\n\n'
                + body + '\n')
-    return START + '<!-- palych:sha256 ' + digest(payload) + ' -->\n' + payload + END
+
+
+def block(source=ROOT):
+    text = payload(source)
+    return START + '<!-- palych:sha256 ' + digest(text) + ' -->\n' + text + END
 
 
 def locate(text):

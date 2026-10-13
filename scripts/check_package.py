@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Offline checks for the standalone skill, documentation and public evidence."""
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -55,10 +56,20 @@ def check():
             errors.append('SKILL.md: missing description')
     if re.search(r'\b(?:TODO|TBD|PLACEHOLDER)\b', core):
         errors.append('SKILL.md: unfinished instruction')
+    # Skill installers scan the root and agent skill folders, so host copies stay
+    # deep under packages/ and the root SKILL.md remains the only visible skill.
+    for relative in files:
+        if relative.name.lower() == 'skill.md' and relative != Path('SKILL.md') and (
+                relative.parts[0] != 'packages' or len(relative.parts) < 4):
+            errors.append(f'{relative}: second discoverable skill outside packages/')
+    spec = importlib.util.spec_from_file_location('build_packages', ROOT / 'scripts' / 'build_packages.py')
+    packages = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(packages)
+    errors.extend(packages.drift(ROOT))
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1
-    print(f'Validated {len(files)} standalone files: frontmatter, JSON, links and public paths.')
+    print(f'Validated {len(files)} standalone files: frontmatter, JSON, links, public paths and generated packages.')
     return 0
 
 

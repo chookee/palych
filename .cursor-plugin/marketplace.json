@@ -1,0 +1,18 @@
+{
+  "name": "palych",
+  "owner": {
+    "name": "ponomr",
+    "url": "https://github.com/ponomr"
+  },
+  "metadata": {
+    "description": "Clear conversational replies in Russian and English, enabled by default with persistent mode controls.",
+    "version": "0.6.0"
+  },
+  "plugins": [
+    {
+      "name": "palych",
+      "source": "./packages/cursor",
+      "description": "Clear conversational replies in Russian and English, enabled by default with persistent mode controls."
+    }
+  ]
+}
