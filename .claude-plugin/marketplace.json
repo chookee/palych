@@ -1,0 +1,34 @@
+{
+  "name": "palych",
+  "owner": {
+    "name": "ponomr",
+    "url": "https://github.com/ponomr"
+  },
+  "metadata": {
+    "description": "Clear conversational replies in Russian and English, enabled by default with persistent mode controls.",
+    "version": "0.6.0"
+  },
+  "plugins": [
+    {
+      "name": "palych",
+      "description": "Clear conversational replies in Russian and English, enabled by default with persistent mode controls.",
+      "version": "0.6.0",
+      "source": "./packages/claude-code",
+      "author": {
+        "name": "ponomr",
+        "url": "https://github.com/ponomr"
+      },
+      "homepage": "https://github.com/ponomr/palych",
+      "repository": "https://github.com/ponomr/palych",
+      "license": "MIT",
+      "keywords": [
+        "writing",
+        "plain-language",
+        "russian",
+        "english",
+        "replies"
+      ],
+      "category": "productivity"
+    }
+  ]
+}

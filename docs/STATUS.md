@@ -1,5 +1,69 @@
 # Palych — development status
 
+## Host installation checks — 2026-10-13
+
+Offline checks of branch `claude/distribution-packaging` (`59a7ee0`) in temporary
+config directories, without model calls. They cover installation, hook output and
+mode state, not how a model applies the rules.
+
+- Claude Code 2.1.287 plugin (local and GitHub marketplace): install, update
+  0.6.0 → 0.6.1, uninstall and reinstall work. The SessionStart hook emits the
+  core on startup, resume, clear and compact; a saved off survives compact and
+  resume; always-on/always-off apply to new sessions; subagent events are ignored.
+- Codex CLI 0.162.1 plugin (local and GitHub marketplace): `codex plugin add`,
+  `remove` and reinstall work; mode state survives reinstall. The hook output is
+  about 2,221 Codex tokens (UTF-8 bytes / 4), within `additionalContextLimit: 6000`,
+  so it stays inline. A version upgrade was not observed.
+- Hermes v0.16.0: the skill loads with `hermes -s palych`; there is no
+  `skills.auto_load` setting. GitHub install works only after `packages/` reaches
+  the default branch.
+- Cursor, Gemini CLI and `npx skills`: files validated only; not run in a host.
+- Known limitation: installing both the global block and the Claude Code or Codex
+  plugin loads the rules twice, and their mode states can conflict. The hook
+  does not detect the global block; INSTALL.md tells users to choose one route.
+- Not verified offline: live model conversations; see the live checks below.
+
+## Live host checks — 2026-10-14
+
+Branch `claude/distribution-packaging` (`26cd3ac`), plugin 0.6.0. Claude Code
+2.1.287 (`--model sonnet`, `--setting-sources project`, `--plugin-dir` copy with
+a temporary `--state-dir`) and Codex CLI 0.162.1 (temporary `CODEX_HOME`, GitHub
+marketplace, `--dangerously-bypass-hook-trust`). Rule loading was confirmed from
+hook context in the Claude transcript and the Codex rollout, not from reply style.
+
+- Both hosts: a new conversation received the core; a Russian question without
+  Palych's name and a later English question on another topic got replies in the
+  matching language. "Отключи Палыча" saved off for the conversation; after a
+  real compaction (`/compact` in Claude Code, automatic compaction in Codex) the
+  core was absent and off was delivered. A new conversation received the core again.
+- Codex adds the core again on every `exec resume` (about 2,221 tokens each),
+  because the adapter emits it on each SessionStart. Claude Code showed no
+  duplicate after resume. Fixed in the adapter afterwards; see below.
+- Codex does not run plugin hooks without persisted hook trust: the plugin is
+  enabled but loads no rules and reports no error. How a user persists trust
+  (TUI or config) was not checked.
+- Not verified live: progress messages, plugin update and reinstall followed by a
+  conversation, the global-block installation route, and Hermes, Cursor, Gemini
+  CLI and `npx skills`.
+
+## Codex resume deduplication — 2026-10-14
+
+The adapter no longer re-emits the core on a Codex `resume` when this session's
+emission marker matches the current core. It still emits on a changed core, a
+session without a marker (started before installation) and in off mode (short
+off block). Claude Code resume, startup, clear, compact and fork are unchanged.
+Offline checks pass: `check_package.py`, `build_packages.py --check`, adapter
+and eval unit tests, including new Codex resume cases with synthetic events.
+Live check with codex-cli 0.162.1 and the plugin from commit e3c98c0, in a
+temporary `HOME` and `CODEX_HOME` with `--dangerously-bypass-hook-trust`:
+`codex exec` and then `codex exec resume` on the same thread wrote both turns
+into one rollout file with one `thread_id`. That rollout holds one core message
+(one `## Build the reply` and one adapter block), from the first turn; the
+resumed turn added none. Both replies followed the skill. That the hook ran on
+resume and chose to skip is inferred from the earlier duplicate on the same
+path, not logged directly. Not checked: a Codex fork, which may still duplicate
+the core if it copies history into a new session.
+
 ## Palych versus no skill; combined rules — 2026-10-13
 
 Exploratory masked pilots on `claude-sonnet-5-5` (effort medium, isolated Claude Code

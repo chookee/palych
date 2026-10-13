@@ -1,0 +1,6 @@
+{
+  "name": "palych",
+  "version": "0.6.0",
+  "description": "Clear conversational replies in Russian and English, enabled by default with persistent mode controls.",
+  "contextFileName": "packages/gemini/GEMINI.md"
+}

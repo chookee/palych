@@ -108,24 +108,94 @@ Start a new conversation. Other instructions and backups are preserved. A reques
 to disable Palych permanently requires removing the block through the authorized
 configuration workflow, rather than promising persistence from a chat reply alone.
 
-## Вариант с плагином / Plugin alternative
+## Плагины и другие агенты / Plugins and other hosts
 
-Плагин использует хук начала разговора (`SessionStart`) и сохраняет состояние
-режима отдельно. В новой установке режим включён по умолчанию. Старое сохранённое
-выключение при обновлении сохраняется. Правила восстанавливаются после сжатия,
-если хост отправляет событие `compact`.
+Готовые пакеты лежат в `packages/` и собираются из `SKILL.md`. Выбери один
+способ для каждого агента: общие инструкции **или** пакет. Одновременная
+загрузка может добавить правила дважды и создать разные состояния режима.
 
-A plugin uses a SessionStart hook and stores mode state separately. A fresh
-installation defaults to on; existing saved off states survive updates.
-It restores rules after compaction when the host delivers the compact event.
-
-Сборка и команды режима — в [adapters/README.md](adapters/README.md).
-Выбери один способ: общие инструкции **или** плагин. Их одновременная загрузка
-может добавить правила дважды и создать разные состояния режима.
-
-See [adapters/README.md](adapters/README.md) for building and controls.
-Choose global instructions **or** the plugin to avoid duplicate rules and
+Ready-made packages live in `packages/` and are generated from `SKILL.md`. Choose
+global instructions **or** a package for each host to avoid duplicate rules and
 conflicting mode state.
+
+**Claude Code** (плагин с хуком / plugin with hooks):
+
+```sh
+claude plugin marketplace add ponomr/palych
+claude plugin install palych@palych
+```
+
+**Codex** (плагин с хуком / plugin with hooks):
+
+```sh
+codex plugin marketplace add ponomr/palych
+codex plugin add palych@palych
+```
+
+Или установи Palych в каталоге плагинов приложения Codex.
+Or install Palych from the Codex app's plugin directory.
+
+Codex запускает хуки плагина только после того, как пользователь разрешил им
+работать. Без разрешения плагин включён, но правила не загружаются, и ошибки
+нет. После установки начни новый разговор и проверь, что правила загружены.
+Codex runs plugin hooks only after the user trusts them. Until then the plugin
+is enabled but loads no rules and reports no error. After installing, start a
+new conversation and check that the rules are loaded.
+
+Плагины Claude Code и Codex используют хук начала разговора (`SessionStart`)
+и хранят состояние режима отдельно. В новой установке режим включён. Сохранённое
+выключение переживает обновление. После сжатия правила восстанавливаются, если
+хост отправляет событие `compact`. Команды режима — в
+[adapters/README.md](adapters/README.md).
+
+The Claude Code and Codex plugins use a SessionStart hook and store mode state
+separately. A fresh installation defaults to on; a saved off state survives
+updates. Rules return after compaction when the host delivers the compact event.
+See [adapters/README.md](adapters/README.md) for mode controls.
+
+**Gemini CLI:**
+
+```sh
+gemini extensions install https://github.com/ponomr/palych
+```
+
+Расширение загружает `packages/gemini/GEMINI.md` в каждый разговор.
+The extension loads `packages/gemini/GEMINI.md` into every conversation.
+
+**Hermes:**
+
+```sh
+hermes skills install ponomr/palych/packages/hermes/palych
+```
+
+Hermes загружает скилл с начала разговора, только если запустить его с флагом
+(проверено на v0.16.0). Настройки для постоянной загрузки нет.
+Hermes preloads the skill only when started with the flag (checked on v0.16.0);
+there is no config setting for always-on loading:
+
+```sh
+hermes -s palych
+```
+
+Скилл, поставленный из GitHub, удаляется командой `hermes skills uninstall palych`.
+A skill installed from GitHub is removed with `hermes skills uninstall palych`.
+
+**Cursor:** пакет `packages/cursor` содержит правило `rules/palych.mdc` с
+`alwaysApply: true`. До публикации в каталоге Cursor скопируй этот файл в
+`.cursor/rules/` проекта. The `packages/cursor` package holds an always-applied
+rule; until it is listed in Cursor's marketplace, copy `rules/palych.mdc` into a
+project's `.cursor/rules/`.
+
+**Другие агенты / Other agents:** `npx skills add ponomr/palych` ставит `SKILL.md`
+как обычный скилл. Агент вызывает его по описанию, а не в каждом ответе.
+It installs `SKILL.md` as a regular skill that the agent invokes by description,
+not in every reply.
+
+В Gemini CLI, Hermes и Cursor нет хуков Палыча: «Отключи Палыча» действует только
+в текущем разговоре. Постоянно отключить — удалить расширение, скилл или правило.
+Gemini CLI, Hermes and Cursor have no Palych hooks: “Turn off palych” lasts only
+for the current conversation. Remove the extension, skill or rule to disable it
+permanently.
 
 ## Проверка в агенте / Host verification
 

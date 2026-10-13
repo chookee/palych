@@ -4,8 +4,11 @@ This file governs development, not installation or reply style. For an owner
 request to install Palych, follow INSTALL.md and the owner's existing installation
 workflow. Runtime instructions are in SKILL.md.
 
-- The standalone skill is the canonical source. Generated Codex/Claude Code
-  plugins are build artifacts; change the source and rebuild.
+- The standalone skill is the canonical source. Host packages under `packages/`
+  and the plugin catalogs are generated from it and committed, because catalogs
+  must point at published Git paths. Never edit them by hand: change the source,
+  run `python3 scripts/build_packages.py` and commit both. The package check
+  fails when a generated file differs from the source.
 - The adapter supports macOS/Linux and Python 3.9+. The core needs no tools or
   other skills. Keep runtime instructions self-contained and references optional.
 - Run these checks from the repository root:

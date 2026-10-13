@@ -6,6 +6,9 @@ from pathlib import Path
 import shutil
 import tempfile
 
+VERSION = '0.6.0'
+DESCRIPTION = 'Clear conversational replies in Russian and English, enabled by default with persistent mode controls.'
+
 
 def build(source, target, host):
     if target.exists():
@@ -48,8 +51,10 @@ def build(source, target, host):
         (hooks / 'hooks.json').write_text(json.dumps(config, indent=2) + '\n', encoding='utf-8')
         directory = staging / ('.codex-plugin' if host == 'codex' else '.claude-plugin')
         directory.mkdir()
-        manifest = {'name': 'palych', 'version': '0.6.0',
-                    'description': 'Clear conversational replies in Russian and English, enabled by default with persistent mode controls.',
+        manifest = {'name': 'palych', 'version': VERSION, 'description': DESCRIPTION,
+                    'author': {'name': 'ponomr', 'url': 'https://github.com/ponomr'},
+                    'homepage': 'https://github.com/ponomr/palych',
+                    'repository': 'https://github.com/ponomr/palych',
                     'license': 'MIT', 'skills': './skills/'}
         (directory / 'plugin.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
         staging.rename(target)

@@ -11,6 +11,13 @@ creates a separate local plugin for Codex or Claude Code from the same source.
 It does not install anything or modify host settings. The adapter supports macOS and Linux and requires Python 3.9+,
 with no third-party packages or network requests.
 
+Готовые пакеты Claude Code и Codex лежат в `packages/`; установка из каталога
+плагинов описана в [INSTALL.md](https://github.com/ponomr/palych/blob/main/INSTALL.md). Ручная сборка нужна для проверки
+локальных изменений.
+
+Prebuilt Claude Code and Codex packages live in `packages/`; marketplace
+installation is in [INSTALL.md](https://github.com/ponomr/palych/blob/main/INSTALL.md). Build manually to test local changes.
+
 ## Сборка / Build
 
 Из папки исходного пакета (в собранном плагине сборщика нет).
@@ -84,8 +91,10 @@ preserved and reported as an error instead of being silently replaced.
 ## События и ограничения / Events and limits
 
 `SessionStart` восстанавливает актуальный режим при `startup`, `resume`, `clear`,
-`compact` и `fork`, если хост присылает событие. При включённом режиме хук всегда
-передаёт весь основной скилл; при выключенном — явное выключение.
+`compact` и `fork`, если хост присылает событие. При включённом режиме хук
+передаёт весь основной скилл; при выключенном — явное выключение. Исключение —
+`resume` в Codex: Codex сохраняет прежний контекст хука в истории, поэтому хук
+ничего не добавляет, если в этот разговор уже передано текущее ядро.
 `UserPromptSubmit` при первом включении, включении после выключения или изменении
 ядра передаёт полный скилл. Повторное включение в том же контексте передаёт
 короткое подтверждение. Обычные сообщения ничего не добавляют и не меняют.
@@ -97,8 +106,10 @@ preserved and reported as an error instead of being silently replaced.
 новую просьбу. Флаг и хеш переданного ядра записываются атомарно вместе.
 
 `SessionStart` restores the current mode on startup, resume, clear, compact and
-fork when delivered by the host. An active mode always emits the full core;
-an off mode emits explicit off. `UserPromptSubmit` emits the full core on first
+fork when delivered by the host. An active mode emits the full core; an off
+mode emits explicit off. Exception: Codex keeps earlier hook context in the
+resumed history, so a Codex `resume` adds nothing when this conversation already
+received the current core. `UserPromptSubmit` emits the full core on first
 activation, reactivation or changed core. Repeated activation in the same context
 emits a short acknowledgement. Ordinary messages neither inject nor mutate state.
 Hooks neither authorize nor block work commands.

@@ -26,9 +26,10 @@ class HookTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def event(self, name='SessionStart', sid='synthetic-session', **kwargs):
+    def event(self, name='SessionStart', sid='synthetic-session', host='codex', **kwargs):
         payload = {'hook_event_name': name, 'session_id': sid, **kwargs}
-        r = subprocess.run(self.command, input=json.dumps(payload), capture_output=True, text=True)
+        command = [host if arg == 'codex' else arg for arg in self.command]
+        r = subprocess.run(command, input=json.dumps(payload), capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stderr)
         if not r.stdout:
             return None
@@ -56,7 +57,7 @@ class HookTests(unittest.TestCase):
     def test_every_context_boundary_restores_full_core(self):
         self.control('Enable palych.')
         for source in ('startup', 'resume', 'clear', 'compact', 'fork'):
-            context = self.event(source=source)
+            context = self.event(source=source, host='claude-code')
             self.assertTrue(context.endswith(self.core()))
             self.assertNotIn('saved', json.loads(context.splitlines()[1]))
             self.assertNotIn(self.core(), self.control('Enable palych.'))
@@ -153,7 +154,7 @@ class HookTests(unittest.TestCase):
 
     def test_fresh_install_activates_without_a_control_message(self):
         for source in ('startup', 'compact', 'resume', 'clear', 'fork'):
-            context = self.event(source=source)
+            context = self.event(source=source, host='claude-code')
             self.assertIn('is ON', context)
             self.assertTrue(context.endswith(self.core()))
         self.assertTrue(json.loads((self.state / 'state.json').read_text())['always_on'])
@@ -161,7 +162,7 @@ class HookTests(unittest.TestCase):
     def test_activate_then_restore_in_new_process_without_context(self):
         self.assertTrue(self.control('Включи palych для этого разговора.').endswith(self.core()))
         for source in ('compact', 'resume', 'clear', 'startup'):
-            context = self.event(source=source)
+            context = self.event(source=source, host='claude-code')
             self.assertIn('is ON', context)
             self.assertTrue(context.endswith(self.core()))
 
@@ -179,7 +180,37 @@ class HookTests(unittest.TestCase):
         self.control('Enable palych always.')
         self.control('Disable palych always-on.')
         self.assertIn('is OFF', self.event(source='startup', sid='new'))
-        self.assertIn('is ON', self.event(source='resume', sid='explicit'))
+        self.assertIn('is ON', self.event(source='resume', sid='explicit', host='claude-code'))
+
+    def test_codex_resume_does_not_repeat_core_already_in_history(self):
+        self.assertTrue(self.event(source='startup').endswith(self.core()))
+        before = (self.state / 'state.json').read_bytes()
+        self.assertIsNone(self.event(source='resume'))
+        self.assertEqual(before, (self.state / 'state.json').read_bytes())
+        # Compaction drops the core, so it is restored after resume too.
+        self.assertTrue(self.event(source='compact').endswith(self.core()))
+        self.assertIsNone(self.event(source='resume'))
+
+    def test_codex_resume_emits_when_history_lacks_current_core(self):
+        # Thread from before installation: no emission marker.
+        self.assertTrue(self.event(source='resume', sid='old-thread').endswith(self.core()))
+        self.assertIsNone(self.event(source='resume', sid='old-thread'))
+        # Updated core.
+        path = self.plugin / 'skills/palych/SKILL.md'
+        path.write_text(self.core() + '\nSynthetic updated rule.\n')
+        self.assertTrue(self.event(source='resume', sid='old-thread').endswith(self.core()))
+        # Reactivation after off.
+        self.control('Turn off palych.', sid='old-thread')
+        self.assertIn('is OFF', self.event(source='resume', sid='old-thread'))
+        self.control('Enable palych.', sid='old-thread')
+        self.assertIsNone(self.event(source='resume', sid='old-thread'))
+
+    def test_codex_resume_reports_off_from_another_session(self):
+        self.assertTrue(self.event(source='startup').endswith(self.core()))
+        self.control('Disable palych always-on.', sid='other')
+        context = self.event(source='resume')
+        self.assertIn('is OFF', context)
+        self.assertNotIn(self.core(), context)
 
     def test_quoted_embedded_and_ordinary_prompts_are_not_controls(self):
         for prompt in ('«Отключи palych.»', 'Объясни фразу: Отключи palych.',
