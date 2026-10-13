@@ -107,6 +107,26 @@ event itself was not logged: the logging wrapper added to the installed
 inferred from the source. Not checked live: a fork in off mode, a fork after a
 core change, `codex fork` in the TUI.
 
+## Unknown-actor pilot; candidate not integrated — 2026-10-13
+
+Across the four Claude pilots both cores sometimes supplied developers, organizers,
+an administrator or a support team absent from the source. Optional examples are
+not loaded at runtime, so a candidate added a short inline example beside the
+existing actor rule (1118 → 1126 words), SHA-256 `7298dd755a6c0f3e6c8d84170cb7d38369d2dff734e06ae9561a711c3f222f3c`,
+with matching RU/EN reference examples. The candidate stayed on the unmerged branch
+`claude/palych-unknown-actor`; the core in `main` does not contain it. The four-case
+[unknown-actor set](../evals/unknown-actor-prompts.json) is kept for future attempts.
+
+A three-repetition exploratory masked pilot (`claude-sonnet-5-5`, effort medium,
+isolated Claude Code sessions) used the four unknown-actor cases, unknown-reason and
+optional-backup in RU and EN against `main` 466fb77: 48 fresh replies, four same-model
+assessor sessions, judgments locked before unblinding. Locked results: 5 candidate
+preferences, 7 current-core preferences, 12 ties; 8 semantic failures each, 5
+candidate regressions. The Russian example removed «Разработчики рекомендуют» in
+`ru-unknown-reason`, but every English candidate reply turned the passive into
+"Someone recommends". "Ask the developer" advice and replies speaking as the company
+remained in both cores. The candidate was not integrated.
+
 ## Palych versus no skill; combined rules — 2026-10-13
 
 Exploratory masked pilots on `claude-sonnet-5-5` (effort medium, isolated Claude Code

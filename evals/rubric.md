@@ -133,6 +133,14 @@ not replace them. When supplied facts conflict, the reply names the conflict and
 does not resolve it by choice, average, range or an invented reason. A request for
 a ready text may get the conflict and a question first. Do not require phrases.
 
+## Unknown actors
+
+Use [unknown-actor-prompts.json](unknown-actor-prompts.json) with the unknown-reason
+and optional-backup cases. Passive or impersonal wording names no actor. A reply that
+supplies developers, a company, management, an administrator, IT or a support team
+absent from the source fails semantic fidelity. "You" for the reader is not an
+invented actor.
+
 ## Assessor calibration and audit
 
 Record the observed reply language separately. A wrong language lowers the
