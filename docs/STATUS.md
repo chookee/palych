@@ -1,5 +1,18 @@
 # Palych — development status
 
+## 0.7.0 release — 2026-10-14
+
+PR #13 merged as `4b1810d` and tagged `v0.7.0`; no GitHub release page was
+created. Plugin manifests and catalogs report version 0.7.0.
+Builds for `--host codex` and `--host claude-code` from that commit matched
+`packages/`. The runtime core (`SKILL.md`) is unchanged from 0.6.0. Personal
+installations were not updated. Users of a plugin catalog get 0.7.0 when they
+update the plugin; the live checks below were run on 0.6.0.
+
+Unmerged branches `codex/palych-clarity` and `claude/palych-unknown-actor` were
+deleted after the merge. Neither candidate was integrated. The unknown-actor pilot is recorded below;
+the clarity pilot has no record in this repository.
+
 ## Host installation checks — 2026-10-13
 
 Offline checks of branch `claude/distribution-packaging` (`59a7ee0`) in temporary
@@ -113,8 +126,8 @@ Across the four Claude pilots both cores sometimes supplied developers, organize
 an administrator or a support team absent from the source. Optional examples are
 not loaded at runtime, so a candidate added a short inline example beside the
 existing actor rule (1118 → 1126 words), SHA-256 `7298dd755a6c0f3e6c8d84170cb7d38369d2dff734e06ae9561a711c3f222f3c`,
-with matching RU/EN reference examples. The candidate stayed on the unmerged branch
-`claude/palych-unknown-actor`; the core in `main` does not contain it. The four-case
+with matching RU/EN reference examples. The candidate stayed on the branch
+`claude/palych-unknown-actor`, deleted unmerged; the core in `main` does not contain it. The four-case
 [unknown-actor set](../evals/unknown-actor-prompts.json) is kept for future attempts.
 
 A three-repetition exploratory masked pilot (`claude-sonnet-5-5`, effort medium,
