@@ -31,16 +31,15 @@ def data(value):
 
 
 def plugin_files(source, host, prefix, builder):
-    """Collect a plugin built by build_plugin.py as {relative path: (bytes, executable)}."""
+    """Collect a plugin built by build_plugin.py as {relative path: bytes}."""
     with tempfile.TemporaryDirectory() as temp:
         target = builder.build(source, Path(temp) / 'plugin', host)
-        return {f'{prefix}/{path.relative_to(target).as_posix()}':
-                (path.read_bytes(), bool(path.stat().st_mode & 0o111))
+        return {f'{prefix}/{path.relative_to(target).as_posix()}': path.read_bytes()
                 for path in sorted(target.rglob('*')) if path.is_file()}
 
 
 def render(source=ROOT):
-    """Return every generated file as {relative path: (bytes, executable)}."""
+    """Return every generated file as {relative path: bytes}."""
     builder, installer = load('build_plugin'), load('install')
     version, description = builder.VERSION, builder.DESCRIPTION
     rules = installer.payload(source)
@@ -91,22 +90,19 @@ def render(source=ROOT):
         'name': 'palych', 'owner': OWNER,
         'metadata': {'description': description, 'version': version},
         'plugins': [{'name': 'palych', 'source': f'./{PACKAGES}/cursor', 'description': description}]})
-    return {path: files[path] if isinstance(files[path], tuple) else (files[path], False)
-            for path in sorted(files)}
+    return dict(sorted(files.items()))
 
 
 def drift(root=ROOT):
     """List generated files that are missing, changed or no longer produced."""
     expected = render(root)
     problems = []
-    for relative, (content, executable) in expected.items():
+    for relative, content in expected.items():
         path = root / relative
         if not path.is_file() or path.is_symlink():
             problems.append(f'{relative}: missing generated file')
         elif path.read_bytes() != content:
             problems.append(f'{relative}: differs from source; run scripts/build_packages.py')
-        elif bool(path.stat().st_mode & 0o111) != executable:
-            problems.append(f'{relative}: executable bit differs from source')
     if (root / PACKAGES).exists():
         for path in sorted((root / PACKAGES).rglob('*')):
             relative = path.relative_to(root).as_posix()
@@ -120,11 +116,10 @@ def write(root=ROOT):
     # packages/ is fully generated, so stale files are removed with the old tree.
     if (root / PACKAGES).exists():
         shutil.rmtree(root / PACKAGES)
-    for relative, (content, executable) in expected.items():
+    for relative, content in expected.items():
         path = root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(content)
-        path.chmod(0o755 if executable else 0o644)
     return len(expected)
 
 

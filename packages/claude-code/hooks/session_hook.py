@@ -10,6 +10,7 @@ import fcntl
 import json
 import os
 from pathlib import Path
+import re
 import sys
 import tempfile
 
@@ -32,6 +33,7 @@ COMMANDS = {
 }
 # The session_meta line carries Codex base instructions (about 22 KB in 0.162.1).
 META_LIMIT = 1 << 22
+DIGEST = re.compile(r'[0-9a-f]{64}')
 
 
 def session_key(session_id):
@@ -50,18 +52,15 @@ def read_state(state_dir):
             or not isinstance(obj.get('sessions'), dict)):
         raise ValueError('invalid state: state.json')
     for key, value in obj['sessions'].items():
-        if (not isinstance(key, str) or len(key) != 64
-                or any(c not in '0123456789abcdef' for c in key)
+        if (not isinstance(key, str) or not DIGEST.fullmatch(key)
                 or type(value) is not bool):
             raise ValueError('invalid session state: state.json')
     emitted = obj.get('emitted', {})
     if not isinstance(emitted, dict):
         raise ValueError('invalid emitted state: state.json')
     for key, value in emitted.items():
-        if (not isinstance(key, str) or len(key) != 64
-                or any(c not in '0123456789abcdef' for c in key)
-                or not isinstance(value, str) or len(value) != 64
-                or any(c not in '0123456789abcdef' for c in value)):
+        if (not isinstance(key, str) or not DIGEST.fullmatch(key)
+                or not isinstance(value, str) or not DIGEST.fullmatch(value)):
             raise ValueError('invalid emitted state: state.json')
     return obj
 
@@ -79,12 +78,6 @@ def write_state(state_dir, obj):
     finally:
         if os.path.exists(temporary):
             os.unlink(temporary)
-
-
-def active(state_dir, session_id):
-    key = session_key(session_id)
-    obj = read_state(state_dir)
-    return obj['sessions'].get(key, obj['always_on'])
 
 
 @contextmanager

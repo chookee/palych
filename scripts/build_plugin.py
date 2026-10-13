@@ -24,13 +24,12 @@ def build(source, target, host):
     try:
         skill = staging / 'skills' / 'palych'
         skill.mkdir(parents=True)
-        shutil.copy2(source / 'SKILL.md', skill / 'SKILL.md')
         for path in (source / 'references').glob('*.md'):
             (skill / 'references').mkdir(exist_ok=True)
             shutil.copy2(path, skill / 'references' / path.name)
         # Redirect the adapter pointer to the bundled docs; development protocols
         # are intentionally absent from the runtime core.
-        body = (skill / 'SKILL.md').read_text(encoding='utf-8')
+        body = (source / 'SKILL.md').read_text(encoding='utf-8')
         body = body.replace('(adapters/README.md)', '(../../README.md)')
         (skill / 'SKILL.md').write_text(body, encoding='utf-8')
         shutil.copy2(source / 'LICENSE', staging / 'LICENSE')

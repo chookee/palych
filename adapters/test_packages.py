@@ -18,7 +18,7 @@ class PackageTests(unittest.TestCase):
         self.files = packages.render(ROOT)
 
     def content(self, path):
-        return self.files[path][0].decode('utf-8')
+        return self.files[path].decode('utf-8')
 
     def test_always_on_hosts_get_the_same_core(self):
         core = packages.load('install').payload(ROOT)
