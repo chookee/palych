@@ -119,7 +119,7 @@ comprehension. Record new runs separately using the evaluation protocol. Compare
 the previous and new cores on identical questions/settings; include a no-skill
 condition when checking the overall effect. Reader checks remain separate.
 
-The 0.6.0 entry is an unreleased candidate until publication. Updating source or
+The 0.6.0 entry was published on 2026-10-13. Updating source or
 building a plugin does not update an existing personal installation.
 
 ## Bounds and conflicting facts

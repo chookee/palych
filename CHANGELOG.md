@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.6.0 — unreleased
+## 0.6.0 — 2026-10-13
 
 - Do not turn "optional" into a safety reassurance such as "nothing will break"
   or "safe to skip" without support. Add four focused RU/EN cases.

@@ -128,7 +128,7 @@ reader comprehension are not established. A paired blind run of the current and
 candidate cores is the next step. Candidate SKILL.md SHA-256:
 `e6990d032eb06ed47110573becc6eecdf685c850c871d3a2472beed7e9522245`.
 
-## 0.6.0 candidate: compact replies
+## 0.6.0: compact replies
 
 The revised core prioritizes compactness and clarity through task-specific reply
 construction, single representations, necessary detail and a concrete stop rule.
@@ -144,8 +144,8 @@ content and language errors. The core and assessor rubric were revised from the
 source audit; repeat runs are recorded separately by tested core hash.
 These results do not establish reader comprehension or universal compliance.
 The source revision does not update personal installations or establish live
-hook delivery. This remains a candidate revision; merging the source does not
-establish model or reader validation.
+hook delivery. Released as 0.6.0 on 2026-10-13; the release does not establish
+model or reader validation.
 
 ## Repetition candidate prepared — 2026-10-12
 
