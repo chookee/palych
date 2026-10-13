@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.7.0 — 2026-10-14
+
+- Generate committed host packages from `SKILL.md`: Claude Code and Codex
+  plugins with a SessionStart hook, a Gemini CLI extension, a Hermes skill and
+  a Cursor rule, plus Claude Code, Codex and Cursor plugin catalogs.
+  `scripts/build_packages.py --check` fails when a generated file drifts.
+- Codex resume and fork no longer repeat the core when the session already
+  holds the current one; changed cores, unmarked sessions and off mode still emit.
+- Document installation from plugin catalogs and packages, Hermes preloading
+  with `hermes -s palych` and Codex hook trust. Record offline and live host checks.
+- README typography for Russian and English; SEO keywords, FAQ and author section.
+- The runtime core (`SKILL.md`) is unchanged from 0.6.0.
+
 ## 0.6.0 — 2026-10-13
 
 - Do not turn "optional" into a safety reassurance such as "nothing will break"

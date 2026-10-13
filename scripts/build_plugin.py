@@ -6,7 +6,7 @@ from pathlib import Path
 import shutil
 import tempfile
 
-VERSION = '0.6.0'
+VERSION = '0.7.0'
 DESCRIPTION = 'Clear conversational replies in Russian and English, enabled by default with persistent mode controls.'
 
 
