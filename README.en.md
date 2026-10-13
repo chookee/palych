@@ -2,7 +2,7 @@
 
 # Palych — a Claude Code skill for concise, plain-language AI agent replies
 
-Named in honor of А.П. Чехов (A.P. Chekhov).
+Named in honor of A. P. Chekhov (А. П. Чехов).
 
 Palych helps an agent answer compactly and clearly: the main point first, followed
 by the explanation the reader needs. It's a Claude Code skill and a Codex skill
@@ -16,7 +16,7 @@ reply, question and progress update. No separate skill invocation is needed.
 
 Claude Code is often too verbose: it restates the question, opens with a preamble,
 repeats the conclusion and uses jargon without explaining it. The usual fix is
-typing "shorter" in every message or adding CLAUDE.md instructions for shorter
+typing “shorter” in every message or adding CLAUDE.md instructions for shorter
 answers. Palych does this for every reply.
 
 Palych doesn't cut text down to a telegraphic style. It removes filler but keeps
@@ -34,8 +34,8 @@ Enable it for all replies without a separate invocation. Preserve my other instr
 
 The agent will choose the route for its host: global instructions or a plugin
 for Codex and Claude Code, an extension for Gemini CLI, a skill for Hermes or a
-rule for Cursor. Start a new conversation afterward. Manual installation, updates and removal are in
-[INSTALL.md](INSTALL.md).
+rule for Cursor. Start a new conversation afterward. Manual installation,
+updates and removal are in [INSTALL.md](INSTALL.md).
 
 ## Main principles
 
@@ -62,6 +62,7 @@ described in [INSTALL.md](INSTALL.md). The plugin has separate
 
 Palych adapts selected Easy-to-read guidance for chat. It assumes no reader
 diagnosis and makes no claim of compliance with the full methodology.
+
 [Sources](references/sources.md) · [Checks and limits](docs/STATUS.md) ·
 [Development](docs/DEVELOPMENT.md). License: [MIT](LICENSE).
 
@@ -90,7 +91,7 @@ particular model will always answer this way or that readers understand it bette
 
 ## Sample skill test results
 
-Blind comparison on 13 October 2026: `claude-sonnet-5-5` replies without Palych and
+Blind comparison on 13 October 2026: `claude-sonnet-5-5` replies without Palych and
 with Palych from `main` 466fb77. 30 tasks in Russian and English, 3 replies per task,
 90 pairs. The same model judged the pairs without knowing which reply was which.
 
@@ -111,29 +112,29 @@ exploratory pilot, not a test of reader comprehension. Details are in
 
 ## FAQ
 
-**How do I reduce verbose AI responses without losing meaning?**
+**How do I reduce verbose AI responses without losing meaning?**\
 Install Palych. It applies the same rules to every reply, so you don't have to
-ask for "shorter" each time or write a separate prompt.
+ask for “shorter” each time or write a separate prompt.
 
-**Is it the same as "bottom line up front"?**
+**Is it the same as “bottom line up front”?**\
 Partly. Palych also puts the answer first and drops preambles, repetition and
 empty caveats. It doesn't shorten for its own sake: the needed explanation,
 conditions and uncertainty stay in the reply.
 
-**How is it different from Claude Code's Concise output style?**
+**How is it different from Claude Code's Concise output style?**\
 Both shorten replies. Palych is a skill, so it also works in Codex, and it adds
 rules for keeping exact meaning: numbers, conflicting facts, unknown causes and
 the difference between done and verified.
 
-**Is Palych a Caveman skill alternative?**
+**Is Palych a Caveman skill alternative?**\
 Yes, with a different goal. Caveman makes replies terse and telegraphic. Palych
 keeps full sentences and plain language and removes only what doesn't help the reader.
 
-**How does Palych differ from other Claude Code skills?**
+**How does Palych differ from other Claude Code skills?**\
 Many agent skills give the agent new tasks. Palych changes how the agent writes
 its replies and works all the time, without a separate invocation.
 
 ## Author
 
-Palych was made by Alexey Ponomar. Follow me on [X](https://x.com/ponomar)
-and [Telegram](https://t.me/ponomaround).
+Alexey Ponomar\
+Follow me on [X](https://x.com/ponomar) and [Telegram](https://t.me/ponomaround).

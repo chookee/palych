@@ -212,6 +212,64 @@ class HookTests(unittest.TestCase):
         self.assertIn('is OFF', context)
         self.assertNotIn(self.core(), context)
 
+    def rollout(self, sid, parent, line=None):
+        # Synthetic Codex fork rollout: only the first (session_meta) line matters.
+        path = self.base / f'rollout-{sid}.jsonl'
+        meta = {'type': 'session_meta',
+                'payload': {'id': sid, 'session_id': sid, 'forked_from_id': parent}}
+        path.write_text((line if line is not None else json.dumps(meta)) + '\n'
+                        + json.dumps({'type': 'response_item', 'payload': {}}) + '\n')
+        return str(path)
+
+    def fork(self, sid, parent, host='codex', **kwargs):
+        return self.event(source='fork', sid=sid, host=host,
+                          transcript_path=self.rollout(sid, parent, **kwargs))
+
+    def test_codex_fork_does_not_repeat_parent_core(self):
+        self.assertTrue(self.event(source='startup').endswith(self.core()))
+        self.assertIsNone(self.fork('child', 'synthetic-session'))
+        # A fork of the fork finds the child's own marker.
+        self.assertIsNone(self.fork('grandchild', 'child'))
+        # Compaction in the fork drops the core, so it is restored there.
+        self.assertTrue(self.event(source='compact', sid='grandchild').endswith(self.core()))
+
+    def test_codex_fork_emits_when_parent_lacks_current_core(self):
+        # Parent from before installation: no emission marker.
+        self.assertTrue(self.fork('child', 'unknown-parent').endswith(self.core()))
+        self.assertIsNone(self.fork('grandchild', 'child'))
+        # Updated core.
+        self.assertTrue(self.event(source='startup').endswith(self.core()))
+        path = self.plugin / 'skills/palych/SKILL.md'
+        path.write_text(self.core() + '\nSynthetic updated rule.\n')
+        self.assertTrue(self.fork('updated', 'synthetic-session').endswith(self.core()))
+
+    def test_codex_fork_inherits_parent_off(self):
+        self.control('Enable palych always.')
+        self.control('Turn off palych.')
+        context = self.fork('child', 'synthetic-session')
+        self.assertIn('is OFF', context)
+        self.assertNotIn(self.core(), context)
+        self.assertIn('is ON', self.event(source='startup', sid='unrelated'))
+
+    def test_codex_fork_without_readable_parent_emits_core(self):
+        self.assertTrue(self.event(source='startup').endswith(self.core()))
+        cases = {
+            'missing': {'transcript_path': str(self.base / 'missing.jsonl')},
+            'none': {'transcript_path': None},
+            'malformed': {'transcript_path': self.rollout('malformed', 'synthetic-session', line='{')},
+            'other-type': {'transcript_path': self.rollout(
+                'other-type', 'synthetic-session', line=json.dumps({'type': 'response_item'}))},
+            'other-id': {'transcript_path': self.rollout('someone-else', 'synthetic-session')},
+        }
+        for sid, extra in cases.items():
+            with self.subTest(sid):
+                self.assertTrue(self.event(source='fork', sid=sid, **extra).endswith(self.core()))
+
+    def test_claude_code_fork_still_emits_core(self):
+        self.assertTrue(self.event(source='startup', host='claude-code').endswith(self.core()))
+        context = self.fork('child', 'synthetic-session', host='claude-code')
+        self.assertTrue(context.endswith(self.core()))
+
     def test_quoted_embedded_and_ordinary_prompts_are_not_controls(self):
         for prompt in ('«Отключи palych.»', 'Объясни фразу: Отключи palych.',
                        '```\nEnable palych always.\n```', 'What does HTTP 404 mean?'):
