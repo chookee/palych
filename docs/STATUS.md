@@ -61,8 +61,15 @@ into one rollout file with one `thread_id`. That rollout holds one core message
 (one `## Build the reply` and one adapter block), from the first turn; the
 resumed turn added none. Both replies followed the skill. That the hook ran on
 resume and chose to skip is inferred from the earlier duplicate on the same
-path, not logged directly. Not checked: a Codex fork, which may still duplicate
-the core if it copies history into a new session.
+path, not logged directly.
+
+`codex exec fork` of that thread duplicates the core in the model context. The
+fork's rollout holds only the new turn with its own core message and points to
+the parent through `forked_from_id`; Codex loads the parent history, which
+already holds a core. The fork turn used 18,319 input tokens against 16,421 for
+the resumed turn with the full history, about one core more, although its
+prompt was shorter. The adapter sees a new session id without a marker and
+emits; it does not yet detect forks.
 
 ## Palych versus no skill; combined rules — 2026-10-13
 
