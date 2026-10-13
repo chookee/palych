@@ -1,5 +1,29 @@
 # Palych — development status
 
+## Host installation checks — 2026-10-13
+
+Offline checks of branch `claude/distribution-packaging` (`59a7ee0`) in temporary
+config directories, without model calls. They cover installation, hook output and
+mode state, not how a model applies the rules.
+
+- Claude Code 2.1.287 plugin (local and GitHub marketplace): install, update
+  0.6.0 → 0.6.1, uninstall and reinstall work. The SessionStart hook emits the
+  core on startup, resume, clear and compact; a saved off survives compact and
+  resume; always-on/always-off apply to new sessions; subagent events are ignored.
+- Codex CLI 0.162.1 plugin (local and GitHub marketplace): `codex plugin add`,
+  `remove` and reinstall work; mode state survives reinstall. The hook output is
+  about 2,221 Codex tokens (UTF-8 bytes / 4), within `additionalContextLimit: 6000`,
+  so it stays inline. A version upgrade was not observed.
+- Hermes v0.16.0: the skill loads with `hermes -s palych`; there is no
+  `skills.auto_load` setting. GitHub install works only after `packages/` reaches
+  the default branch.
+- Cursor, Gemini CLI and `npx skills`: files validated only; not run in a host.
+- Known limitation: installing both the global block and the Claude Code or Codex
+  plugin loads the rules twice, and their mode states can conflict. The hook
+  does not detect the global block; INSTALL.md tells users to choose one route.
+- Not verified: live model conversations in any host, including Russian and
+  English replies, topic changes, progress messages and a real compact event.
+
 ## Palych versus no skill; combined rules — 2026-10-13
 
 Exploratory masked pilots on `claude-sonnet-5-5` (effort medium, isolated Claude Code
