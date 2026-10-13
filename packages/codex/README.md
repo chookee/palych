@@ -77,14 +77,18 @@ request applies in current context but persistence cannot be promised.
 `~/.local/state/palych/<host>/` содержит общий булев флаг и состояния
 разговоров и хеши последнего переданного ядра в одном файле `state.json`;
 ключи разговоров — хеши идентификаторов. Тексты запросов, ответы,
-журналы и ключи не сохраняются. Общий флаг и состояние разговора записываются атомарно вместе; блокировка
+журналы и ключи не сохраняются. При `fork` в Codex хук читает только первую
+строку журнала нового разговора (`session_meta`), чтобы узнать id родителя;
+сама строка не сохраняется. Общий флаг и состояние разговора записываются атомарно вместе; блокировка
 не позволяет параллельным разговорам потерять изменения друг друга. Повреждённое состояние
 не перезаписывается: помощник возвращает ошибку, которую нужно разобрать.
 
 `~/.local/state/palych/<host>/` contains a Boolean default and per-session
 Boolean overrides and hashes of the last emitted core, together in `state.json`.
 Session keys are hashes of session IDs. No prompts, replies,
-transcripts or credentials are stored. The default and session override commit atomically together; a lock protects
+transcripts or credentials are stored. On a Codex `fork` the hook reads only the
+first (`session_meta`) line of the new rollout to find the parent ID; that line
+is not stored. The default and session override commit atomically together; a lock protects
 concurrent session updates. Malformed state is
 preserved and reported as an error instead of being silently replaced.
 
@@ -94,7 +98,12 @@ preserved and reported as an error instead of being silently replaced.
 `compact` и `fork`, если хост присылает событие. При включённом режиме хук
 передаёт весь основной скилл; при выключенном — явное выключение. Исключение —
 `resume` в Codex: Codex сохраняет прежний контекст хука в истории, поэтому хук
-ничего не добавляет, если в этот разговор уже передано текущее ядро.
+ничего не добавляет, если в этот разговор уже передано текущее ядро. То же
+при `fork` в Codex: форк получает историю родителя, поэтому хук ничего не
+добавляет, если родителю уже передано текущее ядро, и переносит в форк режим
+родителя. Если журнал форка не прочитан, ядро передаётся полностью. Хук не
+знает точку форка: форк из места до включения или выключения у родителя
+получит режим, сохранённый у родителя сейчас.
 `UserPromptSubmit` при первом включении, включении после выключения или изменении
 ядра передаёт полный скилл. Повторное включение в том же контексте передаёт
 короткое подтверждение. Обычные сообщения ничего не добавляют и не меняют.
@@ -109,7 +118,11 @@ preserved and reported as an error instead of being silently replaced.
 fork when delivered by the host. An active mode emits the full core; an off
 mode emits explicit off. Exception: Codex keeps earlier hook context in the
 resumed history, so a Codex `resume` adds nothing when this conversation already
-received the current core. `UserPromptSubmit` emits the full core on first
+received the current core. A Codex `fork` loads the parent's history, so it adds
+nothing when the parent received the current core, and it inherits the parent's
+saved mode. An unreadable fork rollout falls back to the full core. The hook does
+not know the fork point: a fork taken before the parent's activation or off switch
+gets the parent's current saved mode. `UserPromptSubmit` emits the full core on first
 activation, reactivation or changed core. Repeated activation in the same context
 emits a short acknowledgement. Ordinary messages neither inject nor mutate state.
 Hooks neither authorize nor block work commands.

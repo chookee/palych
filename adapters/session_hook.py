@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Optional local state adapter; no network, transcript reads or shell execution."""
+"""Optional local state adapter; no network or shell execution.
+
+The only transcript read is the first (session_meta) line of a Codex fork rollout.
+"""
 import argparse
 from contextlib import contextmanager
 import hashlib
@@ -27,6 +30,8 @@ COMMANDS = {
     'включи палыча всегда': 'always-on',
     'отключи постоянное включение палыча': 'always-off',
 }
+# The session_meta line carries Codex base instructions (about 22 KB in 0.162.1).
+META_LIMIT = 1 << 22
 
 
 def session_key(session_id):
@@ -116,6 +121,25 @@ def set_mode(state_dir, session_id, mode):
         return obj['sessions'][session_key(session_id)]
 
 
+def fork_parent(transcript_path, sid):
+    # Codex 0.162.1 names a fork's parent only in the new rollout's first line;
+    # read that line alone and leave conversation items unread.
+    if not isinstance(transcript_path, str) or not transcript_path:
+        return None
+    try:
+        with open(transcript_path, encoding='utf-8') as rollout:
+            meta = json.loads(rollout.readline(META_LIMIT))
+    except (OSError, ValueError):
+        return None
+    if not isinstance(meta, dict) or meta.get('type') != 'session_meta':
+        return None
+    payload = meta.get('payload')
+    if not isinstance(payload, dict) or payload.get('id') != sid:
+        return None
+    parent = payload.get('forked_from_id')
+    return parent if isinstance(parent, str) else None
+
+
 def context(root, host, state_dir, session_id, enabled, skill_text='', mode=None):
     # Each path/session value appears once; argv is directly usable without shell
     # interpolation. saved acknowledges this event only, never a future request.
@@ -138,14 +162,24 @@ def context(root, host, state_dir, session_id, enabled, skill_text='', mode=None
     return text + 'Palych is ON for this conversation.\n' + skill_text
 
 
-def emit_context(root, host, state_dir, sid, name, mode, source=None):
-    # Codex keeps earlier hook context in the resumed rollout; Claude Code reruns
-    # SessionStart on resume instead of replaying the old context.
-    replayed = host == 'codex' and source == 'resume'
+def emit_context(root, host, state_dir, sid, name, mode, source=None, parent=None):
+    # Codex keeps earlier hook context in the resumed rollout and loads a fork
+    # parent's history into the fork; Claude Code reruns SessionStart on resume
+    # instead of replaying the old context.
+    replayed = host == 'codex' and (source == 'resume' or parent is not None)
     with locked_state(state_dir) as obj:
         if mode:
             change_mode(obj, sid, mode)
         key = session_key(sid)
+        if parent is not None:
+            # The fork inherits the parent's saved mode and emitted core; its own
+            # marker lets a fork of this fork skip the core too.
+            pkey = session_key(parent)
+            if key not in obj['sessions'] and pkey in obj['sessions']:
+                obj['sessions'][key] = obj['sessions'][pkey]
+            emitted = obj.setdefault('emitted', {})
+            if pkey in emitted:
+                emitted.setdefault(key, emitted[pkey])
         enabled = obj['sessions'].get(key, obj['always_on'])
         skill_text = ''
         if enabled:
@@ -184,7 +218,9 @@ def handle(event, root, host, state_dir):
             return None
     elif event.get('source') not in ('startup', 'resume', 'clear', 'compact', 'fork'):
         return None
-    message = emit_context(root, host, state_dir, sid, name, mode, event.get('source'))
+    parent = (fork_parent(event.get('transcript_path'), sid) if host == 'codex'
+              and name == 'SessionStart' and event.get('source') == 'fork' else None)
+    message = emit_context(root, host, state_dir, sid, name, mode, event.get('source'), parent)
     if message is None:
         return None
     return {'hookSpecificOutput': {'hookEventName': name, 'additionalContext': message}}
