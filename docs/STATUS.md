@@ -68,8 +68,30 @@ fork's rollout holds only the new turn with its own core message and points to
 the parent through `forked_from_id`; Codex loads the parent history, which
 already holds a core. The fork turn used 18,319 input tokens against 16,421 for
 the resumed turn with the full history, about one core more, although its
-prompt was shorter. The adapter sees a new session id without a marker and
-emits; it does not yet detect forks.
+prompt was shorter. The adapter saw a new session id without a marker and
+emitted; fork detection was added afterwards, see below.
+
+## Codex fork deduplication — 2026-10-14
+
+On a Codex `fork` SessionStart the adapter reads the first (`session_meta`) line
+of the new rollout from `transcript_path`, takes `forked_from_id` when
+`payload.id` equals the hook's session id, and copies the parent's emission
+marker and saved mode to the fork. The fork then follows the resume rule: no
+core when the marker matches the current core, the full core on a changed core
+or a parent without a marker, the short off block in off mode. A fork of a fork
+finds the first fork's marker. A missing, unreadable or mismatched rollout (an
+ephemeral fork has no `transcript_path`) emits the full core as before. Claude
+Code fork is unchanged. The payload shape (`source="fork"`, the new session id,
+`transcript_path` to an already written rollout whose first line names the
+parent) comes from the codex-cli 0.162.1 source (tag `rust-v0.162.1`), not from a
+logged live event. Offline checks pass with synthetic fork events.
+
+Limits: the hook does not know the fork point. A fork taken before the parent
+received the core (for example, Palych enabled mid-conversation) gets no core;
+a fork taken before the parent was switched off inherits off. This is the first
+transcript read in the adapter: one line of about 22 KB with Codex base
+instructions and session metadata, parsed in memory and not stored.
+Not verified live: no `codex exec fork` was run with this change.
 
 ## Palych versus no skill; combined rules — 2026-10-13
 
