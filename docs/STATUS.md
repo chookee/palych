@@ -91,7 +91,21 @@ received the core (for example, Palych enabled mid-conversation) gets no core;
 a fork taken before the parent was switched off inherits off. This is the first
 transcript read in the adapter: one line of about 22 KB with Codex base
 instructions and session metadata, parsed in memory and not stored.
-Not verified live: no `codex exec fork` was run with this change.
+
+Live check with codex-cli 0.162.1 and the plugin from commit a30b7f5, in a
+temporary `HOME` and `CODEX_HOME` with `--dangerously-bypass-hook-trust`:
+`codex exec`, then `codex exec fork` of it, then `codex exec fork` of that fork.
+The first rollout holds one core message (one `## Build the reply` and one
+adapter block); both fork rollouts hold none, and each names its parent through
+`forked_from_id`. Input tokens per turn were 16,375, 16,414 and 16,449, growing
+only with the short history, against 18,319 for the earlier fork with a
+duplicated core. The state file holds three emission markers with one core hash,
+so the hook ran on both forks and copied the parent's marker; without a parent
+it would have emitted the core. All three replies followed the skill. The hook
+event itself was not logged: the logging wrapper added to the installed
+`hooks.json` was gone by the time of the run, so the payload shape is still
+inferred from the source. Not checked live: a fork in off mode, a fork after a
+core change, `codex fork` in the TUI.
 
 ## Palych versus no skill; combined rules — 2026-10-13
 
