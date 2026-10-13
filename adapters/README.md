@@ -11,6 +11,13 @@ creates a separate local plugin for Codex or Claude Code from the same source.
 It does not install anything or modify host settings. The adapter supports macOS and Linux and requires Python 3.9+,
 with no third-party packages or network requests.
 
+Готовые пакеты Claude Code и Codex лежат в `packages/`; установка из каталога
+плагинов описана в [INSTALL.md](https://github.com/ponomr/palych/blob/main/INSTALL.md). Ручная сборка нужна для проверки
+локальных изменений.
+
+Prebuilt Claude Code and Codex packages live in `packages/`; marketplace
+installation is in [INSTALL.md](https://github.com/ponomr/palych/blob/main/INSTALL.md). Build manually to test local changes.
+
 ## Сборка / Build
 
 Из папки исходного пакета (в собранном плагине сборщика нет).
