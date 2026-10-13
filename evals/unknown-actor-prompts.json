@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "id": "ru-impersonal-price",
+      "language": "ru",
+      "prompt": "Объясни клиенту коротко: «С 1 декабря тариф повысят до 1 200 ₽ в месяц. Почему, не сообщается».",
+      "protected": [
+        "from 1 December",
+        "1 200 rubles per month",
+        "reason unknown",
+        "no invented actor such as the company, management or developers"
+      ]
+    },
+    {
+      "id": "en-impersonal-price",
+      "language": "en",
+      "prompt": "Explain briefly to a customer: “From 1 December the plan will be raised to $12 per month. No reason is given.”",
+      "protected": [
+        "from 1 December",
+        "$12 per month",
+        "reason unknown",
+        "no invented actor such as the company, management or developers"
+      ]
+    },
+    {
+      "id": "ru-impersonal-access",
+      "language": "ru",
+      "prompt": "Перескажи коллеге: «Доступ к общей папке закрыли вчера вечером. Кто и зачем, неизвестно».",
+      "protected": [
+        "access to the shared folder closed yesterday evening",
+        "who and why unknown",
+        "no invented actor such as an administrator or IT",
+        "no invented next step"
+      ]
+    },
+    {
+      "id": "en-impersonal-access",
+      "language": "en",
+      "prompt": "Tell a colleague: “Access to the shared folder was closed yesterday evening. Who closed it and why is unknown.”",
+      "protected": [
+        "access to the shared folder closed yesterday evening",
+        "who and why unknown",
+        "no invented actor such as an administrator or IT",
+        "no invented next step"
+      ]
+    }
+  ]
+}

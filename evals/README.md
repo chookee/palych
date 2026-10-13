@@ -32,6 +32,10 @@ not undergone a new model run or a reader comprehension study.
 Give generators only each case's `prompt`; `protected` criteria stay with the
 assessor. Exact colons in URLs and quoted messages remain protected literals.
 
+The [unknown-actor set](unknown-actor-prompts.json) has four synthetic RU/EN cases
+with impersonal or passive wording: a price change and a closed folder whose actor
+and reason are unknown. Use it with the unknown-reason and optional-backup cases.
+
 The [reassurance set](reassurance-prompts.json) has four synthetic RU/EN cases on
 optional actions with unknown consequences. Use it with the unknown-reason cases;
 it checks that "optional" does not become "safe to skip".
