@@ -54,9 +54,15 @@ session without a marker (started before installation) and in off mode (short
 off block). Claude Code resume, startup, clear, compact and fork are unchanged.
 Offline checks pass: `check_package.py`, `build_packages.py --check`, adapter
 and eval unit tests, including new Codex resume cases with synthetic events.
-Not verified live: that `codex exec resume` keeps the same `session_id` and the
-rollout then holds one core message. A Codex fork, if it copies history into a
-new session, may still duplicate the core.
+Live check with codex-cli 0.162.1 and the plugin from commit e3c98c0, in a
+temporary `HOME` and `CODEX_HOME` with `--dangerously-bypass-hook-trust`:
+`codex exec` and then `codex exec resume` on the same thread wrote both turns
+into one rollout file with one `thread_id`. That rollout holds one core message
+(one `## Build the reply` and one adapter block), from the first turn; the
+resumed turn added none. Both replies followed the skill. That the hook ran on
+resume and chose to skip is inferred from the earlier duplicate on the same
+path, not logged directly. Not checked: a Codex fork, which may still duplicate
+the core if it copies history into a new session.
 
 ## Palych versus no skill; combined rules — 2026-10-13
 
