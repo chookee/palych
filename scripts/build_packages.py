@@ -60,7 +60,7 @@ def render(source=ROOT):
         'alwaysApply: true\n---\n\n' + rules)
     files[f'{cursor}/LICENSE'] = license_text
 
-    # Hermes installs a skill folder by GitHub path; auto_load makes it always on.
+    # Hermes installs a skill folder by GitHub path; `hermes -s palych` preloads it.
     hermes = f'{PACKAGES}/hermes/palych'
     skill = (source / 'SKILL.md').read_text(encoding='utf-8')
     files[f'{hermes}/SKILL.md'] = text(skill.replace('[host adapter](adapters/README.md)', 'host adapter'))

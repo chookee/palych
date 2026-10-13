@@ -160,15 +160,17 @@ The extension loads `packages/gemini/GEMINI.md` into every conversation.
 hermes skills install ponomr/palych/packages/hermes/palych
 ```
 
-Чтобы скилл работал постоянно, добавь его в `config.yaml` профиля и начни новый
-разговор. To keep it always on, add it to the profile's `config.yaml` and start
-a new conversation:
+Hermes загружает скилл с начала разговора, только если запустить его с флагом
+(проверено на v0.16.0). Настройки для постоянной загрузки нет.
+Hermes preloads the skill only when started with the flag (checked on v0.16.0);
+there is no config setting for always-on loading:
 
-```yaml
-skills:
-  auto_load:
-    - palych
+```sh
+hermes -s palych
 ```
+
+Скилл, поставленный из GitHub, удаляется командой `hermes skills uninstall palych`.
+A skill installed from GitHub is removed with `hermes skills uninstall palych`.
 
 **Cursor:** пакет `packages/cursor` содержит правило `rules/palych.mdc` с
 `alwaysApply: true`. До публикации в каталоге Cursor скопируй этот файл в
