@@ -1,15 +1,27 @@
 ![Anton Chekhov with a fountain pen at his desk — Palych banner](assets/chekhov-banner.png)
 
-# Палыч / Palych
+# Palych — a Claude Code skill for concise, plain-language AI agent replies
 
 Named in honor of А.П. Чехов (A.P. Chekhov).
 
 Palych helps an agent answer compactly and clearly: the main point first, followed
-by the explanation the reader needs. Russian is the primary language; English is also
-supported. After installation, the rules apply to every reply, question and
-progress update. No separate skill invocation is needed.
+by the explanation the reader needs. It's a Claude Code skill and a Codex skill
+that gives you concise AI agent replies in plain language. Russian is the primary
+language; English is also supported. After installation, the rules apply to every
+reply, question and progress update. No separate skill invocation is needed.
 
 [Русский](README.md)
+
+## Why use it
+
+Claude Code is often too verbose: it restates the question, opens with a preamble,
+repeats the conclusion and uses jargon without explaining it. The usual fix is
+typing "shorter" in every message or adding CLAUDE.md instructions for shorter
+answers. Palych does this for every reply.
+
+Palych doesn't cut text down to a telegraphic style. It removes filler but keeps
+what matters: numbers, negations, limits, conditions and uncertainty. The result
+is a plain-language AI agent, not a shortened copy of the same verbose answer.
 
 ## Install
 
@@ -91,6 +103,36 @@ with Palych from `main` 466fb77. 30 tasks in Russian and English, 3 replies per 
 | Input tokens per request | ~690 | ~3,300 |
 
 A meaning error is an invented guarantee, picking one of conflicting facts or another
-distortion of the task. Input tokens grow because the core is sent with every request.
-This is an exploratory pilot, not a test of reader comprehension. Details are in
+distortion of the task. Input tokens grow because the core is sent with every request,
+so Palych reduces output tokens in Claude Code, not input tokens. This table is an
+exploratory pilot, not a test of reader comprehension. Details are in
 [STATUS.md](docs/STATUS.md).
+
+## FAQ
+
+**How do I reduce verbose AI responses without losing meaning?**
+Install Palych. It applies the same rules to every reply, so you don't have to
+ask for "shorter" each time or write a separate prompt.
+
+**Is it the same as "bottom line up front"?**
+Partly. Palych also puts the answer first and drops preambles, repetition and
+empty caveats. It doesn't shorten for its own sake: the needed explanation,
+conditions and uncertainty stay in the reply.
+
+**How is it different from Claude Code's Concise output style?**
+Both shorten replies. Palych is a skill, so it also works in Codex, and it adds
+rules for keeping exact meaning: numbers, conflicting facts, unknown causes and
+the difference between done and verified.
+
+**Is Palych a Caveman skill alternative?**
+Yes, with a different goal. Caveman makes replies terse and telegraphic. Palych
+keeps full sentences and plain language and removes only what doesn't help the reader.
+
+**How does Palych differ from other Claude Code skills?**
+Many agent skills give the agent new tasks. Palych changes how the agent writes
+its replies and works all the time, without a separate invocation.
+
+## Author
+
+Palych was made by Alexey Ponomar. Follow me on [X](https://x.com/ponomar)
+and [Telegram](https://t.me/ponomaround).
