@@ -24,29 +24,6 @@ The agent will choose the Codex or Claude Code installation. Start a new
 conversation afterward. Manual installation, updates and removal are in
 [INSTALL.md](INSTALL.md).
 
-## Example
-
-**Question:** “Why does caching sometimes make a response faster and sometimes not?”
-
-In this example, the cache stores completed results. If a result is missing,
-the service computes it again.
-
-**Without Palych:**
-
-> Caching reduces latency on a cache hit. A cache miss triggers computation.
-> Check TTL, eviction policy, hit rate and the invalidation mechanism.
-
-**With Palych:**
-
-> A cache can make a response faster when the result is already stored and
-> retrieving it takes less time than computing it again.
->
-> If the result is missing, the computation still happens, with the cache lookup
-> adding extra time. That request can therefore be slightly slower.
-
-This is an illustrative edit written for the package. It does not prove that a
-particular model will always answer this way or that readers understand it better.
-
 ## Main principles
 
 - Follow the question's language; Russian remains the development priority.
@@ -74,6 +51,29 @@ Palych adapts selected Easy-to-read guidance for chat. It assumes no reader
 diagnosis and makes no claim of compliance with the full methodology.
 [Sources](references/sources.md) · [Checks and limits](docs/STATUS.md) ·
 [Development](docs/DEVELOPMENT.md). License: [MIT](LICENSE).
+
+## Example
+
+**Question:** “Why does caching sometimes make a response faster and sometimes not?”
+
+In this example, the cache stores completed results. If a result is missing,
+the service computes it again.
+
+**Without Palych:**
+
+> Caching reduces latency on a cache hit. A cache miss triggers computation.
+> Check TTL, eviction policy, hit rate and the invalidation mechanism.
+
+**With Palych:**
+
+> A cache can make a response faster when the result is already stored and
+> retrieving it takes less time than computing it again.
+>
+> If the result is missing, the computation still happens, with the cache lookup
+> adding extra time. That request can therefore be slightly slower.
+
+This is an illustrative edit written for the package. It does not prove that a
+particular model will always answer this way or that readers understand it better.
 
 ## Sample skill test results
 
