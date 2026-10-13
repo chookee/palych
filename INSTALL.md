@@ -135,6 +135,13 @@ codex plugin add palych@palych
 Или установи Palych в каталоге плагинов приложения Codex.
 Or install Palych from the Codex app's plugin directory.
 
+Codex запускает хуки плагина только после того, как пользователь разрешил им
+работать. Без разрешения плагин включён, но правила не загружаются, и ошибки
+нет. После установки начни новый разговор и проверь, что правила загружены.
+Codex runs plugin hooks only after the user trusts them. Until then the plugin
+is enabled but loads no rules and reports no error. After installing, start a
+new conversation and check that the rules are loaded.
+
 Плагины Claude Code и Codex используют хук начала разговора (`SessionStart`)
 и хранят состояние режима отдельно. В новой установке режим включён. Сохранённое
 выключение переживает обновление. После сжатия правила восстанавливаются, если

@@ -21,8 +21,30 @@ mode state, not how a model applies the rules.
 - Known limitation: installing both the global block and the Claude Code or Codex
   plugin loads the rules twice, and their mode states can conflict. The hook
   does not detect the global block; INSTALL.md tells users to choose one route.
-- Not verified: live model conversations in any host, including Russian and
-  English replies, topic changes, progress messages and a real compact event.
+- Not verified offline: live model conversations; see the live checks below.
+
+## Live host checks — 2026-10-14
+
+Branch `claude/distribution-packaging` (`26cd3ac`), plugin 0.6.0. Claude Code
+2.1.287 (`--model sonnet`, `--setting-sources project`, `--plugin-dir` copy with
+a temporary `--state-dir`) and Codex CLI 0.162.1 (temporary `CODEX_HOME`, GitHub
+marketplace, `--dangerously-bypass-hook-trust`). Rule loading was confirmed from
+hook context in the Claude transcript and the Codex rollout, not from reply style.
+
+- Both hosts: a new conversation received the core; a Russian question without
+  Palych's name and a later English question on another topic got replies in the
+  matching language. "Отключи Палыча" saved off for the conversation; after a
+  real compaction (`/compact` in Claude Code, automatic compaction in Codex) the
+  core was absent and off was delivered. A new conversation received the core again.
+- Codex adds the core again on every `exec resume` (about 2,221 tokens each),
+  because the adapter emits it on each SessionStart. Claude Code showed no
+  duplicate after resume. Not fixed.
+- Codex does not run plugin hooks without persisted hook trust: the plugin is
+  enabled but loads no rules and reports no error. How a user persists trust
+  (TUI or config) was not checked.
+- Not verified live: progress messages, plugin update and reinstall followed by a
+  conversation, the global-block installation route, and Hermes, Cursor, Gemini
+  CLI and `npx skills`.
 
 ## Palych versus no skill; combined rules — 2026-10-13
 
