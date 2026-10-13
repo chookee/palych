@@ -129,10 +129,11 @@ claude plugin install palych@palych
 
 ```sh
 codex plugin marketplace add ponomr/palych
+codex plugin add palych@palych
 ```
 
-Затем установи Palych в каталоге плагинов приложения Codex.
-Then install Palych from the Codex app's plugin directory.
+Или установи Palych в каталоге плагинов приложения Codex.
+Or install Palych from the Codex app's plugin directory.
 
 Плагины Claude Code и Codex используют хук начала разговора (`SessionStart`)
 и хранят состояние режима отдельно. В новой установке режим включён. Сохранённое
