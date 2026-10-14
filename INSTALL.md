@@ -188,13 +188,26 @@ See [adapters/README.md](adapters/README.md) for mode controls.
 hermes skills install ponomr/palych/packages/hermes/palych
 ```
 
-Hermes загружает скилл с начала разговора, только если запустить его с флагом
-(проверено на v0.16.0). Настройки для постоянной загрузки нет.
-Hermes preloads the skill only when started with the flag (checked on v0.16.0);
-there is no config setting for always-on loading:
+Hermes загружает скилл с начала разговора, если запустить его с флагом
+(проверено на v0.16.0 и v0.22.0):
+Hermes preloads the skill when started with the flag (checked on v0.16.0 and
+v0.22.0):
 
 ```sh
 hermes -s palych
+```
+
+В Hermes v0.22.0 есть настройка `skills.auto_load` в `config.yaml` профиля: она
+загружает перечисленные скиллы в каждый новый разговор. Мы видели её в коде
+Hermes, но с Палычем не проверяли. В v0.16.0 её нет.
+Hermes v0.22.0 has a `skills.auto_load` list in the profile's `config.yaml` that
+loads the listed skills into every new session. It was seen in the Hermes source
+but not tested with Palych; v0.16.0 lacks it:
+
+```yaml
+skills:
+  auto_load:
+    - palych
 ```
 
 Скилл, поставленный из GitHub, удаляется командой `hermes skills uninstall palych`.

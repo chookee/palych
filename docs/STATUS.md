@@ -1,5 +1,32 @@
 # Palych — development status
 
+## Hermes live check on clovis — 2026-10-14
+
+Hermes Agent v0.22.0 (2026.9.24) on clovis, temporary profile `palychtest`,
+model gpt-6.1-sol through the ChatGPT/Codex subscription. Five one-shot runs
+(`hermes -z`); the profile was deleted afterwards.
+
+- `hermes skills install ponomr/palych/packages/hermes/palych` installed the
+  skill (scan verdict SAFE, five files); `hermes skills list` shows it enabled.
+- Loading with `-s palych`: the preloaded skill text is not stored in
+  `state.db` (the stored system prompt has the same hash in every run, and
+  message `api_content` is empty), so loading was inferred from input tokens.
+  The control run without `-s` used 8876 input tokens; the three `-s palych`
+  sessions used 10636, 10633 and 10831 (the last one has two turns). The
+  difference, about 1760 tokens, matches the size of `SKILL.md` (8126 bytes).
+  This is indirect evidence, not a read of the prompt.
+- Replies: the Russian and English questions were answered in their own
+  languages. The control reply to the same Russian question was also short,
+  so these single replies do not show a style difference.
+- “Отключи Палыча.” returned «Палыч отключён в этом разговоре. Настройка для
+  будущих сессий не изменена.» A follow-up with `--continue -z` joined the same
+  session (one session, four messages). Whether the next reply followed the
+  off state cannot be told from one short answer.
+- `skills.auto_load` exists in v0.22.0 (`agent/skill_commands.py`
+  `resolve_auto_load_skills`, `tests/agent/test_skills_auto_load.py`): a list in
+  the profile config whose skills are rendered into every new session's prompt.
+  It was not run with Palych. INSTALL.md now mentions it.
+
 ## Installation checks after 0.7.0 — 2026-10-14
 
 Offline checks in temporary `HOME`, `HERMES_HOME` and `CODEX_HOME` directories,
