@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Claude Code plugin: add a 1254×1254 listing icon, built from `assets/icon.png`
+  into `.claude-plugin/icon.png`, for the plugin directory's "No icon" warning.
 - Core: «Отключи Палыча» / "Turn off palych" turns Palych off for the current
   conversation only. The core no longer tells the agent to remove the global
   instructions block or to look for a helper; only an explicit always-on request
