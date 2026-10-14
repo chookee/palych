@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Core: «Отключи Палыча» / "Turn off palych" turns Palych off for the current
+  conversation only. The core no longer tells the agent to remove the global
+  instructions block or to look for a helper; only an explicit always-on request
+  targets future sessions, and the agent edits no files or settings for a mode
+  change. Found in Cursor, where a plain off request sent the agent searching
+  for a way to persist it.
+
 ## 0.7.1 — 2026-10-14
 
 - Drop the Gemini CLI extension: `gemini-extension.json`, `packages/gemini/`
