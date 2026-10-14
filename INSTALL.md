@@ -200,11 +200,24 @@ hermes -s palych
 Скилл, поставленный из GitHub, удаляется командой `hermes skills uninstall palych`.
 A skill installed from GitHub is removed with `hermes skills uninstall palych`.
 
-**Cursor:** пакет `packages/cursor` содержит правило `rules/palych.mdc` с
-`alwaysApply: true`. До публикации в каталоге Cursor скопируй этот файл в
-`.cursor/rules/` проекта. The `packages/cursor` package holds an always-applied
-rule; until it is listed in Cursor's marketplace, copy `rules/palych.mdc` into a
-project's `.cursor/rules/`.
+**Cursor:** пакет `packages/cursor` — плагин с правилом `rules/palych.mdc`
+(`alwaysApply: true`). До публикации в каталоге Cursor поставь его как локальный
+плагин для всех проектов (проверено на Cursor 3.24.18):
+The `packages/cursor` package is a plugin with an always-applied rule. Until it
+is listed in Cursor's marketplace, install it as a local plugin for all projects
+(checked on Cursor 3.24.18):
+
+```sh
+git clone https://github.com/ponomr/palych.git ~/palych-src
+mkdir -p ~/.cursor/plugins/local
+cp -R ~/palych-src/packages/cursor ~/.cursor/plugins/local/palych
+```
+
+Удаление — `rm -r ~/.cursor/plugins/local/palych`. Для одного проекта можно
+вместо плагина скопировать `rules/palych.mdc` в `.cursor/rules/` проекта (этот
+путь не проверялся). Remove it with `rm -r ~/.cursor/plugins/local/palych`. For a
+single project, copying `rules/palych.mdc` into the project's `.cursor/rules/`
+is an alternative (not checked).
 
 **Другие агенты / Other agents:**
 
