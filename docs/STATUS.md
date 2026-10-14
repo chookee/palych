@@ -1,5 +1,37 @@
 # Palych — development status
 
+## Cursor live check; plain off request fixed — 2026-10-14
+
+Cursor 3.24.18 on the Mac, Free plan, agent model grok-4.6. The owner typed the
+prompts in a test project; replies were read from Cursor's local chat store.
+Core before this change = 0.7.1; the fix was then tested with the same plugin.
+
+- `packages/cursor` copied to `~/.cursor/plugins/local/palych` loads as a local
+  plugin: the log shows `loadUserLocalPlugin palych`, and the plugin rule count
+  rose from 45 to 46 (skills stayed 45). Asked which rules apply, the agent named
+  `palych.mdc` as always applied. A file change was reloaded in the open window.
+- «Чем отличается git merge от git rebase? Коротко.» got a short answer ending with
+  a rule of thumb; no control run, so this shows no style difference.
+- The English question was answered in Russian because of the owner's Cursor user
+  rule "Always respond in Russian", not because of Palych.
+- «отключи палыча в этом чате» → «Палыч в этом чате выключен…»; the next answer
+  (DNS) was longer, with a numbered list and an analogy.
+- Bare «Отключи Палыча.» with the 0.7.1 core: the agent announced it was looking
+  for a way to keep Palych off in future sessions and ran 40 steps of file
+  searches and reads in `~/.cursor`, `~/.claude` and the installed Palych copies
+  until the owner stopped it. No writes were found: the plugin was unchanged and
+  the Claude Code state file kept `always_on: true`. Cause: the core told the
+  agent to "remove its block for future sessions" and to "use its helper before
+  claiming saved state".
+- After the core change (plain off = this conversation only; no file edits or
+  helper search for mode changes), the same bare request got «Палыч выключен в
+  этом чате. Состояние не сохранено: в следующих сессиях он снова будет включён
+  по умолчанию, пока не снимете установленное правило.» with no tool calls; the
+  DNS answer after it was three short paragraphs. One run per case.
+- Cursor also loads Claude Code plugins (`loadClaudePlugin` in its log); whether
+  the Palych Claude Code plugin behaves there was not checked.
+- The test plugin was removed afterwards.
+
 ## Hermes live check on clovis — 2026-10-14
 
 Hermes Agent v0.22.0 (2026.9.24) on clovis, temporary profile `palychtest`,
