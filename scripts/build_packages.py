@@ -67,12 +67,6 @@ def render(source=ROOT):
         files[f'{hermes}/references/{path.name}'] = path.read_bytes()
     files[f'{hermes}/LICENSE'] = license_text
 
-    # Gemini CLI loads the extension's context file at every session start.
-    files[f'{PACKAGES}/gemini/GEMINI.md'] = text(rules)
-    files['gemini-extension.json'] = data({
-        'name': 'palych', 'version': version, 'description': description,
-        'contextFileName': f'{PACKAGES}/gemini/GEMINI.md'})
-
     entry = {'name': 'palych', 'description': description, 'version': version}
     files['.claude-plugin/marketplace.json'] = data({
         'name': 'palych', 'owner': OWNER,

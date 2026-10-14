@@ -33,9 +33,9 @@ Enable it for all replies without a separate invocation. Preserve my other instr
 ```
 
 The agent will choose the route for its host: global instructions or a plugin
-for Codex and Claude Code, an extension for Gemini CLI, a skill for Hermes or a
-rule for Cursor. Start a new conversation afterward. Manual installation,
-updates and removal are in [INSTALL.md](INSTALL.md).
+for Codex and Claude Code, a skill for Hermes or a rule for Cursor. Start a new
+conversation afterward. Manual installation, updates and removal are in
+[INSTALL.md](INSTALL.md).
 
 ## Main principles
 

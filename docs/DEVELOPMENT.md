@@ -11,7 +11,7 @@ Use this repository as the source for future changes.
 - scripts/install.py: always-on global-instructions installer; tests use temporary configs.
 - scripts/build_plugin.py: alternative Codex or Claude Code plugin builder.
 - scripts/build_packages.py: generates the committed packages/ and plugin catalogs
-  (.claude-plugin/, .agents/plugins/, .cursor-plugin/, gemini-extension.json).
+  (.claude-plugin/, .agents/plugins/, .cursor-plugin/).
 - scripts/check_package.py: offline frontmatter, JSON, local-link and generated-package checks.
 - evals/: synthetic cases, masking tools, rubric and reader protocol.
 - evals/results/: historical synthetic evidence; new runs need distinct files.

@@ -153,15 +153,6 @@ separately. A fresh installation defaults to on; a saved off state survives
 updates. Rules return after compaction when the host delivers the compact event.
 See [adapters/README.md](adapters/README.md) for mode controls.
 
-**Gemini CLI:**
-
-```sh
-gemini extensions install https://github.com/ponomr/palych
-```
-
-Расширение загружает `packages/gemini/GEMINI.md` в каждый разговор.
-The extension loads `packages/gemini/GEMINI.md` into every conversation.
-
 **Hermes:**
 
 ```sh
@@ -191,10 +182,10 @@ project's `.cursor/rules/`.
 It installs `SKILL.md` as a regular skill that the agent invokes by description,
 not in every reply.
 
-В Gemini CLI, Hermes и Cursor нет хуков Палыча: «Отключи Палыча» действует только
-в текущем разговоре. Постоянно отключить — удалить расширение, скилл или правило.
-Gemini CLI, Hermes and Cursor have no Palych hooks: “Turn off palych” lasts only
-for the current conversation. Remove the extension, skill or rule to disable it
+В Hermes и Cursor нет хуков Палыча: «Отключи Палыча» действует только
+в текущем разговоре. Постоянно отключить — удалить скилл или правило.
+Hermes and Cursor have no Palych hooks: “Turn off palych” lasts only
+for the current conversation. Remove the skill or rule to disable it
 permanently.
 
 ## Проверка в агенте / Host verification
