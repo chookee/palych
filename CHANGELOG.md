@@ -1,9 +1,14 @@
 # Changelog
 
-## Unreleased
+## 0.7.1 — 2026-10-14
 
 - Drop the Gemini CLI extension: `gemini-extension.json`, `packages/gemini/`
   and its installation instructions. Gemini CLI is no longer a supported host.
+- INSTALL: choose one route per host (global instructions or a plugin) up front;
+  trusting the Codex hook in `/hooks` is an explicit required step; update
+  commands for the Claude Code and Codex plugins; `npx skills` installs the
+  skill folder instead of copying the whole repository.
+- The runtime core (`SKILL.md`) is unchanged from 0.6.0.
 
 ## 0.7.0 — 2026-10-14
 
