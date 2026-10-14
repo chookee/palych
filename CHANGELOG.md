@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Drop the Gemini CLI extension: `gemini-extension.json`, `packages/gemini/`
+  and its installation instructions. Gemini CLI is no longer a supported host.
+
 ## 0.7.0 — 2026-10-14
 
 - Generate committed host packages from `SKILL.md`: Claude Code and Codex

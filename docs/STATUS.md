@@ -1,5 +1,11 @@
 # Palych — development status
 
+## Gemini CLI removed — 2026-10-14
+
+The Gemini CLI extension and its instructions were removed at the owner's
+request; Gemini CLI is no longer a supported host. Earlier dated records below
+still mention it as history.
+
 ## 0.7.0 release — 2026-10-14
 
 PR #13 merged as `4b1810d` and tagged `v0.7.0`; no GitHub release page was
