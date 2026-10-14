@@ -15,7 +15,8 @@ def build(source, target, host):
         raise ValueError('output already exists; choose a new path')
     target.parent.mkdir(parents=True, exist_ok=True)
     # Validate the complete source inventory before writing a partial package.
-    inventory = [source / 'SKILL.md', source / 'LICENSE', source / 'adapters/session_hook.py']
+    inventory = [source / 'SKILL.md', source / 'LICENSE', source / 'adapters/session_hook.py',
+                 source / 'assets/icon.png']
     inventory += list((source / 'references').glob('*.md'))
     for path in inventory:
         if path.is_symlink() or not path.is_file():
@@ -55,6 +56,9 @@ def build(source, target, host):
                     'homepage': 'https://github.com/ponomr/palych',
                     'repository': 'https://github.com/ponomr/palych',
                     'license': 'MIT', 'skills': './skills/'}
+        if host == 'claude-code':
+            # Claude's directory reads the default .claude-plugin/icon.png (square PNG, 512-2048 px).
+            shutil.copy2(source / 'assets/icon.png', directory / 'icon.png')
         (directory / 'plugin.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
         staging.rename(target)
     finally:
