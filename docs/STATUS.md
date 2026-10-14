@@ -1,5 +1,35 @@
 # Palych — development status
 
+## Installation checks after 0.7.0 — 2026-10-14
+
+Offline checks in temporary `HOME`, `HERMES_HOME` and `CODEX_HOME` directories,
+without model calls. They cover installation, not how a model applies the rules.
+
+- Hermes v0.16.0: `hermes skills install ponomr/palych/packages/hermes/palych`
+  from GitHub `main` installs the skill (resolved through skills.sh, scan verdict
+  SAFE); the five installed files match `packages/hermes/palych` byte for byte.
+  `hermes skills check` reports it up to date; `uninstall` (after its
+  confirmation prompt) and reinstall work. Preloading with `hermes -s palych` was
+  not checked: it needs a model call.
+- `npx skills@1.7.2 add ponomr/palych` (telemetry disabled) finds exactly one
+  skill but copies the whole repository, 1.8 MB with evals, docs and packages,
+  into `.agents/skills/palych`. `npx skills add ponomr/palych/packages/hermes/palych`
+  (and the matching GitHub `tree` URL) installs only the skill folder, 48 KB;
+  `npx skills remove palych` removes it. INSTALL.md now gives the folder form.
+- Codex CLI 0.162.1 plugin from a local marketplace path: 0.7.0 installed; after
+  the catalog was rebuilt as 0.7.1 in the temporary copy, `codex plugin list`
+  still showed 0.7.0 and `codex plugin add palych@palych` replaced the cache with
+  0.7.1. Upgrading a GitHub marketplace (`codex plugin marketplace upgrade`) was
+  not observed, because no newer version is published.
+- Codex hook trust: the Codex hooks documentation says trust is given in `/hooks`
+  in the CLI and recorded against the hook's current hash. Whether Palych's trust
+  survives a plugin update was not checked; the TUI flow was not run.
+- Cursor: not checked. Cursor.app is not installed and `cursor-agent`
+  2025.09.18 has no plugin commands.
+- Claude Code update commands added to INSTALL.md (`claude plugin marketplace
+  update`, `claude plugin update`) come from `claude plugin --help` 2.1.287 and
+  were not run in this check; the 2026-10-13 record covers an update 0.6.0 → 0.6.1.
+
 ## Gemini CLI removed — 2026-10-14
 
 The Gemini CLI extension and its instructions were removed at the owner's

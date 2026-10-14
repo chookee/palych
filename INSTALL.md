@@ -8,6 +8,13 @@ The default installation enables Palych for all Codex or Claude Code replies by
 adding the rules to the agent's global instructions. No invocation is needed.
 Requires Python 3.9+, Git and macOS/Linux.
 
+Для каждого агента выбери один способ: общие инструкции **или** плагин
+(раздел «Плагины» ниже). Если поставить оба, правила загрузятся дважды,
+а состояния режима могут разойтись.
+
+Choose one route per host: global instructions **or** a plugin (see Plugins
+below). Installing both loads the rules twice, and their mode states can conflict.
+
 ## Инструкция для агента / Agent instructions
 
 1. Определи используемый агент и его каталог настроек. Если выбор нельзя понять
@@ -110,19 +117,25 @@ configuration workflow, rather than promising persistence from a chat reply alon
 
 ## Плагины и другие агенты / Plugins and other hosts
 
-Готовые пакеты лежат в `packages/` и собираются из `SKILL.md`. Выбери один
-способ для каждого агента: общие инструкции **или** пакет. Одновременная
-загрузка может добавить правила дважды и создать разные состояния режима.
+Готовые пакеты лежат в `packages/` и собираются из `SKILL.md`. Если блок
+Палыча уже есть в общих инструкциях, сначала удали его (`uninstall` выше).
 
-Ready-made packages live in `packages/` and are generated from `SKILL.md`. Choose
-global instructions **or** a package for each host to avoid duplicate rules and
-conflicting mode state.
+Ready-made packages live in `packages/` and are generated from `SKILL.md`. If
+Palych's block is already in the global instructions, remove it first
+(`uninstall` above).
 
 **Claude Code** (плагин с хуком / plugin with hooks):
 
 ```sh
 claude plugin marketplace add ponomr/palych
 claude plugin install palych@palych
+```
+
+Обновление / Update:
+
+```sh
+claude plugin marketplace update palych
+claude plugin update palych@palych
 ```
 
 **Codex** (плагин с хуком / plugin with hooks):
@@ -135,12 +148,28 @@ codex plugin add palych@palych
 Или установи Palych в каталоге плагинов приложения Codex.
 Or install Palych from the Codex app's plugin directory.
 
-Codex запускает хуки плагина только после того, как пользователь разрешил им
-работать. Без разрешения плагин включён, но правила не загружаются, и ошибки
-нет. После установки начни новый разговор и проверь, что правила загружены.
-Codex runs plugin hooks only after the user trusts them. Until then the plugin
-is enabled but loads no rules and reports no error. After installing, start a
-new conversation and check that the rules are loaded.
+**Обязательный шаг: разреши хук.** Codex не запускает хуки плагина, пока
+пользователь их не проверил и не разрешил. Без этого плагин числится включённым,
+но правила не загружаются, и Codex не сообщает об ошибке. После установки открой
+в Codex CLI команду `/hooks`, найди хук Палыча и разреши его. Codex запоминает
+разрешение для текущего определения хука: если после обновления он снова
+попросит открыть `/hooks`, разреши хук ещё раз. Затем начни новый разговор
+и проверь, что правила загружены.
+
+**Required: trust the hook.** Codex does not run plugin hooks until the user
+reviews and trusts them. Until then the plugin is listed as enabled but loads
+no rules, and Codex reports no error. After installing, open `/hooks` in the
+Codex CLI, find Palych's hook and trust it. Codex records trust for the current
+hook definition: if it asks you to open `/hooks` again after an update, trust
+the hook again. Then start a new conversation and check that the rules are loaded.
+
+Обновление: обнови каталог и поставь плагин заново. Update: refresh the
+marketplace and add the plugin again:
+
+```sh
+codex plugin marketplace upgrade palych
+codex plugin add palych@palych
+```
 
 Плагины Claude Code и Codex используют хук начала разговора (`SessionStart`)
 и хранят состояние режима отдельно. В новой установке режим включён. Сохранённое
@@ -177,10 +206,21 @@ A skill installed from GitHub is removed with `hermes skills uninstall palych`.
 rule; until it is listed in Cursor's marketplace, copy `rules/palych.mdc` into a
 project's `.cursor/rules/`.
 
-**Другие агенты / Other agents:** `npx skills add ponomr/palych` ставит `SKILL.md`
-как обычный скилл. Агент вызывает его по описанию, а не в каждом ответе.
-It installs `SKILL.md` as a regular skill that the agent invokes by description,
-not in every reply.
+**Другие агенты / Other agents:**
+
+```sh
+npx skills add ponomr/palych/packages/hermes/palych
+```
+
+Команда ставит только папку скилла (`SKILL.md`, примеры, лицензию) как обычный
+скилл. Агент вызывает его по описанию, а не в каждом ответе. Короткая форма
+`npx skills add ponomr/palych` копирует весь репозиторий, включая оценки и
+документацию. Удаление — `npx skills remove palych`.
+
+It installs only the skill folder (`SKILL.md`, examples, license) as a regular
+skill that the agent invokes by description, not in every reply. The short form
+`npx skills add ponomr/palych` copies the whole repository, including evaluations
+and docs. Remove it with `npx skills remove palych`.
 
 В Hermes и Cursor нет хуков Палыча: «Отключи Палыча» действует только
 в текущем разговоре. Постоянно отключить — удалить скилл или правило.
