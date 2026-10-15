@@ -22,6 +22,11 @@ Report core size, native input/output tokens, output size and editorial preferen
 separately. Smaller instructions or answers do not establish better understanding
 or reduced subscription-limit debits.
 
+`cache_usage.py` estimates from local Claude Code and Codex logs how often an
+always-on core is read from the prompt cache and its average price relative to
+uncached input. It prints aggregates only; record its output in the development
+log with the date, window and revision.
+
 The [repetition set](repetition-prompts.json) checks semantic duplicates,
 unambiguous referents and repetitive colon links. Use it alongside detailed
 process, full-comparison and exact-condition cases; shortening cannot hide

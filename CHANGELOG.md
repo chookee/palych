@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `evals/cache_usage.py` estimates from local Claude Code and Codex logs how much
+  of an always-on core's input is read from the prompt cache; results are in the
+  development log (2026-10-15).
 - Hermes installs the canonical `skills/palych` folder; `packages/hermes/` is no
   longer generated or published. A skill installed from the old path must be
   uninstalled and installed again.
