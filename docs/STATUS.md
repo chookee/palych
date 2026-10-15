@@ -42,6 +42,8 @@ to skip" (`optional-backup`). Three candidate rules for them failed their pilots
 and were not integrated.
 A shorter core that merged the role and route rules failed its pilot
 (2026-10-15): it reintroduced invented routes.
+A bad/good example in place of the optional and reassurance rules also
+failed (2026-10-15): reassurance about skipping came back.
 
 ## Still open
 
