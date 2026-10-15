@@ -1,5 +1,36 @@
 # Palych — dated development records
 
+## Bad/good example pilot; candidate rejected — 2026-10-15
+
+Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
+tools, a fresh process per reply; same-model assessors; three repetitions, 48
+pairs. Cases: the four unknown-actor and four reassurance cases, plus
+unknown-reason, roles, depth and verification in RU and EN.
+
+- Baseline: the core at `main` 7955b41, SHA-256 `435d2e82…a7fa0`, 1153 words.
+- Candidate (`claude/example-candidate` 3848974, SHA-256 `23634920…c9136`,
+  1160 words): the two sentences "Optional means not required;
+  …" and "Add no reassurance (…) the source does not support." were replaced by
+  a labelled hypothetical example. Source: "A portfolio is advised but
+  optional." Bad: "Recruiters advise it; skipping it costs nothing." Good: "A
+  portfolio is advised but optional; the source names no adviser and no effect
+  of skipping it."
+- Preferences: candidate 8, baseline 13, ties 27. Semantic failures: baseline
+  9, candidate 7; 4 candidate regressions. Output tokens 4.4% lower with the
+  candidate (8114 vs 8486).
+- Reassurance: in `optional-step` the candidate added "probably safe" or
+  "usually low-risk" in 4 of 6 replies (3 regressions); the baseline did so in
+  2 of 6. The removed sentences covered exactly this.
+- Unknown actors: no failures in the four impersonal cases in either core.
+  `ru-optional-backup` still drew «разработчик(и)» in 2 of 3 candidate and 2
+  of 3 baseline replies; the candidate also added «авторы» once in
+  `ru-optional-step`.
+- The fourth regression (`en-depth`, "directly … not through the reviewer")
+  is the route failure the core already targets.
+- Decision: the example does not replace the rules; the core stays at 7955b41.
+- Locked judgments: packet `5620d209…a061c`, judgments `ac228225…6cda`. Run
+  files: `~/ai-hub/outputs/2026-10-15-palych-example-run/`.
+
 ## Self-check shortening pilot — 2026-10-15
 
 Same harness, cases and settings as the core-trim pilot below: masked
