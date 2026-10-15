@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- The core's self-check is one sentence that points back to the rules instead
+  of repeating them (1176 → 1153 words); pilot results are in the development
+  log (2026-10-15).
 - `evals/cache_usage.py` estimates from local Claude Code and Codex logs how much
   of an always-on core's input is read from the prompt cache; results are in the
   development log (2026-10-15).

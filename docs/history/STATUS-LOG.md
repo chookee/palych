@@ -1,5 +1,34 @@
 # Palych — dated development records
 
+## Self-check shortening pilot — 2026-10-15
+
+Same harness, cases and settings as the core-trim pilot below: masked
+exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no tools, a
+fresh process per reply; same-model assessors; 16 cases, three repetitions, 48
+pairs. The baseline replies are the 48 core-trim baseline replies, reused; only
+the candidate replies were generated in this run.
+
+- Baseline: the core at `main` f3a55d9 (unchanged since edc98c2), SHA-256
+  `0dce8f6b…194de`, 1176 words.
+- Candidate (`claude/selfcheck-trim` 94d5cdf, SHA-256 `435d2e82…`, 1153 words):
+  the self-check list ("correct language; direct answer; … universal claims
+  supported or conditional") became "silently check the reply against the rules
+  above"; the rest of the core is unchanged.
+- Preferences: candidate 16, baseline 8, ties 24. Semantic failures: baseline 7,
+  candidate 5; 4 candidate regressions. Output tokens 6.4% lower with the
+  candidate (9629 vs 10287; Russian −11.3%, English +0.4%).
+- The four regressions are the failure types still open in the full core:
+  unknown actors in `optional-backup` (ru ×1, en ×1, the latter also an added
+  data-loss example), invented consequences and exclusive knowledge in
+  `en-depth`, and reassurance in `ru-unknown-reason` («спешить нет причин»).
+  The baseline showed the same types in this run.
+- Assessor variation: the same 48 baseline replies drew 8 semantic failures in
+  the core-trim run and 7 here.
+- Decision: the shorter self-check is integrated. Not tested: reader
+  comprehension, other models and hosts.
+- Locked judgments: packet `c927490a…98535`, judgments `283700de…3c5a`. Run
+  files: `~/ai-hub/outputs/2026-10-15-palych-selfcheck-run/`.
+
 ## Core-trim pilot; candidate rejected — 2026-10-15
 
 Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
