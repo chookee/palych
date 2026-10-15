@@ -40,6 +40,8 @@ against no skill, 86 Palych preferences, 1 no-skill preference and 3 ties over
 lower. Still open: unknown actors and reasons, and "optional" turning into "safe
 to skip" (`optional-backup`). Three candidate rules for them failed their pilots
 and were not integrated.
+A shorter core that merged the role and route rules failed its pilot
+(2026-10-15): it reintroduced invented routes.
 
 ## Still open
 
