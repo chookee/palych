@@ -1,5 +1,36 @@
 # Palych — dated development records
 
+## Core-trim pilot; candidate rejected — 2026-10-15
+
+Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
+tools, a fresh process per reply; same-model assessors. 16 cases (ru/en: cost,
+unknown-reason, roles, deadline, verification, seven, depth, optional-backup),
+three repetitions, 48 pairs.
+
+- Baseline: the core at `main` edc98c2, SHA-256 `0dce8f6b…194de`, 1176 words.
+- Candidate (`claude/core-trim` 34b23e6, SHA-256 `7db4da6b…fc8a3`, 1130 words):
+  the lowest-total-price sentence became "Calculate only what the criteria
+  need."; the four role/transport sentences became one ("report the assigned
+  actor, action and recipient, and the stated actors and steps; add no route,
+  handoff or exclusive ability the source does not state"); the self-check list
+  became one sentence.
+- Preferences: candidate 15, baseline 14, ties 19. Semantic failures: baseline
+  8, candidate 11; 8 candidate regressions. Output tokens 5.2% lower with the
+  candidate (9749 vs 10287).
+- Roles: the baseline won all three `en-roles` pairs and two `ru-roles` pairs;
+  three of the six candidate role replies invented a route or excluded an
+  intermediary ("sends the result directly to it", «а не буферу», «Он сам
+  забирает»). Neither prompt states a route; the removed transport sentence
+  covered this. The baseline had no role failures.
+- The other five candidate regressions (deadline, depth, unknown-reason ×2,
+  optional-backup) are the same failure types the baseline also showed in this
+  run (invented outcomes, actors or exclusive knowledge), so the pilot does not
+  separate them from noise.
+- Decision: the candidate is not integrated; the core stays at edc98c2. The
+  pricing and self-check cuts were not tested in isolation.
+- Locked judgments: packet `851258ed…02d07`, judgments `695ea90c…fc420`.
+  Run files: `~/ai-hub/outputs/2026-10-15-palych-core-trim-run/`.
+
 ## Prompt-cache share of the core's input cost — 2026-10-15
 
 `python3 evals/cache_usage.py --days 14` at branch `claude/cache-measure` (base
