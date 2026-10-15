@@ -11,7 +11,7 @@ and update this page when a limit changes.
 |---|---|---|---|
 | Claude Code | Plugin with a SessionStart hook, or a global instructions block | Plugin install, update 0.6.0 → 0.6.1, reinstall; core on startup, resume, clear, compact; off survives compaction (live, 2026-10-14) | Global-block route live; progress messages |
 | Codex CLI | Plugin with a SessionStart hook, or a global instructions block | Plugin install and reinstall; off survives compaction; no duplicate core on resume or fork (live, 2026-10-14) | Plugin upgrade from a GitHub marketplace; whether hook trust survives an update; fork in off mode or after a core change |
-| Hermes | Skill folder `skills/palych`, preloaded with `hermes -s palych` | Install, check and uninstall from the former `packages/hermes/palych` path; preloading inferred from input tokens (v0.16.0, v0.22.0) | Install from `skills/palych`; `skills.auto_load` with Palych |
+| Hermes | Skill folder `skills/palych`, preloaded with `hermes -s palych` | Install from `skills/palych`, scan SAFE, files identical (v0.22.0, 2026-10-15); preloading inferred from input tokens with the former `packages/hermes/palych` path (v0.16.0, v0.22.0) | Preloading from the new path; `skills.auto_load` with Palych |
 | Cursor | Always-applied rule in a local plugin | Loads as a local plugin; plain off answered without tool calls (3.24.18, one run per case) | Marketplace install; the Claude Code plugin inside Cursor |
 | `npx skills` | Copies `skills/palych` | Folder install and removal (skills@1.7.2) | — |
 

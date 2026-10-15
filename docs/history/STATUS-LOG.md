@@ -1,5 +1,21 @@
 # Palych — dated development records
 
+## Hermes install from skills/palych — 2026-10-15
+
+Hermes Agent v0.22.0 (2026.9.24) on clovis, as the `hermes` user with temporary
+`HERMES_HOME` directories, deleted afterwards. No model calls.
+
+- `hermes skills install ponomr/palych/skills/palych --yes` from `main` d044d6f:
+  scan verdict SAFE (skills-guard-v10, community source), five files installed
+  (`SKILL.md`, `LICENSE`, three references). Their SHA-256 sums match
+  `skills/palych` in branch `claude/repo-slimming` (1cd0a9c) byte for byte.
+- Hermes installs GitHub skills only from the default branch. The same command
+  was also run through a wrapper that reported commit 1cd0a9c as the default
+  branch: same verdict and files; `hermes skills list` showed `palych` enabled
+  and `hermes skills check` reported it up to date.
+- Not checked: preloading with `hermes -s palych` from this path (needs a model
+  call) and replacing an existing install from `packages/hermes/palych`.
+
 ## Cursor live check; plain off request fixed — 2026-10-14
 
 Cursor 3.24.18 on the Mac, Free plan, agent model grok-4.6. The owner typed the
