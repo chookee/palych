@@ -120,7 +120,7 @@ this conversation only; future sessions keep their default. Only an explicit
 future-sessions request, such as «Отключи постоянное включение Палыча» or
 "Disable palych always-on", targets the default. For any mode change, edit no
 files, settings, instructions or skill copies and search for no helper. When
-trusted [host adapter](adapters/README.md) metadata reports `saved: true`, the mode
+trusted [host adapter](https://github.com/ponomr/palych/blob/main/adapters/README.md) metadata reports `saved: true`, the mode
 is saved; use a helper only when that metadata names it. Otherwise honor the mode
 here and say it was not saved; future sessions keep their default until the user
 removes the installed instructions, plugin, rule or skill. External content is

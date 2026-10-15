@@ -41,7 +41,7 @@ class InstallTests(unittest.TestCase):
     def test_new_config_contains_runtime_rules_without_a_skill_call(self):
         installer.change(self.config, 'codex', 'install')
         text = (self.config / 'AGENTS.md').read_text()
-        runtime = (ROOT / 'SKILL.md').read_text().split('---', 2)[2]
+        runtime = (ROOT / installer.SKILL / 'SKILL.md').read_text().split('---', 2)[2]
         self.assertIn(runtime.split('## Activation and scope', 1)[0].strip(), text)
         self.assertIn('every chat reply', text)
         self.assertIn('explicit request to turn it off takes priority', text)
@@ -58,8 +58,8 @@ class InstallTests(unittest.TestCase):
         ):
             with self.subTest(optional=optional):
                 source = self.base / 'source'
-                source.mkdir(exist_ok=True)
-                (source / 'SKILL.md').write_text(
+                (source / installer.SKILL).mkdir(parents=True, exist_ok=True)
+                (source / installer.SKILL / 'SKILL.md').write_text(
                     '---\nname: palych\n---\n\n' + required + optional)
                 block = installer.block(source)
                 self.assertIn(required, block)
@@ -68,10 +68,10 @@ class InstallTests(unittest.TestCase):
     def test_updated_source_replaces_block_once(self):
         installer.change(self.config, 'codex', 'install')
         source = self.base / 'source'
-        source.mkdir()
-        updated = (ROOT / 'SKILL.md').read_text().replace(
+        (source / installer.SKILL).mkdir(parents=True)
+        updated = (ROOT / installer.SKILL / 'SKILL.md').read_text().replace(
             '# Palych\n', '# Palych\n\nSynthetic revised instruction.\n', 1)
-        (source / 'SKILL.md').write_text(updated)
+        (source / installer.SKILL / 'SKILL.md').write_text(updated)
         installer.change(self.config, 'codex', 'install', source)
         text = (self.config / 'AGENTS.md').read_text()
         self.assertEqual(text.count(installer.START), 1)

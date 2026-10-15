@@ -44,22 +44,24 @@ def check():
         for prefix in ('/' + 'Users/', '/' + 'home/'):
             if re.search(re.escape(prefix) + r'[A-Za-z0-9_.-]+/', text):
                 errors.append(f'{relative}: machine-specific private path in public package')
-    core = (ROOT / 'SKILL.md').read_text(encoding='utf-8')
+    skill = Path('skills/palych/SKILL.md')
+    core = (ROOT / skill).read_text(encoding='utf-8')
     lines = core.splitlines()
     if not lines or lines[0] != '---' or '---' not in lines[1:]:
-        errors.append('SKILL.md: missing frontmatter')
+        errors.append(f'{skill}: missing frontmatter')
     else:
         front = '\n'.join(lines[1:lines.index('---', 1)])
         if not re.search(r'^name: palych$', front, re.MULTILINE):
-            errors.append('SKILL.md: expected name palych')
+            errors.append(f'{skill}: expected name palych')
         if not re.search(r'^description: \S', front, re.MULTILINE):
-            errors.append('SKILL.md: missing description')
+            errors.append(f'{skill}: missing description')
     if re.search(r'\b(?:TODO|TBD|PLACEHOLDER)\b', core):
-        errors.append('SKILL.md: unfinished instruction')
-    # Skill installers scan the root and agent skill folders, so host copies stay
-    # deep under packages/ and the root SKILL.md remains the only visible skill.
+        errors.append(f'{skill}: unfinished instruction')
+    # Skill installers copy the whole folder of the first SKILL.md they find, so the
+    # root has none; host copies stay deep under packages/ and skills/palych is the
+    # only visible skill.
     for relative in files:
-        if relative.name.lower() == 'skill.md' and relative != Path('SKILL.md') and (
+        if relative.name.lower() == 'skill.md' and relative != skill and (
                 relative.parts[0] != 'packages' or len(relative.parts) < 4):
             errors.append(f'{relative}: second discoverable skill outside packages/')
     spec = importlib.util.spec_from_file_location('build_packages', ROOT / 'scripts' / 'build_packages.py')

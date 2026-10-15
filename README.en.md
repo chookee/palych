@@ -63,7 +63,7 @@ described in [INSTALL.md](INSTALL.md). The plugin has separate
 Palych adapts selected Easy-to-read guidance for chat. It assumes no reader
 diagnosis and makes no claim of compliance with the full methodology.
 
-[Sources](references/sources.md) · [Checks and limits](docs/STATUS.md) ·
+[Sources](skills/palych/references/sources.md) · [Checks and limits](docs/STATUS.md) ·
 [Development](docs/DEVELOPMENT.md). License: [MIT](LICENSE).
 
 ## Example

@@ -17,6 +17,8 @@ START = '<!-- palych:start -->\n'
 END = '<!-- palych:end -->\n\n'
 STAMP = re.compile(r'<!-- palych:sha256 ([0-9a-f]{64}) -->\n')
 ROOT = Path(__file__).resolve().parents[1]
+SKILL = Path('skills/palych')
+ADAPTER_DOCS = 'https://github.com/ponomr/palych/blob/main/adapters/README.md'
 
 
 def digest(text):
@@ -25,12 +27,12 @@ def digest(text):
 
 def payload(source=ROOT):
     """Return the always-on instructions shared by global installs and host packages."""
-    core = (source / 'SKILL.md').read_text(encoding='utf-8')
+    core = (source / SKILL / 'SKILL.md').read_text(encoding='utf-8')
     # Optional examples and installation links are not needed in global context.
     body = core.split('---', 2)[2].split('## Optional examples', 1)[0]
     # The compact core keeps its optional pointer after the final self-check.
     body = body.split('Consult only relevant optional', 1)[0].strip()
-    body = body.replace('[host adapter](adapters/README.md)', 'host adapter')
+    body = body.replace(f'[host adapter]({ADAPTER_DOCS})', 'host adapter')
     return ('Palych is enabled by default for every chat reply in this conversation.\n'
                'An explicit request to turn it off takes priority until enabled again.\n'
                'Keep the current on/off state when compacting or handing off context.\n\n'

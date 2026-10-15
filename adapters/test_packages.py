@@ -47,7 +47,7 @@ class PackageTests(unittest.TestCase):
     def test_drift_reports_changed_extra_and_missing_files(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
-            for name in ('SKILL.md', 'LICENSE', 'references', 'adapters', 'assets', 'scripts'):
+            for name in ('skills', 'LICENSE', 'adapters', 'assets', 'scripts'):
                 source = ROOT / name
                 (shutil.copytree if source.is_dir() else shutil.copy2)(source, root / name)
             module_spec = importlib.util.spec_from_file_location('copy', root / 'scripts/build_packages.py')

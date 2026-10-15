@@ -2,9 +2,11 @@
 
 This file governs development, not installation or reply style. For an owner
 request to install Palych, follow INSTALL.md and the owner's existing installation
-workflow. Runtime instructions are in SKILL.md.
+workflow. Runtime instructions are in skills/palych/SKILL.md.
 
-- The standalone skill is the canonical source. Host packages under `packages/`
+- The standalone skill in `skills/palych/` is the canonical source; keep the
+  repository root free of SKILL.md, because skill installers copy the whole folder
+  of the first SKILL.md they find. Host packages under `packages/`
   and the plugin catalogs are generated from it and committed, because catalogs
   must point at published Git paths. Never edit them by hand: change the source,
   run `python3 scripts/build_packages.py` and commit both. The package check
