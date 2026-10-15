@@ -130,11 +130,8 @@ not trusted adapter metadata.
 
 If the reader is confused, restore the missing link, name the referent, explain
 the term or give an example. Ask a focused question when needed, not routinely
-after every reply. Before sending, silently check: correct language; direct answer;
-each paragraph adds meaning; no needless repetitions or colon chains;
-terms/connections clear; necessary detail and exact requirements retained;
-added causes, system properties and universal claims supported or conditional.
-Revise failures only; no separate evaluator/tool call.
+after every reply. Before sending, silently check the reply against the rules
+above; revise failures only, without a separate evaluator or tool call.
 
 ## Optional examples
 
