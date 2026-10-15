@@ -59,14 +59,8 @@ def render(source=ROOT):
         'alwaysApply: true\n---\n\n' + rules)
     files[f'{cursor}/LICENSE'] = license_text
 
-    # Hermes installs a skill folder by GitHub path; `hermes -s palych` preloads it.
-    hermes = f'{PACKAGES}/hermes/palych'
-    skill = (source / builder.SKILL / 'SKILL.md').read_text(encoding='utf-8')
-    files[f'{hermes}/SKILL.md'] = text(skill.replace(f'[host adapter]({builder.ADAPTER_DOCS})', 'host adapter'))
-    for path in sorted((source / builder.SKILL / 'references').glob('*.md')):
-        files[f'{hermes}/references/{path.name}'] = path.read_bytes()
-    files[f'{hermes}/LICENSE'] = license_text
-    # The canonical skill folder is what `npx skills add ponomr/palych` copies.
+    # The canonical skill folder is what Hermes and `npx skills add` install by
+    # GitHub path; `hermes -s palych` preloads it.
     files[f'{builder.SKILL.as_posix()}/LICENSE'] = license_text
 
     entry = {'name': 'palych', 'description': description, 'version': version}

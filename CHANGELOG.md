@@ -2,11 +2,19 @@
 
 ## Unreleased
 
+- Hermes installs the canonical `skills/palych` folder; `packages/hermes/` is no
+  longer generated or published. A skill installed from the old path must be
+  uninstalled and installed again.
+- Repository size: the README banner is a JPEG (921 KB → 143 KB) and the plugin
+  icon is 512×512 (560 KB → 132 KB per copy).
+- `docs/STATUS.md` now holds only the current state and open limits; the dated
+  records moved unchanged to `docs/history/STATUS-LOG.md`.
+
 - Move the canonical skill to `skills/palych/` (`SKILL.md`, `references/`, a
   generated `LICENSE`). `npx skills add ponomr/palych` now installs only that
   folder instead of the whole repository. The adapter link in the core points to
   GitHub, so it also works in a standalone copy. Generated packages are unchanged.
-- Claude Code plugin: add a 1254×1254 listing icon, built from `assets/icon.png`
+- Claude Code plugin: add a 512×512 listing icon, built from `assets/icon.png`
   into `.claude-plugin/icon.png`, for the plugin directory's "No icon" warning.
 - Core: «Отключи Палыча» / "Turn off palych" turns Palych off for the current
   conversation only. The core no longer tells the agent to remove the global

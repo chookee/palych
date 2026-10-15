@@ -26,6 +26,10 @@ def check():
             if not path.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'):
                 errors.append(f'{relative}: invalid PNG signature')
             continue
+        if path.suffix.lower() in ('.jpg', '.jpeg'):
+            if not path.read_bytes().startswith(b'\xff\xd8\xff'):
+                errors.append(f'{relative}: invalid JPEG signature')
+            continue
         try:
             text = path.read_text(encoding='utf-8')
             if path.suffix == '.json':

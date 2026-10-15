@@ -61,7 +61,7 @@ set, pass `--prompts evals/compact-prompts.json` to the existing masking tool.
 Three repetitions make 60 pairs for this set. Generation consumes the agent's
 usage limits; run the free offline package checks first. Record new results in
 distinct files. Focused model checks and their limits are recorded separately in
-[development status](../docs/STATUS.md); historical results remain unchanged.
+[development log](../docs/history/STATUS-LOG.md); historical results remain unchanged.
 
 ## Reproducible blind checks
 
