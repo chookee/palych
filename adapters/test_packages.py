@@ -39,10 +39,12 @@ class PackageTests(unittest.TestCase):
             self.assertTrue(any(path == relative or path.startswith(relative + '/')
                                 for path in self.files), source)
 
-    def test_hermes_skill_has_no_links_outside_its_folder(self):
-        skill = self.content('packages/hermes/palych/SKILL.md')
+    def test_skill_folder_is_self_contained(self):
+        skill = (ROOT / 'skills/palych/SKILL.md').read_text(encoding='utf-8')
         self.assertNotIn('](adapters/', skill)
-        self.assertIn('packages/hermes/palych/references/examples.ru.md', self.files)
+        self.assertNotIn('](../', skill)
+        self.assertIn('skills/palych/LICENSE', self.files)
+        self.assertFalse(any(path.startswith('packages/hermes/') for path in self.files))
 
     def test_drift_reports_changed_extra_and_missing_files(self):
         with tempfile.TemporaryDirectory() as temp:

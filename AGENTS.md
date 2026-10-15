@@ -21,7 +21,8 @@ workflow. Runtime instructions are in skills/palych/SKILL.md.
   Clear Replies before the rename. Keep their raw contents and hashes intact;
   record new evidence separately with the tested revision or skill hash.
 - Never report an editorial score as reader comprehension or a fixture event as
-  successful live-host compaction. Current limitations are in docs/STATUS.md.
+  successful live-host compaction. Current limitations are in docs/STATUS.md;
+  dated records go to docs/history/STATUS-LOG.md.
 - For releases, update the builder's manifest version and CHANGELOG.md, run the
   checks, build both host variants into new directories and verify their contents.
   Installation, live evaluations and publication have separate authorization.

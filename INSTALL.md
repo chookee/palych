@@ -185,8 +185,13 @@ See [adapters/README.md](adapters/README.md) for mode controls.
 **Hermes:**
 
 ```sh
-hermes skills install ponomr/palych/packages/hermes/palych
+hermes skills install ponomr/palych/skills/palych
 ```
+
+Путь `packages/hermes/palych` больше не публикуется. Если скилл стоит оттуда,
+удалите его и поставьте заново командой выше.
+The `packages/hermes/palych` path is no longer published. If the skill was
+installed from it, uninstall it and install again with the command above.
 
 Hermes загружает скилл с начала разговора, если запустить его с флагом
 (проверено на v0.16.0 и v0.22.0):

@@ -1,4 +1,4 @@
-![Anton Chekhov with a fountain pen at his desk — Palych banner](assets/chekhov-banner.png)
+![Anton Chekhov with a fountain pen at his desk — Palych banner](assets/chekhov-banner.jpg)
 
 # Palych — a Claude Code skill for concise, plain-language AI agent replies
 
