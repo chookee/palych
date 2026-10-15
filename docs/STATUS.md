@@ -27,7 +27,10 @@ and update this page when a limit changes.
 - A Codex fork taken before the parent received the core gets no core; a fork
   taken before the parent was switched off inherits off.
 - The core adds input tokens to every request (about 2600 in the Claude Code
-  pilot). Cached-input pricing and subscription debits were not measured.
+  pilot). In two weeks of local agent sessions most requests read it from the
+  prompt cache: it cost 0.13–0.18 of the uncached price in Claude Code and an
+  estimated 0.24–0.28 in Codex. Short chats pay the cache write over fewer
+  requests. Subscription usage-limit debits were not measured.
 
 ## Quality evidence
 
@@ -43,7 +46,7 @@ and were not integrated.
 - Reader comprehension testing with the intended audience.
 - The complete controlled 20-case, three-repetition comparison with matching
   generation settings.
-- Platform token and usage-limit measurements, including prompt caching.
+- Usage-limit debits, and output savings in agent sessions with tool loops.
 
 Editorial scores are not reader comprehension, and fixture events are not live
 host behavior. Historical evidence in `evals/results`, `evals/observations.md`

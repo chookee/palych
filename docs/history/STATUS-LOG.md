@@ -1,5 +1,35 @@
 # Palych — dated development records
 
+## Prompt-cache share of the core's input cost — 2026-10-15
+
+`python3 evals/cache_usage.py --days 14` at branch `claude/cache-measure` (base
+16c409a) on the Mac's local logs: Claude Code transcripts and Codex rollouts
+modified in the last 14 days. The script prints aggregates only. It does not
+check whether Palych was loaded in each session; it estimates how an always-on
+block placed in a session's first request is billed on later requests.
+
+| Host | Sessions | Requests | Warm | Cold | Ambiguous | Core price vs. uncached |
+|---|---|---|---|---|---|---|
+| Claude Code | 123 | 9419 | 8888 | 159 + 123 first | 249 | 0.133–0.184 |
+| Codex | 150 | 4024 | 3202 | 494 + 150 first | 178 | 0.244–0.284 (cached read assumed 0.1) |
+
+- Claude multipliers, from the claude-api skill's prompt-caching guide (cached
+  2026-10-06): cache read 0.1× base input (0.05× on Opus 5.5, 0.025× on Fable
+  5.1), 5-minute write 1.25×, 1-hour write 2×. Claude Code wrote 1-hour entries.
+  Most requests ran on `claude-opus-5-5`. Codex logs show no write premium; its
+  cached-read price is an assumption, not a verified price.
+- Claude Code: the 2600-token core costs about 346–478 base-input tokens per
+  request. On Opus 5.5 ($4 input, $20 output per MTok) that equals 69–96 output
+  tokens, 7–10% of the mean 964 output tokens per request in these sessions.
+  The 2026-10-13 pilot measured 45.4% fewer output tokens on single replies;
+  agent sessions with tool loops were not measured, so the net effect there is
+  unknown.
+- The bounds come from cache positions, not from per-block billing: a request is
+  warm when its cached input covers the whole first request, cold when it covers
+  no more than the first request's cached prefix, ambiguous otherwise.
+- Not measured: subscription usage-limit debits, Cursor and Hermes, and sessions
+  without a long tool loop (short chats repay the first write over fewer reads).
+
 ## Hermes install from skills/palych — 2026-10-15
 
 Hermes Agent v0.22.0 (2026.9.24) on clovis, as the `hermes` user with temporary
