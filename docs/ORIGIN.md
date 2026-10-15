@@ -15,7 +15,7 @@ The new publication has independent Git history; the former workspace's history
 and unrelated contents are not part of this repository.
 
 The adapted plain-language source and exclusions are documented in
-[references/sources.md](../references/sources.md). Reader comprehension and actual
+[references/sources.md](../skills/palych/references/sources.md). Reader comprehension and actual
 host compaction have not been verified. Renaming does not establish either claim.
 
 ## Runtime state

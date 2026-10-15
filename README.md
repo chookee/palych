@@ -64,7 +64,7 @@ Claude Code, скилл для Hermes или правило для Cursor. За�
 Палыч адаптирует часть рекомендаций «Ясный язык» для чата. Он не предполагает
 диагноз читателя и не заявляет соответствие полной методике Easy-to-read.
 
-[Источники](references/sources.md) · [Проверки и ограничения](docs/STATUS.md) ·
+[Источники](skills/palych/references/sources.md) · [Проверки и ограничения](docs/STATUS.md) ·
 [Разработка](docs/DEVELOPMENT.md). Лицензия — [MIT](LICENSE).
 
 ## Пример
@@ -124,7 +124,7 @@ Claude Code, скилл для Hermes или правило для Cursor. За�
 
 **Можно ли так убрать воду из ответов ChatGPT?**\
 Принцип тот же, но Палыч устанавливается только в Claude Code и Codex. Для
-ChatGPT можно взять правила из [SKILL.md](SKILL.md) как пользовательскую
+ChatGPT можно взять правила из [SKILL.md](skills/palych/SKILL.md) как пользовательскую
 инструкцию.
 
 **Чем Палыч отличается от других скиллов Claude Code?**\

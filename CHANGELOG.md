@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Move the canonical skill to `skills/palych/` (`SKILL.md`, `references/`, a
+  generated `LICENSE`). `npx skills add ponomr/palych` now installs only that
+  folder instead of the whole repository. The adapter link in the core points to
+  GitHub, so it also works in a standalone copy. Generated packages are unchanged.
 - Claude Code plugin: add a 1254×1254 listing icon, built from `assets/icon.png`
   into `.claude-plugin/icon.png`, for the plugin directory's "No icon" warning.
 - Core: «Отключи Палыча» / "Turn off palych" turns Palych off for the current

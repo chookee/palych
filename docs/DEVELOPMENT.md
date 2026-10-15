@@ -5,8 +5,9 @@ Use this repository as the source for future changes.
 
 ## Layout
 
-- SKILL.md: compact Russian-first/English conversational instructions.
-- references/: original examples and attribution to the adapted source.
+- skills/palych/SKILL.md: compact Russian-first/English conversational instructions.
+- skills/palych/references/: original examples and attribution to the adapted source.
+- skills/palych/LICENSE: generated copy, so the folder installs as a complete skill.
 - adapters/: optional persistent state helper and its subprocess tests.
 - scripts/install.py: always-on global-instructions installer; tests use temporary configs.
 - scripts/build_plugin.py: alternative Codex or Claude Code plugin builder.
@@ -31,8 +32,8 @@ python3 scripts/build_plugin.py --host claude-code --output ./dist/palych-claude
 ```
 
 Commit regenerated packages with the source change; the package check fails on
-drift. Keep host copies of SKILL.md under packages/ so skill installers see one
-skill. Build targets must be new directories. Never publish dist/, local state or
+drift. Keep host copies of SKILL.md under packages/ and none in the root, so
+`npx skills add ponomr/palych` finds one skill and copies only skills/palych. Build targets must be new directories. Never publish dist/, local state or
 reader responses automatically. The builder does not install a plugin. A fresh trusted plugin defaults to on;
 existing saved defaults are preserved. The global-instructions installation is
 documented in [INSTALL.md](../INSTALL.md); use one route at a time.

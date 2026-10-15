@@ -21,7 +21,7 @@ below). Installing both loads the rules twice, and their mode states can conflic
    из контекста, уточни Codex или Claude Code. Соблюдай действующие правила
    пользователя об установке: если общие инструкции управляются другим
    репозиторием или установщиком, внеси блок через этот источник.
-2. Получи репозиторий и проверь `SKILL.md` и `scripts/install.py` до запуска.
+2. Получи репозиторий и проверь `skills/palych/SKILL.md` и `scripts/install.py` до запуска.
    Не запускай код из непроверенного источника. Запомни установленный commit.
 3. Выполни подходящую команду `install` ниже. Затем `check`: она проверяет
    наличие актуальных правил, а не качество ответов модели.
@@ -235,18 +235,16 @@ is an alternative (not checked).
 **Другие агенты / Other agents:**
 
 ```sh
-npx skills add ponomr/palych/packages/hermes/palych
+npx skills add ponomr/palych
 ```
 
-Команда ставит только папку скилла (`SKILL.md`, примеры, лицензию) как обычный
-скилл. Агент вызывает его по описанию, а не в каждом ответе. Короткая форма
-`npx skills add ponomr/palych` копирует весь репозиторий, включая оценки и
-документацию. Удаление — `npx skills remove palych`.
+Команда ставит только папку `skills/palych` (`SKILL.md`, примеры, лицензию) как
+обычный скилл. Агент вызывает его по описанию, а не в каждом ответе. Удаление —
+`npx skills remove palych`.
 
-It installs only the skill folder (`SKILL.md`, examples, license) as a regular
-skill that the agent invokes by description, not in every reply. The short form
-`npx skills add ponomr/palych` copies the whole repository, including evaluations
-and docs. Remove it with `npx skills remove palych`.
+It installs only the `skills/palych` folder (`SKILL.md`, examples, license) as a
+regular skill that the agent invokes by description, not in every reply. Remove it
+with `npx skills remove palych`.
 
 В Hermes и Cursor нет хуков Палыча: «Отключи Палыча» действует только
 в текущем разговоре. Постоянно отключить — удалить скилл или правило.

@@ -7,6 +7,8 @@ import shutil
 import tempfile
 
 VERSION = '0.7.1'
+SKILL = Path('skills/palych')
+ADAPTER_DOCS = 'https://github.com/ponomr/palych/blob/main/adapters/README.md'
 DESCRIPTION = 'Clear conversational replies in Russian and English, enabled by default with persistent mode controls.'
 
 
@@ -15,9 +17,9 @@ def build(source, target, host):
         raise ValueError('output already exists; choose a new path')
     target.parent.mkdir(parents=True, exist_ok=True)
     # Validate the complete source inventory before writing a partial package.
-    inventory = [source / 'SKILL.md', source / 'LICENSE', source / 'adapters/session_hook.py',
+    inventory = [source / SKILL / 'SKILL.md', source / 'LICENSE', source / 'adapters/session_hook.py',
                  source / 'assets/icon.png']
-    inventory += list((source / 'references').glob('*.md'))
+    inventory += list((source / SKILL / 'references').glob('*.md'))
     for path in inventory:
         if path.is_symlink() or not path.is_file():
             raise ValueError(f'not a regular source file: {path.name}')
@@ -25,13 +27,13 @@ def build(source, target, host):
     try:
         skill = staging / 'skills' / 'palych'
         skill.mkdir(parents=True)
-        for path in (source / 'references').glob('*.md'):
+        for path in (source / SKILL / 'references').glob('*.md'):
             (skill / 'references').mkdir(exist_ok=True)
             shutil.copy2(path, skill / 'references' / path.name)
         # Redirect the adapter pointer to the bundled docs; development protocols
         # are intentionally absent from the runtime core.
-        body = (source / 'SKILL.md').read_text(encoding='utf-8')
-        body = body.replace('(adapters/README.md)', '(../../README.md)')
+        body = (source / SKILL / 'SKILL.md').read_text(encoding='utf-8')
+        body = body.replace(f'({ADAPTER_DOCS})', '(../../README.md)')
         (skill / 'SKILL.md').write_text(body, encoding='utf-8')
         shutil.copy2(source / 'LICENSE', staging / 'LICENSE')
         shutil.copy2(source / 'adapters/README.md', staging / 'README.md')
