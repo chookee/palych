@@ -1,7 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.8.0 — 2026-10-17
 
+- Core: when the source states an irreversible effect of a step (erased
+  settings, permanent deletion), the reply states that effect before the step,
+  even ahead of the answer, and adds no preparation or backup advice the source
+  lacks (1153 → 1182 words); pilot results are in the development log
+  (2026-10-17).
 - The core's self-check is one sentence that points back to the rules instead
   of repeating them (1176 → 1153 words); pilot results are in the development
   log (2026-10-15).
