@@ -1,5 +1,42 @@
 # Palych — dated development records
 
+## Warning-order pilot; candidate rejected — 2026-10-16
+
+Idea source: the warning-before-step rule of simple-writing-skills c70750c.
+A probe of the current core first (8 replies, read by the agent,
+`~/ai-hub/outputs/2026-10-16-palych-order-probe/`): for a database migration
+whose source said "Important" the core put the warning first in 4 of 4
+replies; for a router reset it said that all settings are erased only after
+"hold Reset" in 4 of 4.
+
+Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
+tools, a fresh process per reply; same-model assessors; 14 cases, three
+repetitions, 42 pairs. Cases: the new warning-order set (router reset, account
+deletion, dark-theme guard; RU/EN) plus unknown-reason, roles, depth and
+verification in RU and EN.
+
+- Baseline: the core at `main` 3d6509a, SHA-256 `435d2e82…a7fa0`, 1153 words.
+- Candidate (`claude/warning-order` 4ac1ec3, SHA-256 `665f4f60…3f9b`, 1160
+  words): the Instructions line "prerequisites/failure conditions beside the
+  affected step" became "prerequisites, conditions and warnings of supplied
+  irreversible effects go before the affected step".
+- Preferences: candidate 9, baseline 11, ties 22. Semantic failures: baseline
+  14, candidate 17; 8 candidate regressions. Output tokens 10.3% higher with
+  the candidate (11117 vs 10081).
+- Target behavior (keyword placement check of the 12 router and account replies
+  per condition): the warning came before the first instruction in 0 baseline
+  replies (one of them was a clarifying question) and in 4 candidate replies.
+  Assessors also failed most replies of both conditions on this criterion.
+- Candidate regressions: invented preparation ("save any files you need
+  first", "have your provider login") in router and account cases; "no restart
+  needed" added in both theme cases; `ru-unknown-reason` 3 of 3 again
+  («разработчики»), as in the label-reference pilot; `depth` 2.
+- Decision: the rule is not integrated; the core stays at 3d6509a. Warnings
+  after the step remain an open defect; the case set stays for the next
+  candidate.
+- Locked judgments: packet `084e9eca…48e3`, judgments `310258af…002f`. Run
+  files: `~/ai-hub/outputs/2026-10-16-palych-order-run/`.
+
 ## Full-grammar probe; no pilot — 2026-10-16
 
 Hypothesis: a compact core produces telegraphic fragments and slash chains

@@ -47,6 +47,10 @@ failed (2026-10-15): reassurance about skipping came back.
 A rule that a label (option 2, step 3) must name its content failed its
 pilot (2026-10-16): the current core already named the content, and the
 candidate added unsupported claims and about 14% more output.
+A rule to put warnings of irreversible effects before the step also failed
+(2026-10-16). The current core still states such a warning after the step;
+the candidate moved it forward in 4 of 12 replies but added preparation
+advice the source does not give.
 
 ## Still open
 

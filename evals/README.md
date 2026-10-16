@@ -56,6 +56,13 @@ cases: a progress report on numbered steps and a report on a numbered option
 chosen earlier. It checks that a label or number is not the only description.
 Its candidate failed a masked pilot; the current core passed every case.
 
+The [warning-order set](warning-order-prompts.json) has six synthetic RU/EN
+cases: a router reset and an account deletion whose irreversible effect is
+stated after the step, and a dark-theme guard with no warning. It checks that
+the reader learns the effect before the step and that no warning is invented.
+Its candidate failed a masked pilot; the current core put the warning after the
+step in every reply.
+
 The [bounds and conflicts set](bounds-conflicts-prompts.json) has eight synthetic
 RU/EN cases: price and count bounds, "at least"/"at most" limits, and conflicting
 delivery terms or prices. Use it with the unknown-reason, roles and deadline cases.
