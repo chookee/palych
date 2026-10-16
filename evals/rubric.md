@@ -141,6 +141,24 @@ supplies developers, a company, management, an administrator, IT or a support te
 absent from the source fails semantic fidelity. "You" for the reader is not an
 invented actor.
 
+## Labels carry content
+
+Use [label-reference-prompts.json](label-reference-prompts.json) with the
+unknown-reason, roles, depth and verification cases. A reply that refers to an
+earlier option, step or section names its content as well; "step 3 failed" or
+"went with option 2" alone fails the protected criterion. Exact errors and the
+stated verification scope stay intact. Repeating whole earlier passages is not
+required and counts against compactness.
+
+## Warnings before the step
+
+Use [warning-order-prompts.json](warning-order-prompts.json) with the
+unknown-reason, roles, depth and verification cases. When the source states an
+irreversible effect of a step, the reader learns it before the instruction to
+take that step; a warning placed only after the step fails the protected
+criterion. An invented warning, risk or extra requirement is a failure too,
+including in the theme cases, where no warning is supplied.
+
 ## Assessor calibration and audit
 
 Record the observed reply language separately. A wrong language lowers the

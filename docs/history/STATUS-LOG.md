@@ -1,5 +1,94 @@
 # Palych — dated development records
 
+## Warning-order pilot; candidate rejected — 2026-10-16
+
+Idea source: the warning-before-step rule of simple-writing-skills c70750c.
+A probe of the current core first (8 replies, read by the agent,
+`~/ai-hub/outputs/2026-10-16-palych-order-probe/`): for a database migration
+whose source said "Important" the core put the warning first in 4 of 4
+replies; for a router reset it said that all settings are erased only after
+"hold Reset" in 4 of 4.
+
+Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
+tools, a fresh process per reply; same-model assessors; 14 cases, three
+repetitions, 42 pairs. Cases: the new warning-order set (router reset, account
+deletion, dark-theme guard; RU/EN) plus unknown-reason, roles, depth and
+verification in RU and EN.
+
+- Baseline: the core at `main` 3d6509a, SHA-256 `435d2e82…a7fa0`, 1153 words.
+- Candidate (`claude/warning-order` 4ac1ec3, SHA-256 `665f4f60…3f9b`, 1160
+  words): the Instructions line "prerequisites/failure conditions beside the
+  affected step" became "prerequisites, conditions and warnings of supplied
+  irreversible effects go before the affected step".
+- Preferences: candidate 9, baseline 11, ties 22. Semantic failures: baseline
+  14, candidate 17; 8 candidate regressions. Output tokens 10.3% higher with
+  the candidate (11117 vs 10081).
+- Target behavior (keyword placement check of the 12 router and account replies
+  per condition): the warning came before the first instruction in 0 baseline
+  replies (one of them was a clarifying question) and in 4 candidate replies.
+  Assessors also failed most replies of both conditions on this criterion.
+- Candidate regressions: invented preparation ("save any files you need
+  first", "have your provider login") in router and account cases; "no restart
+  needed" added in both theme cases; `ru-unknown-reason` 3 of 3 again
+  («разработчики»), as in the label-reference pilot; `depth` 2.
+- Decision: the rule is not integrated; the core stays at 3d6509a. Warnings
+  after the step remain an open defect; the case set stays for the next
+  candidate.
+- Locked judgments: packet `084e9eca…48e3`, judgments `310258af…002f`. Run
+  files: `~/ai-hub/outputs/2026-10-16-palych-order-run/`.
+
+## Full-grammar probe; no pilot — 2026-10-16
+
+Hypothesis: a compact core produces telegraphic fragments and slash chains
+("result/effect"), so a "keep full grammar" rule from simple-writing-skills
+c70750c could help. Checked before writing a candidate.
+
+- Past pilot replies with the core: 0 prose slash chains in 386 replies
+  (2026-10-13…16 runs, words of three or more letters on both sides of `/`,
+  code spans excluded).
+- Local Claude Code assistant texts of the last seven days: about 15 of 760
+  texts longer than 200 characters had a prose slash chain («ключи/сеть»,
+  «решения/действия»); repository names and code terms excluded by hand. These
+  sessions mix hosts, tool loops and cores and are not a controlled sample.
+- Probe: the current core (`main` 3d6509a, SHA-256 `435d2e82…a7fa0`) on six
+  new RU/EN prompts that ask for brevity (release notes, renewal conditions,
+  short status report), two replies each, `claude-sonnet-5-5`, effort medium,
+  same isolated harness as the label-reference pilot, Claude Code 2.1.292.
+  All 12 replies used full sentences or grammatical list items; none had a
+  slash chain or dropped connectives. Read by the agent, no assessor.
+- Decision: no candidate and no pilot; the single-turn harness shows nothing to
+  fix. Tool-loop sessions remain unmeasured. Run files:
+  `~/ai-hub/outputs/2026-10-16-palych-grammar-probe/`.
+
+## Label-reference pilot; candidate rejected — 2026-10-16
+
+Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
+tools, a fresh process per reply; same-model assessors; 12 cases, three
+repetitions, 36 pairs. Cases: the new label-reference set (progress on numbered
+steps, report on a numbered option, RU/EN) plus unknown-reason, roles, depth and
+verification in RU and EN. Idea source: the internal-reference rule of
+[simple-writing-skills](https://github.com/dperhar/simple-writing-skills) c70750c.
+
+- Baseline: the core at `main` 3d6509a, SHA-256 `435d2e82…a7fa0`, 1153 words.
+- Candidate (`claude/label-reference` ce2a4e7, SHA-256 `65c3796e…2df7`, 1173
+  words): after "do not rotate synonyms." it added "A label or pointer (option
+  2, step 3, as above) does not carry meaning alone; add the content it names."
+- Preferences: candidate 5, baseline 17, ties 14. Semantic failures: baseline
+  3, candidate 8; 7 candidate regressions. Output tokens 13.6% higher with the
+  candidate (8974 vs 7903).
+- Target behavior: no reply in either condition used a step or option number
+  alone; the current core already named the content in all 24 label replies.
+- Regressions: `ru-label-decision` 3 of 3 (invented "logs are no longer kept on
+  your server", an invented local-archive question or subscription step);
+  `ru-unknown-reason` 3 of 3 («разработчики» as an invented actor, «вышла новая
+  версия»); `en-label-progress` 1 ("The backup is intact").
+- Language: one candidate reply to an English prompt and one baseline reply to
+  an English prompt were in Russian.
+- Decision: the rule is not integrated; the core stays at 3d6509a. The case set
+  remains for the recorded evidence.
+- Locked judgments: packet `46b3760d…6e66`, judgments `f1cee768…03ea`. Run
+  files: `~/ai-hub/outputs/2026-10-16-palych-label-run/`.
+
 ## Bad/good example pilot; candidate rejected — 2026-10-15
 
 Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
