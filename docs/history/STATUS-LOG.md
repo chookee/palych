@@ -1,5 +1,29 @@
 # Palych — dated development records
 
+## Unknown-reason probe; no candidate — 2026-10-17
+
+Question: `ru-unknown-reason` failed 3 of 3 for the candidate in the last three
+pilots («разработчики», «вышла новая версия», unchanged-behavior reassurance).
+Is there a defect in the current core worth a candidate?
+
+- Probe: the core at `main` b1ea1c7 (SHA-256 `97c69a6f…97d7`, 1182 words),
+  `claude-sonnet-5-5`, effort medium, the same isolated harness, Claude Code
+  2.1.292. 15 replies: `ru-unknown-reason` ×6, `en-unknown-reason` ×3 and two
+  new Russian prompts of the same shape (optional printer-driver update,
+  optional cache cleanup) ×3 each. Read by the agent, no assessor.
+- `ru-unknown-reason`: an invented actor («Разработчики советуют») in 1 of 6;
+  «Вышла новая версия», an added release event, in 2 of 6; no promise of
+  unchanged behavior. Three replies recast "optional" as "not a violation"
+  («не считается ошибкой», «не нарушите никаких правил», «ничего обязательного
+  не нарушится»), which says nothing about effects.
+- `en-unknown-reason` and both new prompts: no invented actor, release event or
+  reassurance in 9 replies; the cache prompt kept the unknown source
+  («Кто и почему дал этот совет, неизвестно») in 3 of 3.
+- Decision: no candidate. The failures are rare and tied to the wording of one
+  prompt; three earlier unknown-actor rules failed their pilots. The case stays
+  as a regression guard. Run files:
+  `~/ai-hub/outputs/2026-10-17-palych-unknown-reason-probe/`.
+
 ## Supplied-effect-first pilot; candidate integrated — 2026-10-17
 
 Second candidate for the warning-order defect recorded below. The previous
