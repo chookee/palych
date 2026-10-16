@@ -44,6 +44,9 @@ A shorter core that merged the role and route rules failed its pilot
 (2026-10-15): it reintroduced invented routes.
 A bad/good example in place of the optional and reassurance rules also
 failed (2026-10-15): reassurance about skipping came back.
+A rule that a label (option 2, step 3) must name its content failed its
+pilot (2026-10-16): the current core already named the content, and the
+candidate added unsupported claims and about 14% more output.
 
 ## Still open
 

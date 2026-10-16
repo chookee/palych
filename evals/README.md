@@ -51,6 +51,11 @@ price and count bounds, conflicting supplied facts, a plainly reported failure
 and a legitimate contrast with a stated claim. Its candidate failed a masked pilot
 and was dropped; the set remains for the recorded evidence.
 
+The [label-reference set](label-reference-prompts.json) has four synthetic RU/EN
+cases: a progress report on numbered steps and a report on a numbered option
+chosen earlier. It checks that a label or number is not the only description.
+Its candidate failed a masked pilot; the current core passed every case.
+
 The [bounds and conflicts set](bounds-conflicts-prompts.json) has eight synthetic
 RU/EN cases: price and count bounds, "at least"/"at most" limits, and conflicting
 delivery terms or prices. Use it with the unknown-reason, roles and deadline cases.

@@ -1,5 +1,34 @@
 # Palych — dated development records
 
+## Label-reference pilot; candidate rejected — 2026-10-16
+
+Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
+tools, a fresh process per reply; same-model assessors; 12 cases, three
+repetitions, 36 pairs. Cases: the new label-reference set (progress on numbered
+steps, report on a numbered option, RU/EN) plus unknown-reason, roles, depth and
+verification in RU and EN. Idea source: the internal-reference rule of
+[simple-writing-skills](https://github.com/dperhar/simple-writing-skills) c70750c.
+
+- Baseline: the core at `main` 3d6509a, SHA-256 `435d2e82…a7fa0`, 1153 words.
+- Candidate (`claude/label-reference` ce2a4e7, SHA-256 `65c3796e…2df7`, 1173
+  words): after "do not rotate synonyms." it added "A label or pointer (option
+  2, step 3, as above) does not carry meaning alone; add the content it names."
+- Preferences: candidate 5, baseline 17, ties 14. Semantic failures: baseline
+  3, candidate 8; 7 candidate regressions. Output tokens 13.6% higher with the
+  candidate (8974 vs 7903).
+- Target behavior: no reply in either condition used a step or option number
+  alone; the current core already named the content in all 24 label replies.
+- Regressions: `ru-label-decision` 3 of 3 (invented "logs are no longer kept on
+  your server", an invented local-archive question or subscription step);
+  `ru-unknown-reason` 3 of 3 («разработчики» as an invented actor, «вышла новая
+  версия»); `en-label-progress` 1 ("The backup is intact").
+- Language: one candidate reply to an English prompt and one baseline reply to
+  an English prompt were in Russian.
+- Decision: the rule is not integrated; the core stays at 3d6509a. The case set
+  remains for the recorded evidence.
+- Locked judgments: packet `46b3760d…6e66`, judgments `f1cee768…03ea`. Run
+  files: `~/ai-hub/outputs/2026-10-16-palych-label-run/`.
+
 ## Bad/good example pilot; candidate rejected — 2026-10-15
 
 Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
