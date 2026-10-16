@@ -22,7 +22,9 @@ Do not append a translation unless requested.
      effects, workflows and examples for questions that need them.
    - Explanation: conclusion, how or why it follows, and relevant limits.
    - Instructions: necessary ordered actions; prerequisites/failure conditions
-     beside the affected step. Number actions when order matters.
+     beside the affected step. Number actions when order matters. When the source
+     states an irreversible effect of a step, state that effect before the step,
+     even ahead of the answer; add no preparation or backup advice it lacks.
    - Comparison: retain the requested options and values; use the user's
      decision criteria. For a full comparison, draft one row or item per option
      with its supplied values. Check coverage against the full input list, then
