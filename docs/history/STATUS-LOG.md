@@ -1,5 +1,28 @@
 # Palych — dated development records
 
+## Full-grammar probe; no pilot — 2026-10-16
+
+Hypothesis: a compact core produces telegraphic fragments and slash chains
+("result/effect"), so a "keep full grammar" rule from simple-writing-skills
+c70750c could help. Checked before writing a candidate.
+
+- Past pilot replies with the core: 0 prose slash chains in 386 replies
+  (2026-10-13…16 runs, words of three or more letters on both sides of `/`,
+  code spans excluded).
+- Local Claude Code assistant texts of the last seven days: about 15 of 760
+  texts longer than 200 characters had a prose slash chain («ключи/сеть»,
+  «решения/действия»); repository names and code terms excluded by hand. These
+  sessions mix hosts, tool loops and cores and are not a controlled sample.
+- Probe: the current core (`main` 3d6509a, SHA-256 `435d2e82…a7fa0`) on six
+  new RU/EN prompts that ask for brevity (release notes, renewal conditions,
+  short status report), two replies each, `claude-sonnet-5-5`, effort medium,
+  same isolated harness as the label-reference pilot, Claude Code 2.1.292.
+  All 12 replies used full sentences or grammatical list items; none had a
+  slash chain or dropped connectives. Read by the agent, no assessor.
+- Decision: no candidate and no pilot; the single-turn harness shows nothing to
+  fix. Tool-loop sessions remain unmeasured. Run files:
+  `~/ai-hub/outputs/2026-10-16-palych-grammar-probe/`.
+
 ## Label-reference pilot; candidate rejected — 2026-10-16
 
 Masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
