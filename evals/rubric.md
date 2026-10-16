@@ -141,6 +141,15 @@ supplies developers, a company, management, an administrator, IT or a support te
 absent from the source fails semantic fidelity. "You" for the reader is not an
 invented actor.
 
+## Labels carry content
+
+Use [label-reference-prompts.json](label-reference-prompts.json) with the
+unknown-reason, roles, depth and verification cases. A reply that refers to an
+earlier option, step or section names its content as well; "step 3 failed" or
+"went with option 2" alone fails the protected criterion. Exact errors and the
+stated verification scope stay intact. Repeating whole earlier passages is not
+required and counts against compactness.
+
 ## Assessor calibration and audit
 
 Record the observed reply language separately. A wrong language lowers the
