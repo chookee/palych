@@ -1,5 +1,45 @@
 # Palych — dated development records
 
+## Supplied-effect-first pilot; candidate integrated — 2026-10-17
+
+Second candidate for the warning-order defect recorded below. The previous
+candidate failed because "Answer first" still opened the reply with the action,
+and "prerequisites" beside "warnings" invited invented preparation. Same
+harness, 14 cases, settings and assessor setup as the warning-order pilot:
+masked exploratory pilot, `claude-sonnet-5-5`, effort medium, safe mode, no
+tools, a fresh process per reply, Claude Code 2.1.292; same-model assessors;
+three repetitions, 42 pairs. Generated 2026-10-16…17.
+
+- Baseline: the core at `main` 4fb5884 (unchanged since 3d6509a), SHA-256
+  `435d2e82…a7fa0`, 1153 words.
+- Candidate (`claude/nervous-hopper-ced014` a03614f, SHA-256 `97c69a6f…97d7`,
+  1182 words): one sentence added after "Number actions when order matters":
+  "When the source states an irreversible effect of a step, state that effect
+  before the step, even ahead of the answer; add no preparation or backup
+  advice it lacks." The prerequisites wording is unchanged.
+- Preferences: candidate 21, baseline 6, ties 15. Semantic failures: baseline
+  19, candidate 6; 3 candidate regressions. Output tokens 3.1% lower with the
+  candidate (10209 vs 10533; Russian −2.8%, English −3.5%).
+- Target behavior (agent reading of the 12 router and account replies per
+  condition): the effect came before the first instruction in 10 candidate
+  replies (router 6 of 6, account 4 of 6) and in 0 baseline replies.
+- Invented additions in the six warning-order cases (agent reading): baseline
+  8 replies (Reset needs a paperclip, prepare provider data, save files first,
+  "no need to restart" in `en-theme`); candidate 0. One candidate reply
+  (`en-router-reset` 2) answered in Russian and then repeated the answer in
+  English; the assessor did not flag it.
+- Candidate regressions: all three in `ru-unknown-reason`, the case that
+  failed 3 of 3 for the candidate in the two previous pilots too: «Без неё
+  всё продолжит работать так же» (unsupported reassurance), «Разработчики»
+  (invented actor) and «Вышла новая версия». Baseline replies 1 and 3 also
+  said «Вышла новая версия» and passed, so this assessor reading is
+  inconsistent.
+- Decision: the candidate is integrated. Not tested: reader comprehension,
+  other models and hosts, warnings the source places after a step for a
+  reason other than irreversibility.
+- Locked judgments: packet `62886b37…1f1f`, judgments `61dea1ae…bdd5f`. Run
+  files: `~/ai-hub/outputs/2026-10-16-palych-order-run2/`.
+
 ## Warning-order pilot; candidate rejected — 2026-10-16
 
 Idea source: the warning-before-step rule of simple-writing-skills c70750c.
