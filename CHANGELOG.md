@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- `evals/session_replies.py` compares visible reply length in local Claude Code
+  sessions before and after the core's installation; results are in the
+  development log (2026-10-17).
+
 ## 0.8.0 — 2026-10-17
 
 - Core: when the source states an irreversible effect of a step (erased
