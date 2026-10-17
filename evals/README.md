@@ -27,6 +27,11 @@ always-on core is read from the prompt cache and its average price relative to
 uncached input. It prints aggregates only; record its output in the development
 log with the date, window and revision.
 
+`session_replies.py` compares visible reply length, output tokens and prose
+slash chains in local Claude Code sessions started before and after a cutover,
+such as the core's installation. It is observational: tasks, models and other
+loaded instructions differ between periods. It prints aggregates only.
+
 The [repetition set](repetition-prompts.json) checks semantic duplicates,
 unambiguous referents and repetitive colon links. Use it alongside detailed
 process, full-comparison and exact-condition cases; shortening cannot hide

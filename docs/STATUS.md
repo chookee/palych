@@ -59,7 +59,9 @@ previous core.
 - Reader comprehension testing with the intended audience.
 - The complete controlled 20-case, three-repetition comparison with matching
   generation settings.
-- Usage-limit debits, and output savings in agent sessions with tool loops.
+- Usage-limit debits. Output savings in agent sessions with tool loops: a
+  before/after comparison of local Claude Code sessions found no clear change
+  (2026-10-17, observational); Codex and clovis were not measured.
 
 Editorial scores are not reader comprehension, and fixture events are not live
 host behavior. Historical evidence in `evals/results`, `evals/observations.md`

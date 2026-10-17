@@ -1,5 +1,42 @@
 # Palych — dated development records
 
+## Visible replies in agent sessions before and after installation — 2026-10-17
+
+Question: do the pilot's output savings (45.4% on single replies) appear in
+real agent sessions with tool loops? Observational comparison, no model calls.
+
+- `python3 evals/session_replies.py --cutover 2026-10-13T07:58Z --days 14
+  --cwd ~/ai-hub --cwd ~/repos --model claude-opus-5-5` at branch
+  `claude/session-replies` (base 4afc4e9) on the Mac's Claude Code transcripts.
+  The cutover is the always-on installation on the Mac (backup
+  `20261013T075805692403Z`); later sessions had the global block in
+  `~/.claude/CLAUDE.md`. Turns answered only by `claude-opus-5-5`, sessions in
+  `~/ai-hub` and `~/repos`.
+
+| Measure per turn | Before: 14 sessions, 298 turns | After: 22 sessions, 194 turns | Median difference, 95% |
+|---|---|---|---|
+| Visible text, characters, median (mean) | 1265 (1807) | 1161 (1454) | −525 … +211 |
+| Final message, characters | 1010.5 (1200) | 1035 (1214) | −312 … +318 |
+| Text messages | 1 (2) | 1 (2) | −1 … +1 |
+| Output tokens (text, tools, thinking) | 2571 (10042) | 2790.5 (5412) | −1243.5 … +1230.5 |
+| Prose slash chains per 1000 words | 0.22 (14 in 63876 words) | 0.43 (15 in 35038) | — |
+
+- Without sessions in the Palych repository (13 before, 11 after): visible
+  median 1258 → 954.5 (−743 … +409); slash chains 14 → 2, 0.24 → 0.16 per 1000
+  words. Most after-period slash chains came from Palych development sessions.
+- All sessions and models (38 before, 35 after): visible median 1200 → 1057
+  (−511 … +115); output median 2290 → 2803.
+- Intervals are percentile bootstraps over sessions. Every interval includes
+  zero: these logs show no clear change in reply length. Means fell more than
+  medians, but long outlier turns and different tasks drive means.
+- Not controlled: task mix, the number of turns per session, other loaded
+  instructions (`i-have-adhd` was switched off at the same cutover), host
+  versions. Russian prompts were 92% of turns.
+- Not measured: Codex (3 top-level Mac sessions after the cutover), clovis,
+  Cursor, Hermes, and subscription usage-limit debits, which local logs do not
+  record.
+- Output: `~/ai-hub/outputs/2026-10-17-palych-session-replies/`.
+
 ## Unknown-reason probe; no candidate — 2026-10-17
 
 Question: `ru-unknown-reason` failed 3 of 3 for the candidate in the last three
