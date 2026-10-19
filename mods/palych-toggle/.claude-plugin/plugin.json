@@ -1,0 +1,10 @@
+{
+  "name": "palych-toggle",
+  "version": "0.1.0",
+  "description": "A switch above the prompt that turns Palych on or off for this conversation.",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "ponomr",
+    "url": "https://github.com/ponomr"
+  }
+}
