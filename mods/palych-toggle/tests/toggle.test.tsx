@@ -9,6 +9,22 @@ const BAND = {
   view: {},
 } as const
 
+type Band = {
+  find: (query: { type?: string; key?: string; text?: string }) => Promise<
+    { props: Record<string, unknown> } | undefined
+  >
+}
+
+// What the switch shows: the pill's alt on the desktop, the dot in the terminal.
+const shown = async (band: Band, surface: 'terminal' | 'desktop') => {
+  if (surface === 'desktop') {
+    return (await band.find({ type: 'Svg' }))?.props.alt
+  }
+  const label = (await band.find({ key: 'palych-toggle' }))?.props.label
+
+  return label === '●' ? 'Палыч вкл' : label === '○' ? 'Палыч выкл' : undefined
+}
+
 for (const surface of ['terminal', 'desktop'] as const) {
   test(`${surface}: the switch flips the label and the model's note`, async ($, on) => {
     const seen: (readonly string[] | undefined)[] = []
@@ -24,13 +40,14 @@ for (const surface of ['terminal', 'desktop'] as const) {
       component: 'AbovePrompt',
       props: BAND,
     })
-    expect((await band.find({ type: 'Text', text: 'Палыч вкл' }))?.type).toBe('Text')
+    expect((await band.find({ type: 'Text', text: 'Палыч' }))?.type).toBe('Text')
+    expect(await shown(band, surface)).toBe('Палыч вкл')
 
     await $.prompt.submit({ text: 'привет' })
     expect(seen.at(-1)).toBe(undefined)
 
     await band.press({ key: 'palych-toggle' })
-    expect((await band.find({ type: 'Text', text: 'Палыч выкл' }))?.type).toBe('Text')
+    expect(await shown(band, surface)).toBe('Палыч выкл')
 
     await $.prompt.submit({ text: 'привет' })
     expect(seen.at(-1)?.at(-1)).toContain('Palych is OFF')
@@ -38,7 +55,7 @@ for (const surface of ['terminal', 'desktop'] as const) {
     expect(seen.at(-1)?.at(-1)).toContain('Palych is OFF')
 
     await band.press({ key: 'palych-toggle' })
-    expect((await band.find({ type: 'Text', text: 'Палыч вкл' }))?.type).toBe('Text')
+    expect(await shown(band, surface)).toBe('Палыч вкл')
 
     await $.prompt.submit({ text: 'привет' })
     expect(seen.at(-1)?.at(-1)).toContain('Palych is ON again')
@@ -63,14 +80,14 @@ for (const surface of ['terminal', 'desktop'] as const) {
 
     await $.prompt.submit({ text: 'Отключи Палыча.' })
     expect(seen.at(-1)).toBe(undefined)
-    expect((await band.find({ type: 'Text', text: 'Палыч выкл' }))?.type).toBe('Text')
+    expect(await shown(band, surface)).toBe('Палыч выкл')
 
     await $.prompt.submit({ text: 'Turn off palych and explain why' })
     expect(seen.at(-1)?.at(-1)).toContain('Palych is OFF')
 
     await $.prompt.submit({ text: 'Включи Палыча' })
     expect(seen.at(-1)).toBe(undefined)
-    expect((await band.find({ type: 'Text', text: 'Палыч вкл' }))?.type).toBe('Text')
+    expect(await shown(band, surface)).toBe('Палыч вкл')
   })
 
   test(`${surface}: a survey keeps the band`, async ($, on) => {
@@ -86,6 +103,6 @@ for (const surface of ['terminal', 'desktop'] as const) {
       component: 'AbovePrompt',
       props: { ...BAND, hasSurvey: true },
     })
-    expect(await band.find({ type: 'Text', text: 'Палыч вкл' })).toBe(undefined)
+    expect(await band.find({ key: 'palych-toggle' })).toBe(undefined)
   })
 }

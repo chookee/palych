@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `mods/palych-toggle`: the switch is now the usage-quota mod's iOS-style pill
+  (MIT) in the app theme's colours, with only the label «Палыч» beside it, both
+  at the right of the band; the terminal shows a `●`/`○` button.
 - `mods/palych-toggle`: a Claude Code mod with a «Палыч вкл / Палыч выкл»
   switch above the prompt that turns Palych off or on for the current
   conversation; checked with `claude plugin validate` and `claude plugin test`,
