@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- `mods/palych-toggle`: a Claude Code mod with a «Палыч вкл / Палыч выкл»
+  switch above the prompt that turns Palych off or on for the current
+  conversation; checked with `claude plugin validate` and `claude plugin test`,
+  not yet in a live session.
 - `evals/session_replies.py` compares visible reply length in local Claude Code
   sessions before and after the core's installation; results are in the
   development log (2026-10-17).
