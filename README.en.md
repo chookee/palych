@@ -33,8 +33,9 @@ Enable it for all replies without a separate invocation. Preserve my other instr
 ```
 
 The agent will choose the route for its host: global instructions or a plugin
-for Codex and Claude Code, a skill for Hermes or a rule for Cursor. Start a new
-conversation afterward. Manual installation, updates and removal are in
+for Codex and Claude Code, a skill for Hermes or a rule for Cursor. In Claude
+Code it also adds the [band above the prompt](#band-above-the-prompt) alongside
+the global instructions. Start a new conversation afterward. Manual installation, updates and removal are in
 [INSTALL.md](INSTALL.md).
 
 ## Main principles
@@ -76,11 +77,18 @@ and usage figures: the 5-hour (5h) and 7-day (7d) limits with the time until
 they reset, and how full the context is (ctx). The terminal shows a text band.
 
 `/palych-tab` hides the band; running it again brings it back. Hiding lasts
-until the session ends. To try the mod from a checkout of this repository:
+until the session ends.
+
+Installing Palych for Claude Code by [INSTALL.md](INSTALL.md) adds the mod
+alongside the global instructions. To install it by hand:
 
 ```sh
-claude --plugin-dir mods/palych-toggle
+claude plugin marketplace add ponomr/palych
+claude plugin install palych-toggle@palych
 ```
+
+The mod is meant for the global-instructions installation. Do not add it to the
+`palych@palych` plugin, which keeps its own saved mode.
 
 ## Example
 

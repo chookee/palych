@@ -13,6 +13,8 @@ PACKAGES = 'packages'
 REPOSITORY = 'https://github.com/ponomr/palych'
 OWNER = {'name': 'ponomr', 'url': 'https://github.com/ponomr'}
 KEYWORDS = ['writing', 'plain-language', 'russian', 'english', 'replies']
+# The Claude Code mod ships from its own folder; its manifest is its source.
+MOD = 'mods/palych-toggle'
 
 
 def load(name):
@@ -64,12 +66,17 @@ def render(source=ROOT):
     files[f'{builder.SKILL.as_posix()}/LICENSE'] = license_text
 
     entry = {'name': 'palych', 'description': description, 'version': version}
+    mod = json.loads((source / MOD / '.claude-plugin' / 'plugin.json').read_text(encoding='utf-8'))
     files['.claude-plugin/marketplace.json'] = data({
         'name': 'palych', 'owner': OWNER,
         'metadata': {'description': description, 'version': version},
         'plugins': [{**entry, 'source': f'./{PACKAGES}/claude-code', 'author': OWNER,
                      'homepage': REPOSITORY, 'repository': REPOSITORY, 'license': 'MIT',
-                     'keywords': KEYWORDS, 'category': 'productivity'}]})
+                     'keywords': KEYWORDS, 'category': 'productivity'},
+                    {'name': mod['name'], 'description': mod['description'],
+                     'version': mod['version'], 'source': f'./{MOD}', 'author': OWNER,
+                     'homepage': REPOSITORY, 'repository': REPOSITORY, 'license': 'MIT',
+                     'category': 'productivity'}]})
     files['.agents/plugins/marketplace.json'] = data({
         'name': 'palych', 'interface': {'displayName': 'Palych'},
         'plugins': [{'name': 'palych',

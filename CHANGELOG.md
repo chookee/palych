@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- `mods/palych-toggle` is in the Claude Code marketplace as
+  `palych-toggle@palych`; `scripts/build_packages.py` adds it to
+  `.claude-plugin/marketplace.json` from the mod's own manifest. INSTALL.md
+  installs it with the global-instructions route for Claude Code and covers its
+  update and removal; it is not meant for the `palych@palych` plugin.
 - `mods/palych-toggle`: the band now puts the switch first, then usage figures
   drawn after usage-band (MIT): 5h and 7d limits with reset countdowns and the
   context window; `/palych-tab` hides or shows the band for the session. The

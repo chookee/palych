@@ -39,6 +39,12 @@ class PackageTests(unittest.TestCase):
             self.assertTrue(any(path == relative or path.startswith(relative + '/')
                                 for path in self.files), source)
 
+    def test_claude_catalog_lists_the_band_mod(self):
+        claude = json.loads(self.content('.claude-plugin/marketplace.json'))
+        mod = next(p for p in claude['plugins'] if p['name'] == 'palych-toggle')
+        manifest = json.loads((ROOT / mod['source'] / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))
+        self.assertEqual((mod['version'], mod['description']), (manifest['version'], manifest['description']))
+
     def test_skill_folder_is_self_contained(self):
         skill = (ROOT / 'skills/palych/SKILL.md').read_text(encoding='utf-8')
         self.assertNotIn('](adapters/', skill)
@@ -49,7 +55,7 @@ class PackageTests(unittest.TestCase):
     def test_drift_reports_changed_extra_and_missing_files(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
-            for name in ('skills', 'LICENSE', 'adapters', 'assets', 'scripts'):
+            for name in ('skills', 'LICENSE', 'adapters', 'assets', 'scripts', 'mods'):
                 source = ROOT / name
                 (shutil.copytree if source.is_dir() else shutil.copy2)(source, root / name)
             module_spec = importlib.util.spec_from_file_location('copy', root / 'scripts/build_packages.py')
