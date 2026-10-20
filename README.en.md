@@ -66,6 +66,22 @@ diagnosis and makes no claim of compliance with the full methodology.
 [Sources](skills/palych/references/sources.md) · [Checks and limits](docs/STATUS.md) ·
 [Development](docs/DEVELOPMENT.md). License: [MIT](LICENSE).
 
+## Band above the prompt
+
+![The Palych band above the prompt: the switch and usage figures](assets/palych-toggle-band.png)
+
+The [palych-toggle](mods/palych-toggle/README.md) mod for Claude Code adds a
+band above the prompt. It holds the Palych switch for the current conversation
+and usage figures: the 5-hour (5h) and 7-day (7d) limits with the time until
+they reset, and how full the context is (ctx). The terminal shows a text band.
+
+`/palych-tab` hides the band; running it again brings it back. Hiding lasts
+until the session ends. To try the mod from a checkout of this repository:
+
+```sh
+claude --plugin-dir mods/palych-toggle
+```
+
 ## Example
 
 **Question:** “Why does caching sometimes make a response faster and sometimes not?”

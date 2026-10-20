@@ -1,14 +1,26 @@
 # Переключатель Палыча / Palych toggle
 
-Мод для Claude Code: справа над полем ввода стоят надпись «Палыч» и
-переключатель, который включает и выключает режим в текущем разговоре.
-В приложении это зелёная таблетка в стиле iOS в цветах темы приложения;
-в терминале — кнопка `●` (вкл) или `○` (выкл).
+![Панель Палыча / The Palych band](../../assets/palych-toggle-band.png)
 
-A Claude Code mod: the label «Палыч» and a switch sit at the right above the
-prompt and turn the mode on or off for the current conversation. The desktop
-app draws an iOS-style pill in the app theme's colours; the terminal draws a
-`●` (on) or `○` (off) button.
+Мод для Claude Code: над полем ввода стоит панель. Первыми идут надпись
+«Палыч» и переключатель, который включает и выключает режим в текущем
+разговоре. В приложении это зелёная таблетка в стиле iOS в цветах темы
+приложения; в терминале — кнопка `●` (вкл) или `○` (выкл). Дальше идут
+показатели usage: 5h и 7d — доля лимита и время до сброса, ctx — сколько
+токенов занято в окне контекста. На узкой панели показатели переносятся на
+следующую строку, а переключатель остаётся на месте.
+
+A Claude Code mod: a band sits above the prompt. The label «Палыч» and a
+switch come first and turn the mode on or off for the current conversation.
+The desktop app draws an iOS-style pill in the app theme's colours; the
+terminal draws a `●` (on) or `○` (off) button. Usage figures follow: 5h and
+7d show the share of the limit used and the time until it resets, ctx the
+tokens used in the context window. On a narrow band the figures wrap to the
+next line; the switch stays put.
+
+`/palych-tab` скрывает панель, повторный вызов возвращает её; скрытие
+действует до конца сессии. / `/palych-tab` hides the band and running it
+again brings it back; hiding lasts until the session ends.
 
 ## Как работает / How it works
 
@@ -43,6 +55,17 @@ compact switch (MIT, © 2026 Anant Raghunath). To learn the theme, the mod
 checks `userThemeMode` in the Claude app's settings every 2 s and, for
 "system", asks the OS.
 
+Рисунок показателей перенесён из
+[usage-band](https://github.com/JetsonChan/CC-Usage-Band) (коммит 60cd609,
+MIT, © 2026 Jetson Chan) без анимации полосок и доли попаданий в кэш.
+Обновление показателей сделано по образцу
+[usage-line](https://github.com/sundyme/usage-line) (коммит 194c8f7, MIT,
+© 2026 sundyme).
+
+The figures' drawing is ported from usage-band (commit 60cd609, MIT, © 2026
+Jetson Chan) without its bar animation and cache-hit figure. Keeping the
+figures current follows usage-line (commit 194c8f7, MIT, © 2026 sundyme).
+
 ## Ограничения / Limits
 
 - Новый разговор начинается с «Палыч вкл»; состояние не сохраняется между
@@ -54,11 +77,13 @@ checks `userThemeMode` in the Claude app's settings every 2 s and, for
   систематически не оценивался. / The note is an instruction to the model, not
   removal of the rules from context. A live desktop session shows the note
   reaching the model; reply style was not evaluated systematically.
-- Сдвиг на целые клетки нельзя сделать тоньше, поэтому таблетка нарисована на
-  1 pt ниже внутри SVG, к строчным буквам. Подсветка при наведении остаётся по
-  центру клетки. / Layout moves only by whole cells, so the pill is drawn 1 pt
-  lower inside its SVG, level with the lowercase letters; the hover light stays
-  centred in the cell.
+- Нажатие срабатывает только там, где приложение рисует подпись кнопки,
+  поэтому подпись невидимой кнопки — три широких пробела поверх таблетки. /
+  The app presses a button only where its label is drawn, so the invisible
+  button's label is three em spaces laid over the pill.
+- Показатели появляются, когда Claude Code сообщает о лимитах и контексте;
+  до этого на панели только переключатель. / The figures appear once Claude
+  Code reports limits and context; until then the band holds only the switch.
 - Не проверено вместе с плагином `palych@palych`: у него своё сохранённое
   состояние. / Not tested together with the `palych@palych` plugin, which keeps
   its own saved state.

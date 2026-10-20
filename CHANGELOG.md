@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- `mods/palych-toggle`: the band now puts the switch first, then usage figures
+  drawn after usage-band (MIT): 5h and 7d limits with reset countdowns and the
+  context window; `/palych-tab` hides or shows the band for the session. The
+  README has a section on the band with a screenshot.
 - `mods/palych-toggle`: the switch is now the usage-quota mod's iOS-style pill
   (MIT) in the app theme's colours, with only the label «Палыч» beside it, both
   at the right of the band; the terminal shows a `●`/`○` button.
