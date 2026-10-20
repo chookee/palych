@@ -1,7 +1,7 @@
 {
   "name": "palych-toggle",
   "version": "0.1.0",
-  "description": "A switch above the prompt that turns Palych on or off for this conversation.",
+  "description": "A band above the prompt: the Palych switch for this conversation and usage figures; /palych-tab hides or shows it.",
   "types": "./types/index.d.ts",
   "author": {
     "name": "ponomr",

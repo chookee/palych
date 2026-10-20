@@ -22,6 +22,18 @@ next line; the switch stays put.
 действует до конца сессии. / `/palych-tab` hides the band and running it
 again brings it back; hiding lasts until the session ends.
 
+## Установка / Install
+
+Установка Палыча для Claude Code по [INSTALL.md](../../INSTALL.md) ставит мод
+вместе с общими инструкциями. Вручную / By hand:
+
+```sh
+claude plugin marketplace add ponomr/palych
+claude plugin install palych-toggle@palych
+```
+
+Удаление / Remove: `claude plugin uninstall palych-toggle@palych`.
+
 ## Как работает / How it works
 
 Мод рассчитан на установку Палыча через общие инструкции
@@ -84,9 +96,11 @@ figures current follows usage-line (commit 194c8f7, MIT, © 2026 sundyme).
 - Показатели появляются, когда Claude Code сообщает о лимитах и контексте;
   до этого на панели только переключатель. / The figures appear once Claude
   Code reports limits and context; until then the band holds only the switch.
-- Не проверено вместе с плагином `palych@palych`: у него своё сохранённое
-  состояние. / Not tested together with the `palych@palych` plugin, which keeps
-  its own saved state.
+- Не для плагина `palych@palych`: у плагина своё сохранённое состояние, и
+  при сохранённом выключении правила в новую сессию не попадают, а
+  переключатель показывает «вкл». / Not for the `palych@palych` plugin: it keeps
+  its own saved state, and with "always off" saved the rules never reach a new
+  session while the switch shows on.
 
 ## Проверка / Checks
 

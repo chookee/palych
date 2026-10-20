@@ -24,7 +24,8 @@ below). Installing both loads the rules twice, and their mode states can conflic
 2. Получи репозиторий и проверь `skills/palych/SKILL.md` и `scripts/install.py` до запуска.
    Не запускай код из непроверенного источника. Запомни установленный commit.
 3. Выполни подходящую команду `install` ниже. Затем `check`: она проверяет
-   наличие актуальных правил, а не качество ответов модели.
+   наличие актуальных правил, а не качество ответов модели. Для Claude Code
+   затем поставь мод панели (раздел «Мод панели для Claude Code»).
 4. Сообщи, какой файл изменён и где резервная копия. Попроси начать новый
    разговор. Если доступна проверка в хосте, проверь загрузку правил с первого
    сообщения и после сжатия контекста. Не заявляй об этой проверке без результата.
@@ -32,6 +33,7 @@ below). Installing both loads the rules twice, and their mode states can conflic
 Identify the host and configuration directory. Follow the user's existing
 installation workflow, especially for generated or centrally managed instructions.
 Review the source, record the installed commit, run `install`, then `check`.
+For Claude Code, then install the band mod (see "Band mod for Claude Code").
 Report the changed file and backup path. Start a new conversation. Verify actual
 host loading and compaction when possible; file checks alone do not establish it.
 
@@ -55,6 +57,26 @@ python3 scripts/install.py check --host codex
 python3 scripts/install.py install --host claude-code
 python3 scripts/install.py check --host claude-code
 ```
+
+### Мод панели для Claude Code / Band mod for Claude Code
+
+Мод [palych-toggle](mods/palych-toggle/README.md) рисует над полем ввода
+переключатель Палыча и показатели usage; `/palych-tab` скрывает и показывает
+панель. Он ставится из каталога этого репозитория и рассчитан на установку
+через общие инструкции выше, не на плагин `palych@palych`.
+
+The [palych-toggle](mods/palych-toggle/README.md) mod draws the Palych switch
+and usage figures above the prompt; `/palych-tab` hides or shows the band. It
+installs from this repository's marketplace and is meant for the
+global-instructions installation above, not for the `palych@palych` plugin.
+
+```sh
+claude plugin marketplace add ponomr/palych
+claude plugin install palych-toggle@palych
+```
+
+Мод появится в новой сессии Claude Code. / The mod appears in a new Claude
+Code session.
 
 Codex: `$CODEX_HOME/AGENTS.md`, по умолчанию `~/.codex/AGENTS.md`.
 Если `AGENTS.override.md` уже существует, блок добавляется туда: Codex выбирает
@@ -90,6 +112,13 @@ Update a clean checkout through your normal Git workflow, preserving local edits
 then repeat `install` and `check`. Start a new conversation. `SKILL.md` is the
 single source for the generated block.
 
+Мод панели обновляется отдельно / The band mod updates separately:
+
+```sh
+claude plugin marketplace update palych
+claude plugin update palych-toggle@palych
+```
+
 ## Отключение и удаление / Disable and remove
 
 «Отключи Палыча» / “Turn off palych” — выключить в текущем разговоре.
@@ -104,6 +133,12 @@ To disable it for future conversations, remove only Palych's managed block:
 python3 scripts/install.py uninstall --host codex
 # Or:
 python3 scripts/install.py uninstall --host claude-code
+```
+
+Мод панели удаляется отдельно / Remove the band mod separately:
+
+```sh
+claude plugin uninstall palych-toggle@palych
 ```
 
 Начни новый разговор. Остальные инструкции и резервные копии сохраняются.
@@ -124,7 +159,10 @@ Ready-made packages live in `packages/` and are generated from `SKILL.md`. If
 Palych's block is already in the global instructions, remove it first
 (`uninstall` above).
 
-**Claude Code** (плагин с хуком / plugin with hooks):
+**Claude Code** (плагин с хуком / plugin with hooks). Мод панели
+`palych-toggle` с плагином не ставь: у плагина свой сохранённый режим, и
+переключатель о нём не знает. / Do not add the `palych-toggle` band mod to the
+plugin: the plugin keeps its own saved mode, which the switch does not know.
 
 ```sh
 claude plugin marketplace add ponomr/palych

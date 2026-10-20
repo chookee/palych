@@ -29,6 +29,20 @@
         "replies"
       ],
       "category": "productivity"
+    },
+    {
+      "name": "palych-toggle",
+      "description": "A band above the prompt: the Palych switch for this conversation and usage figures; /palych-tab hides or shows it.",
+      "version": "0.1.0",
+      "source": "./mods/palych-toggle",
+      "author": {
+        "name": "ponomr",
+        "url": "https://github.com/ponomr"
+      },
+      "homepage": "https://github.com/ponomr/palych",
+      "repository": "https://github.com/ponomr/palych",
+      "license": "MIT",
+      "category": "productivity"
     }
   ]
 }
