@@ -14,6 +14,7 @@ and update this page when a limit changes.
 | Hermes | Skill folder `skills/palych`, preloaded with `hermes -s palych` | Install from `skills/palych`, scan SAFE, files identical (v0.22.0, 2026-10-15); preloading inferred from input tokens with the former `packages/hermes/palych` path (v0.16.0, v0.22.0) | Preloading from the new path; `skills.auto_load` with Palych |
 | Cursor | Always-applied rule in a local plugin | Loads as a local plugin; plain off answered without tool calls (3.24.18, one run per case) | Marketplace install; the Claude Code plugin inside Cursor |
 | `npx skills` | Copies `skills/palych` | Folder install and removal (skills@1.7.2) | — |
+| Claude Code band mod | `palych-toggle@palych` from the repository's marketplace, beside the global block | Desktop band, switch and `/palych-tab` in a live session from the mod folder; install from GitHub, enabled, and `/palych-tab` answered in a headless run (2.1.304, 2026-10-20) | Terminal band live (tests only); a live desktop session from the marketplace install; reply style after the switch |
 
 ## Known limitations
 
@@ -24,6 +25,10 @@ and update this page when a limit changes.
   mode states can conflict. The hook does not detect the global block; choose one
   route.
 - Hermes and Cursor have no hooks: off lasts only for the current conversation.
+- The band mod is for the global block, not the `palych@palych` plugin: with
+  "always off" saved, the plugin keeps the core out of a new session while the
+  switch shows on. The switch's off is a note to the model, not removal of the
+  rules. Hiding with `/palych-tab` lasts until the session ends.
 - A Codex fork taken before the parent received the core gets no core; a fork
   taken before the parent was switched off inherits off.
 - The core adds input tokens to every request (about 2600 in the Claude Code

@@ -1,5 +1,21 @@
 # Palych — dated development records
 
+## Band mod from the marketplace — 2026-10-20
+
+- PR ponomr/palych#36 (`de2c6a8`) added usage figures and `/palych-tab` to
+  `mods/palych-toggle`; PR ponomr/palych#37 (`4b6ab06`) listed it as
+  `palych-toggle@palych` and put it in INSTALL.md's Claude Code route.
+- Mod checks: `claude plugin validate mods/palych-toggle` passed and
+  `claude plugin test mods/palych-toggle` gave 12 pass, 0 fail.
+- In a temporary `CLAUDE_CONFIG_DIR`, `claude plugin marketplace add ponomr/palych` and
+  `claude plugin install palych-toggle@palych` installed version 0.1.0 as enabled, and
+  `claude plugin uninstall` removed it.
+- On the Mac (Claude Code 2.1.304) it was installed in the owner's settings, and
+  `claude -p "/palych-tab"` printed `palych-toggle: Панель Палыча скрыта`.
+- The desktop band was checked from owner screenshots of a session that
+  loaded the mod folder, not the marketplace install.
+- The terminal band was checked only by tests.
+
 ## Visible replies in agent sessions before and after installation — 2026-10-17
 
 Question: do the pilot's output savings (45.4% on single replies) appear in
