@@ -40,7 +40,9 @@ the case's pattern in [answer-keys.json](answer-keys.json); write keys for new c
 from the prompt alone and record the key file's hash before scoring. A pattern
 locates the point but does not check it, and it misses paraphrases, so read the
 replies it marks. `--control CONDITION` adds a constructed buried arm that the
-metrics must score worse. Shape numbers are not reader comprehension.
+metrics must score worse. It also counts questions: the share of replies that
+ask one, whether the reply ends with its question and how many words follow the
+last question. Shape numbers are not reader comprehension.
 
 The [repetition set](repetition-prompts.json) checks semantic duplicates,
 unambiguous referents and repetitive colon links. Use it alongside detailed
@@ -77,6 +79,14 @@ stated after the step, and a dark-theme guard with no warning. It checks that
 the reader learns the effect before the step and that no warning is invented.
 Its candidate failed a masked pilot; the current core put the warning after the
 step in every reply.
+
+The [blocking-question set](blocking-question-prompts.json) has ten synthetic
+RU/EN progress cases. In six, work waits on the reader's decision: a currency
+value, a conflicting date or a spending limit. In four, nothing is needed from
+the reader. It checks that a needed decision is named in the first sentence, that
+the reply ends with that one question, and that no question is invented when
+nothing blocks the work. Its keys locate the decision, not the facts; score it
+with `shape_metrics.py` and read the replies for the protected facts.
 
 The [bounds and conflicts set](bounds-conflicts-prompts.json) has eight synthetic
 RU/EN cases: price and count bounds, "at least"/"at most" limits, and conflicting

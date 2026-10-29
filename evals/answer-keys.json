@@ -32,6 +32,16 @@
     "ru-optional-backup": "(?i)необязательн|не обязательн|по желанию|неизвестн|не сказано|не указано",
     "en-optional-backup": "(?i)optional|not required|don'?t have to|unknown|doesn'?t say|does not say|not stated",
     "ru-optional-step": "(?i)необязательн|не обязательн|можно пропуст|не сказано|неизвестн",
-    "en-optional-step": "(?i)optional|can skip|doesn'?t say|does not say|unknown"
+    "en-optional-step": "(?i)optional|can skip|doesn'?t say|does not say|unknown",
+    "ru-block-currency": "(?i)решени|решите|выбер|выбрать|выбор|заменить|оставить|как поступ|нужн\\w* (ваш|твой)",
+    "en-block-currency": "(?i)decision|decide|choose|choice|which option|replace|leave (them|these|the 20)|how (do you want|should I)|need (your|you)",
+    "ru-block-date": "(?i)какая (из )?дат|какую дат|дат\\w*\\W.{0,60}(верн|правильн|подтверд|уточн)|(верн|правильн|подтверд|уточн)\\w*\\W.{0,60}дат|нужн\\w* (ваш|твой)|жд(у|ёт) (ваш|твоего)",
+    "en-block-date": "(?i)which (date|one)|confirm|correct date|right date|need (your|you)|waiting (for|on) your|before (I|we) send",
+    "ru-block-limit": "(?i)разреш|одобр|соглас(уйте|ие|ен|ны)|подтверд|нужн\\w* (ваш|твой)|жд(у|ёт) (ваш|твоего)",
+    "en-block-limit": "(?i)approv|permission|authori[sz]|go ahead|ok to|okay to|need (your|you)|waiting (for|on) your",
+    "ru-noblock-done": "(?i)все 1200|1200 из 1200|1200 заказов|перенесен\\w* (все|полностью)|заверш|готов",
+    "en-noblock-done": "(?i)all 1200|1200 of 1200|1200 orders|complete|done|finished",
+    "ru-noblock-skip": "(?i)собран|готов|сохран|reports/2026-10\\.pdf",
+    "en-noblock-skip": "(?i)\\bbuilt\\b|ready|saved|done|reports/2026-10\\.pdf"
   }
 }
