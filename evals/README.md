@@ -32,6 +32,16 @@ slash chains in local Claude Code sessions started before and after a cutover,
 such as the core's installation. It is observational: tasks, models and other
 loaded instructions differ between periods. It prints aggregates only.
 
+`shape_metrics.py` measures reply shape without an LLM judge: words before the
+point, whether the point is in the first sentence, the longest unbroken block and
+sentence, headings, and deliverable wrappers, ceremonial openers and closing offers.
+It reads a responses file in the `blind_eval.py` format. The point is located by
+the case's pattern in [answer-keys.json](answer-keys.json); write keys for new cases
+from the prompt alone and record the key file's hash before scoring. A pattern
+locates the point but does not check it, and it misses paraphrases, so read the
+replies it marks. `--control CONDITION` adds a constructed buried arm that the
+metrics must score worse. Shape numbers are not reader comprehension.
+
 The [repetition set](repetition-prompts.json) checks semantic duplicates,
 unambiguous referents and repetitive colon links. Use it alongside detailed
 process, full-comparison and exact-condition cases; shortening cannot hide

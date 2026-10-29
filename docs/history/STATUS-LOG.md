@@ -1,5 +1,44 @@
 # Palych — dated development records
 
+## Reply shape without a judge — 2026-10-29
+
+Question: do deterministic shape metrics, adapted from attention-span v0.11
+(`8a6e225`, ideas only, no text), separate Palych from no skill on the
+2026-10-13 pilot? No model calls.
+
+- Branch `claude/shape-metrics` (base c13c879) adds `evals/shape_metrics.py` and
+  `evals/answer-keys.json`. The keys were written from the prompts alone and
+  fixed before scoring (SHA-256 `4fd7f1e9…4334`, 2026-10-29T01:08:50Z); only the
+  `ru-definition` replies had been seen. The depth cases have no key.
+- The pilot's `responses.json` was not kept. The 180 replies were rebuilt from
+  its `pairs.md`, whose hash matched the pilot's checksums; the rebuilt totals
+  matched the pilot report (98 562 and 51 390 characters, 15 919 and 8 588 words).
+
+| Median, 84 keyed replies per condition | No skill | Palych | Buried control |
+|---|---:|---:|---:|
+| Words | 150.5 | 73 | 104 |
+| Words before the point | 4 | 2 | 33 |
+| Point in the first sentence | 79.8% | 95.2% | 0% |
+| Longest unbroken block, words | 37 | 33.5 | 73 |
+| Longest sentence, words | 23 | 19 | 31 |
+| Replies with headings | 14.4% | 5.6% | 0% |
+| Deliverable wrapper | 6.7% | 0% | 0% |
+| Closing offer | 3.3% | 0% | 0% |
+
+- The buried control is built from the Palych replies: a warm-up paragraph is
+  added and every block is joined into one. Every metric scored it worse.
+- Audit of the 21 replies with the point outside the first sentence: 16 of 17
+  without the skill are real warm-ups («In plain terms:»), wrappers or background
+  first; 1 is a key miss. For Palych 3 of 4 are key misses (paraphrases of
+  "optional") and 1 is borderline. Keys were not changed after scoring.
+- The first-sentence rule was changed after reading these replies: bold labels,
+  bold title lines and a letter greeting no longer count as the first sentence.
+  Before the change the shares were 61.9% and 84.5%. This change needs a check
+  on fresh replies.
+- Ceremonial openers were 0% in both conditions; that lexicon separated only the
+  constructed control.
+- Output: `~/ai-hub/outputs/2026-10-29-palych-shape-metrics/`.
+
 ## Band mod from the marketplace — 2026-10-20
 
 - PR ponomr/palych#36 (`de2c6a8`) added usage figures and `/palych-tab` to
