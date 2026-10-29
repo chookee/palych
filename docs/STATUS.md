@@ -42,8 +42,10 @@ and update this page when a limit changes.
 Masked pilots on `claude-sonnet-5-5` with same-model assessors (2026-10-13):
 against no skill, 86 Palych preferences, 1 no-skill preference and 3 ties over
 90 pairs; semantic failures 3 with Palych versus 45 without; output tokens 45.4%
-lower. Still open: unknown actors and reasons, and "optional" turning into "safe
-to skip" (`optional-backup`). Three candidate rules for them failed their pilots
+lower. Judge-free shape metrics on the same 180 replies (2026-10-29): the point
+was in the first sentence in 95.2% of keyed Palych replies versus 79.8%, with no
+deliverable wrappers or closing offers versus 6.7% and 3.3%. Still open: unknown
+actors and reasons, and "optional" turning into "safe to skip" (`optional-backup`). Three candidate rules for them failed their pilots
 and were not integrated.
 A shorter core that merged the role and route rules failed its pilot
 (2026-10-15): it reintroduced invented routes.
