@@ -20,7 +20,10 @@ Per reply:
   "Sure");
 - wrapper: the first paragraph presents a deliverable ("Вот вариант", "Here's");
 - closer: the last paragraph offers more help or signs off ("Если хотите",
-  "Let me know").
+  "Let me know");
+- questions: sentences that end with a question mark. For a reply with a
+  question, question_last says the reply ends with one, and after_question
+  counts the words that follow the last one.
 
 A pattern locates the point; it does not check that the point is correct.
 Shape numbers are proxies for scanning, not evidence of reader comprehension.
@@ -43,6 +46,7 @@ HEADING = re.compile(r'^\s{0,3}#{1,6}\s')
 ITEM = re.compile(r'^\s*(?:[-*+•]|\d+[.)])\s+')
 TABLE = re.compile(r'^\s*\|')
 SENTENCE_END = re.compile(r'[.!?…](?=["»)\]*_]*(?:\s|$))')
+QUESTION = re.compile(r'\?(?=["»)\]*_]*(?:\s|$))')
 LABEL_LINE = re.compile(r'^\s*\*\*[^*]*[^*.!?…]\*\*:?\s*$')
 LEAD_LABEL = re.compile(r'\*\*(?:\W*\w+){1,3}\W*\*\*')
 GREETING = re.compile(
@@ -127,7 +131,12 @@ def measure(text, key=None):
         'opener': bool(OPENER.match(prose[start:end])),
         'wrapper': bool(paras and WRAPPER.match(paras[0])),
         'closer': bool(paras and CLOSER.search(paras[-1])),
+        'questions': len(QUESTION.findall(prose)),
     }
+    if row['questions']:
+        last = list(QUESTION.finditer(prose))[-1]
+        row['after_question'] = words(prose[last.end():])
+        row['question_last'] = not row['after_question']
     if key:
         found = re.search(key, prose)
         row['to_point'] = words(prose[:found.start()]) if found else words(prose)
@@ -153,6 +162,7 @@ def summarize(rows):
         return round(sum(values) / len(values), 3) if values else None
 
     keyed = [r for r in rows if 'to_point' in r]
+    asked = [r for r in rows if r['questions']]
     return {
         'replies': len(rows),
         'keyed': len(keyed),
@@ -166,6 +176,9 @@ def summarize(rows):
         'opener': share('opener'),
         'wrapper': share('wrapper'),
         'closer': share('closer'),
+        'asked': round(len(asked) / len(rows), 3),
+        'question_last': share('question_last'),
+        'after_question': median('after_question'),
     }
 
 

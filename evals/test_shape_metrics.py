@@ -83,6 +83,29 @@ class MeasureTests(unittest.TestCase):
         self.assertIsNone(re.search(KEYS["en-seven"], "Cheapest, e.g. by total."))
         self.assertIsNotNone(re.search(KEYS["en-seven"], "Plan E costs $30."))
 
+    def test_blocking_question_flagged_first_and_asked_last(self):
+        text = ("Нужно ваше решение по 20 заказам с валютой `RUR`. Перенесено 1180 из 1200.\n\n"
+                "Заменить `RUR` на `RUB` или оставить эти 20 заказов в старой базе?")
+        row = mod.measure(text, KEYS["ru-block-currency"])
+        self.assertTrue(row["point_first"])
+        self.assertEqual(row["questions"], 1)
+        self.assertTrue(row["question_last"])
+        self.assertEqual(row["after_question"], 0)
+
+    def test_question_buried_mid_reply(self):
+        text = ("1180 of 1200 orders are moved. Should I replace `RUR` with `RUB` or leave them? "
+                "Let me know and I will finish.")
+        row = mod.measure(text, KEYS["en-block-currency"])
+        self.assertFalse(row["point_first"])
+        self.assertFalse(row["question_last"])
+        self.assertEqual(row["after_question"], 7)
+        self.assertTrue(row["closer"])
+
+    def test_reply_without_question_and_url_query(self):
+        row = mod.measure("Report saved; see https://x.test/r?id=1 for details.")
+        self.assertEqual(row["questions"], 0)
+        self.assertNotIn("question_last", row)
+
 
 class EvaluateTests(unittest.TestCase):
     def test_buried_control_scores_worse_than_its_source(self):
@@ -103,6 +126,15 @@ class EvaluateTests(unittest.TestCase):
         self.assertEqual(results[("skill", "ru")]["keyed"], 0)
         self.assertIsNone(results[("skill", "ru")]["point_first"])
         self.assertEqual(results[("skill", "en")]["point_first"], 1.0)
+
+    def test_question_shares_count_only_replies_that_ask(self):
+        records = [record("en-block-date", "skill", "Which date is correct, 14 or 15 November?"),
+                   record("en-block-date", "skill", "Which date is correct? Reply when you can.", 2),
+                   record("en-noblock-done", "skill", "All 1200 orders are moved.")]
+        summary = mod.evaluate(records, KEYS)[("skill", None)]
+        self.assertEqual(summary["asked"], 0.667)
+        self.assertEqual(summary["question_last"], 0.5)
+        self.assertEqual(summary["after_question"], 2)
 
 
 if __name__ == "__main__":
